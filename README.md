@@ -14,4 +14,5 @@
 
 > [!TIP]
 > Windows 和 Office 激活神器 ( Microsoft-Activation-Scripts 简称 MAS ) 的汉化版，在不改变机器码的情况下可永久激活，备以自用😁
+> 
 > 具体使用方法 [详见此处](https://github.com/massgravel/Microsoft-Activation-Scripts?tab=readme-ov-file#download--how-to-use-it)
