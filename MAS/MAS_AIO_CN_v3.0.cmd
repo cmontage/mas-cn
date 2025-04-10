@@ -2,7 +2,7 @@
 @set masver=3.0
 @setlocal DisableDelayedExpansion
 @echo off
-::  设置代码页为UTF-8，以便正确显示中文;如果UTF-8在某些系统上不工作，可以使用简体中文GBK编码即chcp 936 >nul
+::  设置代码页为UTF-8，以便正确显示中文;如果UTF-8在某些系统上不工作，可以使用简体中文GBK编码和chcp 936 >nul.
 chcp 65001 >nul
 
 ::  For command line switches, check mass<>grave<.>dev/command_line_switches
