@@ -13939,14 +13939,14 @@ exit /b
 :+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 :check_actstatus
-
+chcp 936 >nul
 cls
 if not defined terminal (
 mode 100, 36
 %psc% "&{$W=$Host.UI.RawUI.WindowSize;$B=$Host.UI.RawUI.BufferSize;$W.Height=35;$B.Height=300;$Host.UI.RawUI.WindowSize=$W;$Host.UI.RawUI.BufferSize=$B;}" %nul%
 )
-
-%psc% "$f=[IO.File]::ReadAllText('!_batp!') -split ':sppmgr\:.*';iex ($f[1])"
+::在ReadAllText函数中添加了[System.Text.Encoding]::GetEncoding(936)参数，指定该部分使用简体中文编码（GBK）读取文件
+%psc% "$f=[IO.File]::ReadAllText('!_batp!', [System.Text.Encoding]::GetEncoding(936)) -split ':sppmgr\:.*';iex ($f[1])"
 goto dk_done
 
 :sppmgr:
