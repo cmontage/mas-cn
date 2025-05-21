@@ -15,6 +15,8 @@
 
 Windows 和 Office 激活神器 ( Microsoft-Activation-Scripts 简称 MAS ) 的汉化版，在不改变机器码的情况下可永久激活，备以自用😁
 
+ **注：该汉化由我自己编写脚本（翻译源为[Google翻译](https://translate.google.com)）自动进行初步汉化然后进行一行一行人工校对的，并且做了中文显示兼容以及 IRM 远程使用的脚本，修改或分发代码使请遵守 GPL-3.0，标明源代码出处或者提供获取源代码的途径**
+
 > [!TIP]
 > 
 > ### 具体使用方法: 
@@ -38,6 +40,6 @@ Windows 和 Office 激活神器 ( Microsoft-Activation-Scripts 简称 MAS ) 的�
 | 永久激活 |  ✅  |  ✅  |  ☑️(至2038)  |  ☑️(180天/次)  |  ✅  |
 | 不会在系统中留下文件来维持激活 |  ✅  |  ❌  |  ✅  |  ❌  |  ✅  |
 
-[了解更多特性信息](https://massgrave.dev/chart#user-content-fn-2) 
+🔍 [了解更多特性信息](https://massgrave.dev/chart#user-content-fn-2) 
 
-[访问官方原版Github](https://github.com/massgravel/Microsoft-Activation-Scripts?tab=readme-ov-file#download--how-to-use-it)
+🔍 [访问官方原版Github (MAS Source Code)](https://github.com/massgravel/Microsoft-Activation-Scripts?tab=readme-ov-file#download--how-to-use-it)
