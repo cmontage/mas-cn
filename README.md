@@ -22,7 +22,7 @@ Windows 和 Office 激活神器 ( Microsoft-Activation-Scripts 简称 MAS ) 的�
 > **打开Powershell输入命令即可使用**（若该方法无法使用，可以在Release下载最新版的cmd文件打开即可使用）
 >
 > ```
->  irm https://gcore.jsdelivr.net/gh/cmontage/mas-cn@main/DLMASCN.ps1 | iex
+>  irm https://gcore.jsdelivr.net/gh/cmontage/mas-cn@main/GETMASCN.ps1 | iex
 > ```
 > 
 > ```
