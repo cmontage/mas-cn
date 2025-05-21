@@ -1,0 +1,21 @@
+name: Repo Sync to Gitee
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '5 0 * * *'
+env:
+  # 仓库名称
+  REPO_NAME: ${{ github.event.repository.name }}
+
+jobs:
+  mirror-to-gitee:
+    name: Sync to Gitee
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Mirror repo to Gitee.
+        uses: abersheeran/sync-gitee-mirror@v1-beta
+        with:
+          repository: cmontage/${{ env.REPO_NAME }}
+          username: cmontage
+          password: ${{ secrets.GITEE_PASSWORD }}
