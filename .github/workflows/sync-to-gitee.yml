@@ -1,7 +1,7 @@
 name: Repo Sync to Gitee
 
 on:
-  # push:             # 提交代码即触发
+  # push:             # main分支提交代码即触发
   #   branches:
   #     - main
   workflow_dispatch:  # 允许手动触发
