@@ -1,10 +1,4 @@
-# 设置编码，解决中文乱码问题
-$OutputEncoding = [System.Text.Encoding]::UTF8
-[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
-# 如果上面的设置不起作用，尝试设置控制台代码页
-chcp 65001 | Out-Null
-
-# 设置TLS 1.2，确保与GitHub API通信安全
+﻿# 设置TLS 1.2，确保与GitHub API通信安全
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
 # 定义仓库信息
