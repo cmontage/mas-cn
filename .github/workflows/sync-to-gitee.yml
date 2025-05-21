@@ -88,6 +88,27 @@ jobs:
           if not isinstance(github_releases, list):
               print(f"获取GitHub Releases失败: {github_response.text}")
               exit(1)
+          
+          # 获取Gitee分支信息，确认默认分支
+          try:
+              branches_api = f"https://gitee.com/api/v5/repos/{gitee_repo}/branches"
+              branches_params = {"access_token": gitee_token}
+              branches_response = requests.get(branches_api, params=branches_params)
+              branches_data = branches_response.json()
+              
+              # 尝试找到main或master分支
+              default_branch = "main"  # 默认假设为main
+              if isinstance(branches_data, list):
+                  branch_names = [branch['name'] for branch in branches_data]
+                  if 'main' in branch_names:
+                      default_branch = 'main'
+                  elif 'master' in branch_names:
+                      default_branch = 'master'
+              
+              print(f"使用默认分支: {default_branch}")
+          except Exception as e:
+              print(f"获取分支信息失败，使用默认分支 'main': {str(e)}")
+              default_branch = "main"
               
           # 获取Gitee已有Releases
           gitee_params = {
@@ -116,17 +137,18 @@ jobs:
               
               print(f"处理Release: {tag_name}")
               
-              # 准备Gitee Release数据
+              # 准备Gitee Release数据，添加target_commitish参数
               release_data = {
                   "access_token": gitee_token,
                   "tag_name": tag_name,
                   "name": release['name'] or tag_name,
                   "body": release['body'] or "",
-                  "prerelease": release['prerelease']
+                  "prerelease": release['prerelease'],
+                  "target_commitish": default_branch  # 添加缺失的参数
               }
               
               # 创建Gitee Release
-              print(f"创建Gitee Release: {tag_name}")
+              print(f"创建Gitee Release: {tag_name} (基于 {default_branch} 分支)")
               response = requests.post(gitee_api, json=release_data)
               
               if response.status_code not in [201, 200]:
@@ -144,27 +166,31 @@ jobs:
                       asset_url = asset['browser_download_url']
                       print(f"处理资产: {asset_name}, URL: {asset_url}")
                       
-                      # 下载资产文件
-                      asset_response = requests.get(asset_url, headers=github_headers)
-                      with open(asset_name, 'wb') as f:
-                          f.write(asset_response.content)
-                      
-                      # 上传到Gitee
-                      upload_url = f"{gitee_api}/{gitee_release['id']}/assets"
-                      files = {'file': (asset_name, open(asset_name, 'rb'))}
-                      upload_data = {
-                          'access_token': gitee_token,
-                          'name': asset_name
-                      }
-                      
-                      upload_response = requests.post(upload_url, data=upload_data, files=files)
-                      if upload_response.status_code not in [201, 200]:
-                          print(f"上传资产失败: {upload_response.text}")
-                      else:
-                          print(f"资产 {asset_name} 上传成功")
-                      
-                      # 删除临时文件
-                      os.remove(asset_name)
+                      try:
+                          # 下载资产文件
+                          asset_response = requests.get(asset_url, headers=github_headers)
+                          with open(asset_name, 'wb') as f:
+                              f.write(asset_response.content)
+                          
+                          # 上传到Gitee
+                          upload_url = f"{gitee_api}/{gitee_release['id']}/assets"
+                          files = {'file': (asset_name, open(asset_name, 'rb'))}
+                          upload_data = {
+                              'access_token': gitee_token,
+                              'name': asset_name
+                          }
+                          
+                          upload_response = requests.post(upload_url, data=upload_data, files=files)
+                          if upload_response.status_code not in [201, 200]:
+                              print(f"上传资产失败: {upload_response.text}")
+                          else:
+                              print(f"资产 {asset_name} 上传成功")
+                      except Exception as e:
+                          print(f"处理资产 {asset_name} 失败: {str(e)}")
+                      finally:
+                          # 删除临时文件
+                          if os.path.exists(asset_name):
+                              os.remove(asset_name)
               
               # 避免API频率限制
               time.sleep(2)
