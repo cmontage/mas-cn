@@ -1,5 +1,4 @@
-﻿# 设置TLS 1.2，确保与GitHub API通信安全
-[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+﻿[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
 # 定义仓库信息
 $repoOwner = "cmontage"
