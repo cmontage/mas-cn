@@ -1,9 +1,9 @@
 name: Repo Sync to Gitee
 
 on:
-  push:
-    branches:
-      - main
+  # push:             # 提交代码即触发
+  #   branches:
+  #     - main
   workflow_dispatch:  # 允许手动触发
   schedule:
     - cron: '5 0 * * *'
@@ -34,7 +34,7 @@ jobs:
       - name: 同步到Gitee
         uses: abersheeran/sync-gitee-mirror@v1-beta
         with:
-          repository: ${{ env.GITHUB_REPO }}
+          repository: cmontage/${{ env.REPO_NAME }}
           username: cmontage
           password: ${{ secrets.GITEE_PASSWORD }}
 
