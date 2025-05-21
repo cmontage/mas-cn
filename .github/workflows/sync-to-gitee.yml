@@ -54,7 +54,7 @@ jobs:
           
       - name: 同步GitHub Releases到Gitee
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUBAPI_TOKEN }}
           GITEE_TOKEN: ${{ secrets.GITEE_PASSWORD }}
           GITEE_USERNAME: cmontage
         run: |
