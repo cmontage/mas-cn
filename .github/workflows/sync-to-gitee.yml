@@ -1,21 +1,180 @@
 name: Repo Sync to Gitee
+
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - main
+  workflow_dispatch:  # 允许手动触发
   schedule:
     - cron: '5 0 * * *'
+
 env:
   # 仓库名称
   REPO_NAME: ${{ github.event.repository.name }}
+  GITHUB_REPO: cmontage/mas-cn
+  GITEE_REPO: cmontage/mas-cn
 
 jobs:
+  # 同步代码仓库
   mirror-to-gitee:
-    name: Sync to Gitee
+    name: 同步代码到Gitee
     runs-on: ubuntu-latest
 
     steps:
-      - name: Mirror repo to Gitee.
+      - name: 检出代码
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # 获取所有历史，确保完整同步
+
+      - name: 配置Git
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+
+      - name: 同步到Gitee
         uses: abersheeran/sync-gitee-mirror@v1-beta
         with:
-          repository: cmontage/${{ env.REPO_NAME }}
+          repository: ${{ env.GITHUB_REPO }}
           username: cmontage
           password: ${{ secrets.GITEE_PASSWORD }}
+
+  # 同步Releases
+  sync-releases:
+    name: 同步Releases到Gitee
+    runs-on: ubuntu-latest
+    needs: mirror-to-gitee
+    
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v3
+
+      - name: 安装依赖
+        run: |
+          pip install requests
+          
+      - name: 同步GitHub Releases到Gitee
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITEE_TOKEN: ${{ secrets.GITEE_PASSWORD }}
+          GITEE_USERNAME: cmontage
+        run: |
+          cat > sync_releases.py << 'EOF'
+          import os
+          import json
+          import requests
+          import time
+          
+          # 环境变量
+          github_token = os.environ['GITHUB_TOKEN']
+          gitee_token = os.environ['GITEE_TOKEN']
+          gitee_username = os.environ['GITEE_USERNAME']
+          github_repo = "${{ env.GITHUB_REPO }}"
+          gitee_repo = "${{ env.GITEE_REPO }}"
+          
+          # API URLs
+          github_api = f"https://api.github.com/repos/{github_repo}/releases"
+          gitee_api = f"https://gitee.com/api/v5/repos/{gitee_repo}/releases"
+          
+          # 设置请求头
+          github_headers = {
+              "Authorization": f"token {github_token}",
+              "Accept": "application/vnd.github.v3+json"
+          }
+          
+          gitee_headers = {
+              "Content-Type": "application/json;charset=UTF-8"
+          }
+          
+          # 获取GitHub Releases
+          print("获取GitHub Releases...")
+          github_response = requests.get(github_api, headers=github_headers)
+          github_releases = github_response.json()
+          
+          if not isinstance(github_releases, list):
+              print(f"获取GitHub Releases失败: {github_response.text}")
+              exit(1)
+              
+          # 获取Gitee已有Releases
+          gitee_params = {
+              "access_token": gitee_token,
+              "page": 1,
+              "per_page": 100
+          }
+          
+          gitee_response = requests.get(gitee_api, params=gitee_params)
+          gitee_releases = gitee_response.json()
+          
+          if not isinstance(gitee_releases, list):
+              print(f"获取Gitee Releases失败: {gitee_response.text}")
+              gitee_releases = []
+          
+          # 提取Gitee已有Release标签
+          gitee_tags = [release['tag_name'] for release in gitee_releases]
+          
+          # 同步Releases
+          for release in github_releases:
+              tag_name = release['tag_name']
+              
+              if tag_name in gitee_tags:
+                  print(f"跳过已存在的Release: {tag_name}")
+                  continue
+              
+              print(f"处理Release: {tag_name}")
+              
+              # 准备Gitee Release数据
+              release_data = {
+                  "access_token": gitee_token,
+                  "tag_name": tag_name,
+                  "name": release['name'] or tag_name,
+                  "body": release['body'] or "",
+                  "prerelease": release['prerelease']
+              }
+              
+              # 创建Gitee Release
+              print(f"创建Gitee Release: {tag_name}")
+              response = requests.post(gitee_api, json=release_data)
+              
+              if response.status_code not in [201, 200]:
+                  print(f"创建Release失败: {response.text}")
+                  continue
+                  
+              gitee_release = response.json()
+              
+              # 处理资产文件
+              if release['assets']:
+                  print(f"开始上传资产文件...")
+                  
+                  for asset in release['assets']:
+                      asset_name = asset['name']
+                      asset_url = asset['browser_download_url']
+                      print(f"处理资产: {asset_name}, URL: {asset_url}")
+                      
+                      # 下载资产文件
+                      asset_response = requests.get(asset_url, headers=github_headers)
+                      with open(asset_name, 'wb') as f:
+                          f.write(asset_response.content)
+                      
+                      # 上传到Gitee
+                      upload_url = f"{gitee_api}/{gitee_release['id']}/assets"
+                      files = {'file': (asset_name, open(asset_name, 'rb'))}
+                      upload_data = {
+                          'access_token': gitee_token,
+                          'name': asset_name
+                      }
+                      
+                      upload_response = requests.post(upload_url, data=upload_data, files=files)
+                      if upload_response.status_code not in [201, 200]:
+                          print(f"上传资产失败: {upload_response.text}")
+                      else:
+                          print(f"资产 {asset_name} 上传成功")
+                      
+                      # 删除临时文件
+                      os.remove(asset_name)
+              
+              # 避免API频率限制
+              time.sleep(2)
+              
+          print("同步GitHub Releases到Gitee完成")
+          EOF
+          
+          python sync_releases.py
