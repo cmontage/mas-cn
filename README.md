@@ -35,7 +35,7 @@ Windows 和 Office 激活神器 ( Microsoft-Activation-Scripts 简称 MAS ) 的�
 
 ### 各个激活方法的特性
 
-|          | HWID | Ohook  | KMS38 | Online KMS | TSforge (ZeroCID) | TSforge (StaticCID) | TSforge (KMS4k) |
+|          | HWID | Ohook  | &nbsp;&nbsp;&nbsp;KMS38 | &nbsp;&nbsp;Online KMS | TSforge (ZeroCID) | TSforge (StaticCID) | TSforge (KMS4k) |
 |:----------:|:------:|:--------:|:-------:|:------------:|:-------------------:|:---------------------:|:-----------------:| 
 | 离线激活 |  ❌  |  ✅    |  ✅  |     ❌     |  ✅              |        ❌           |  ✅  |
 | 永久激活 |  ✅  |  ✅    |  ☑️<br>(至2038)  |  ☑️<br>(180天/次)  |  ✅  |  ✅  |☑️<br>(至4083)
