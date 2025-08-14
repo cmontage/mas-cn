@@ -1,0 +1,1890 @@
+================================================================================
+MAS脚本同步报告 - v3.4 -> v3.5
+================================================================================
+生成时间: 2025-08-15 01:17:45
+
+统计信息:
+----------------------------------------
+v3.4英文版行数: 19434
+v3.5英文版行数: 19787
+英文版行数变化: +352
+v3.4中文版行数: 19434
+v3.5中文版行数: 19787
+中文版行数变化: +352
+与英文v3.5行数差异: +0
+检测到的变更数: 148
+成功应用的变更数: 148
+
+变更总览:
+----------------------------------------
+replace: 81 处
+insert: 60 处
+delete: 7 处
+总计: 148 处变更
+
+应用日志:
+----------------------------------------
+✓ 变更 1: 替换行 1-2 (2 -> 2 行)
+✓ 变更 2: 替换行 9-9 (1 -> 1 行)
+✓ 变更 3: 在行 47 后插入 1 行
+✓ 变更 4: 在行 147 后插入 10 行
+✓ 变更 5: 替换行 229-229 (1 -> 1 行)
+✓ 变更 6: 在行 253 后插入 3 行
+✓ 变更 7: 在行 270 后插入 13 行
+✓ 变更 8: 替换行 289-289 (1 -> 5 行)
+✓ 变更 9: 替换行 317-317 (1 -> 3 行)
+✓ 变更 10: 替换行 429-430 (2 -> 7 行)
+✓ 变更 11: 替换行 442-444 (3 -> 5 行)
+✓ 变更 12: 在行 453 后插入 3 行
+✓ 变更 13: 替换行 618-618 (1 -> 1 行)
+✓ 变更 14: 替换行 841-841 (1 -> 1 行)
+✓ 变更 15: 替换行 899-900 (2 -> 2 行)
+✓ 变更 16: 在行 902 后插入 3 行
+✓ 变更 17: 替换行 907-907 (1 -> 1 行)
+✓ 变更 18: 在行 978 后插入 1 行
+✓ 变更 19: 在行 980 后插入 1 行
+✓ 变更 20: 在行 1050 后插入 1 行
+✓ 变更 21: 在行 1053 后插入 1 行
+✓ 变更 22: 在行 1066 后插入 1 行
+✓ 变更 23: 在行 1068 后插入 1 行
+✓ 变更 24: 在行 1074 后插入 1 行
+✓ 变更 25: 在行 1076 后插入 1 行
+✓ 变更 26: 在行 1093 后插入 1 行
+✓ 变更 27: 在行 1096 后插入 1 行
+✓ 变更 28: 在行 1098 后插入 1 行
+✓ 变更 29: 在行 1100 后插入 1 行
+✓ 变更 30: 在行 1109 后插入 1 行
+✓ 变更 31: 在行 1111 后插入 1 行
+✓ 变更 32: 在行 1124 后插入 1 行
+✓ 变更 33: 在行 1127 后插入 1 行
+✓ 变更 34: 替换行 1182-1182 (1 -> 1 行)
+✓ 变更 35: 替换行 1271-1271 (1 -> 1 行)
+✓ 变更 36: 替换行 1334-1334 (1 -> 1 行)
+✓ 变更 37: 在行 1336 后插入 1 行
+✓ 变更 38: 在行 1338 后插入 1 行
+✓ 变更 39: 在行 1555 后插入 1 行
+✓ 变更 40: 在行 1576 后插入 2 行
+✓ 变更 41: 在行 1581 后插入 6 行
+✓ 变更 42: 替换行 1589-1594 (6 -> 62 行)
+✓ 变更 43: 在行 1656 后插入 1 行
+✓ 变更 44: 替换行 1661-1665 (5 -> 5 行)
+✓ 变更 45: 在行 1669 后插入 14 行
+✓ 变更 46: 替换行 1685-1688 (4 -> 3 行)
+✓ 变更 47: 在行 1722 后插入 15 行
+✓ 变更 48: 替换行 1738-1741 (4 -> 4 行)
+✓ 变更 49: 在行 1763 后插入 13 行
+✓ 变更 50: 替换行 1777-1888 (112 -> 5 行)
+✓ 变更 51: 在行 1789 后插入 1 行
+✓ 变更 52: 删除行 1791-1791 (1 行)
+✓ 变更 53: 替换行 1792-1813 (22 -> 6 行)
+✓ 变更 54: 替换行 1800-1804 (5 -> 14 行)
+✓ 变更 55: 替换行 1816-1864 (49 -> 5 行)
+✓ 变更 56: 在行 1826 后插入 1 行
+✓ 变更 57: 在行 1828 后插入 7 行
+✓ 变更 58: 替换行 1838-1842 (5 -> 4 行)
+✓ 变更 59: 在行 1846 后插入 1 行
+✓ 变更 60: 在行 1848 后插入 1 行
+✓ 变更 61: 在行 1855 后插入 1 行
+✓ 变更 62: 在行 1860 后插入 6 行
+✓ 变更 63: 替换行 1871-1908 (38 -> 1 行)
+✓ 变更 64: 替换行 1876-1876 (1 -> 1 行)
+✓ 变更 65: 在行 1904 后插入 6 行
+✓ 变更 66: 删除行 1911-1912 (2 行)
+✓ 变更 67: 替换行 1915-1919 (5 -> 11 行)
+✓ 变更 68: 在行 1927 后插入 5 行
+✓ 变更 69: 在行 1933 后插入 58 行
+✓ 变更 70: 替换行 1992-1996 (5 -> 4 行)
+✓ 变更 71: 替换行 1997-1998 (2 -> 197 行)
+✓ 变更 72: 替换行 2304-2304 (1 -> 1 行)
+✓ 变更 73: 替换行 2766-2766 (1 -> 1 行)
+✓ 变更 74: 替换行 2808-2808 (1 -> 1 行)
+✓ 变更 75: 在行 3005 后插入 2 行
+✓ 变更 76: 替换行 3008-3008 (1 -> 6 行)
+✓ 变更 77: 替换行 3139-3139 (1 -> 1 行)
+✓ 变更 78: 在行 3513 后插入 1 行
+✓ 变更 79: 在行 3518 后插入 1 行
+✓ 变更 80: 在行 3541 后插入 1 行
+✓ 变更 81: 在行 3547 后插入 9 行
+✓ 变更 82: 替换行 3652-3652 (1 -> 9 行)
+✓ 变更 83: 替换行 3671-3672 (2 -> 2 行)
+✓ 变更 84: 替换行 4008-4008 (1 -> 1 行)
+✓ 变更 85: 替换行 4091-4091 (1 -> 1 行)
+✓ 变更 86: 替换行 4097-4097 (1 -> 1 行)
+✓ 变更 87: 替换行 4574-4575 (2 -> 2 行)
+✓ 变更 88: 替换行 4647-4647 (1 -> 1 行)
+✓ 变更 89: 替换行 4937-4937 (1 -> 1 行)
+✓ 变更 90: 在行 4985 后插入 8 行
+✓ 变更 91: 替换行 5010-5013 (4 -> 4 行)
+✓ 变更 92: 替换行 5059-5062 (4 -> 6 行)
+✓ 变更 93: 删除行 5067-5067 (1 行)
+✓ 变更 94: 替换行 5343-5343 (1 -> 1 行)
+✓ 变更 95: 替换行 5421-5424 (4 -> 4 行)
+✓ 变更 96: 替换行 5618-5618 (1 -> 1 行)
+✓ 变更 97: 替换行 5666-5666 (1 -> 1 行)
+✓ 变更 98: 在行 5801 后插入 1 行
+✓ 变更 99: 替换行 5816-5816 (1 -> 1 行)
+✓ 变更 100: 替换行 5818-5818 (1 -> 1 行)
+✓ 变更 101: 在行 5822 后插入 5 行
+✓ 变更 102: 替换行 6015-6015 (1 -> 1 行)
+✓ 变更 103: 在行 11219 后插入 1 行
+✓ 变更 104: 删除行 11974-11976 (3 行)
+✓ 变更 105: 删除行 11994-11994 (1 行)
+✓ 变更 106: 替换行 11999-11999 (1 -> 1 行)
+✓ 变更 107: 删除行 12022-12023 (2 行)
+✓ 变更 108: 替换行 12038-12038 (1 -> 1 行)
+✓ 变更 109: 替换行 12305-12306 (2 -> 1 行)
+✓ 变更 110: 替换行 12313-12313 (1 -> 1 行)
+✓ 变更 111: 替换行 12315-12315 (1 -> 1 行)
+✓ 变更 112: 在行 12411 后插入 1 行
+✓ 变更 113: 在行 12413 后插入 1 行
+✓ 变更 114: 替换行 12473-12482 (10 -> 3 行)
+✓ 变更 115: 替换行 12507-12507 (1 -> 1 行)
+✓ 变更 116: 在行 12512 后插入 1 行
+✓ 变更 117: 替换行 12514-12520 (7 -> 2 行)
+✓ 变更 118: 替换行 12517-12518 (2 -> 9 行)
+✓ 变更 119: 删除行 12528-12557 (30 行)
+✓ 变更 120: 替换行 13373-13373 (1 -> 1 行)
+✓ 变更 121: 在行 13640 后插入 3 行
+✓ 变更 122: 在行 13658 后插入 4 行
+✓ 变更 123: 替换行 13718-13718 (1 -> 1 行)
+✓ 变更 124: 替换行 13759-13759 (1 -> 1 行)
+✓ 变更 125: 替换行 14272-14272 (1 -> 1 行)
+✓ 变更 126: 替换行 14302-14302 (1 -> 1 行)
+✓ 变更 127: 替换行 14327-14327 (1 -> 1 行)
+✓ 变更 128: 替换行 15056-15056 (1 -> 1 行)
+✓ 变更 129: 在行 16928 后插入 19 行
+✓ 变更 130: 替换行 16972-16972 (1 -> 1 行)
+✓ 变更 131: 替换行 17042-17043 (2 -> 2 行)
+✓ 变更 132: 替换行 17662-17662 (1 -> 1 行)
+✓ 变更 133: 在行 17691 后插入 30 行
+✓ 变更 134: 替换行 17835-17835 (1 -> 1 行)
+✓ 变更 135: 替换行 18041-18041 (1 -> 1 行)
+✓ 变更 136: 替换行 18079-18079 (1 -> 1 行)
+✓ 变更 137: 替换行 18526-18526 (1 -> 1 行)
+✓ 变更 138: 替换行 18528-18574 (47 -> 47 行)
+✓ 变更 139: 在行 18821 后插入 1 行
+✓ 变更 140: 替换行 18824-18824 (1 -> 1 行)
+✓ 变更 141: 替换行 18898-18898 (1 -> 1 行)
+✓ 变更 142: 替换行 18940-18940 (1 -> 2 行)
+✓ 变更 143: 替换行 19068-19068 (1 -> 3 行)
+✓ 变更 144: 在行 19142 后插入 1 行
+✓ 变更 145: 替换行 19248-19254 (7 -> 2 行)
+✓ 变更 146: 替换行 19378-19378 (1 -> 1 行)
+✓ 变更 147: 替换行 19432-19432 (1 -> 13 行)
+✓ 变更 148: 在行 19626 后插入 21 行
+
+详细变更记录:
+----------------------------------------
+
+变更 1:
+  类型: replace
+  位置: 行 1-2 -> 1-2
+  删除: 2 行
+  添加: 2 行
+  删除内容:
+    - @::yfh37fow-random
+    - @set masver=3.4
+  添加内容:
+    + @::hr47hf7-random
+    + @set masver=3.5
+
+变更 2:
+  类型: replace
+  位置: 行 9-9 -> 9-9
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - ::  If you want to better understand script, read from MAS separate files version. 
+  添加内容:
+    + ::  If you want to better understand script, read from separate files version. 
+
+变更 3:
+  类型: insert
+  位置: 在行 47 后插入
+  添加: 1 行
+  添加内容:
+    + if /i "%%#"=="-qedit" (set re1=1&set re2=1)
+
+变更 4:
+  类型: insert
+  位置: 在行 146 后插入
+  添加: 10 行
+  添加内容:
+    + if exist "%Systemdrive%\Users\WDAGUtilityAccount" (
+    + sc query gcs | find /i "RUNNING" %nul% && (
+    + %eline%
+    + echo Windows Sandbox detected; activation is not supported.
+    + echo The script cannot run due to missing licensing components. Aborting...
+    + echo:
+    + goto dk_done
+    + )
+    + )
+    + 
+
+变更 5:
+  类型: replace
+  位置: 行 218-218 -> 229-229
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - for /f "delims=" %%a in ('%psc% "if ($PSVersionTable.PSEdition -ne 'Core') {$f=[io.file]::ReadAllText('!_batp!') -split ':pstst';iex ($f[1])}" %nul6%') do (set tstresult=%%a)
+  添加内容:
+    + for /f "delims=" %%a in ('%psc% "if ($PSVersionTable.PSEdition -ne 'Core') {$f=[System.IO.File]::ReadAllText('!_batp!') -split ':pstst';. ([scriptblock]::Create($f[1]))}" %nul6%') do (set tstresult=%%a)
+
+变更 6:
+  类型: insert
+  位置: 在行 242 后插入
+  添加: 3 行
+  添加内容:
+    + echo:
+    + set fixes=%fixes% %mas%in-place_repair_upgrade
+    + call :dk_color2 %Blue% "Check this webpage for help - " %_Yellow% " %mas%in-place_repair_upgrade"
+
+变更 7:
+  类型: insert
+  位置: 在行 256 后插入
+  添加: 13 行
+  添加内容:
+    + REM check if .NET is working properly
+    + 
+    + if /i "!tstresult2!"=="FullLanguage" (
+    + cmd /c "%psc% ""try {[System.AppDomain]::CurrentDomain.GetAssemblies(); [System.Math]::Sqrt(144)} catch {Exit 3}""" %nul%
+    + if !errorlevel!==3 (
+    + echo Windows Powershell failed to load .NET command. Aborting...
+    + echo:
+    + set fixes=%fixes% %mas%in-place_repair_upgrade
+    + call :dk_color2 %Blue% "Check this webpage for help - " %_Yellow% " %mas%in-place_repair_upgrade"
+    + goto dk_done
+    ... (还有 3 行)
+
+变更 8:
+  类型: replace
+  位置: 行 262-262 -> 289-293
+  删除: 1 行
+  添加: 5 行
+  删除内容:
+    - echo Your antivirus software might be blocking the script, or PowerShell on your system might be corrupted.
+  添加内容:
+    + echo Your antivirus software might be blocking the script.
+    + echo:
+    + sc query sense | find /i "RUNNING" %nul% && (
+    + echo Installed Antivirus - Microsoft Defender for Endpoint
+    + )
+
+变更 9:
+  类型: replace
+  位置: 行 286-286 -> 317-319
+  删除: 1 行
+  添加: 3 行
+  删除内容:
+    - for /f "skip=2 tokens=2 delims=: " %%A in ('mode con') do if "!lines!"=="0" set lines=%%A
+  添加内容:
+    + for /f "skip=3 tokens=* delims=" %%A in ('mode con') do if "!lines!"=="0" (
+    + for %%B in (%%A) do set lines=%%B
+    + )
+
+变更 10:
+  类型: replace
+  位置: 行 396-397 -> 429-435
+  删除: 2 行
+  添加: 7 行
+  删除内容:
+    - if %winbuild% GEQ 10240 if not exist "%SystemRoot%\Servicing\Packages\Microsoft-Windows-Server*Edition~*.mum" if not exist "%SystemRoot%\Servicing\Packages\Microsoft-Windows-*EvalEdition~*.mum" set _hwidgo=1
+    - if %winbuild% GTR 14393 if exist "%SysPath%\spp\tokens\skus\EnterpriseSN\" set _hwidgo=
+  添加内容:
+    + if exist "%SystemRoot%\Servicing\Packages\Microsoft-Windows-Server*Edition~*.mum" set _serexist=1
+    + if exist "%SystemRoot%\Servicing\Packages\Microsoft-Windows-*EvalEdition~*.mum" set _evalexist=1
+    + if exist "%SystemRoot%\Servicing\Packages\Microsoft-Windows-EnterpriseS*dition~*.mum" set _ltscexist=1
+    + if exist "%SystemRoot%\Servicing\Packages\Microsoft-Windows-EnterpriseSN*dition~*.mum" set _ltscnexist=1
+    + 
+    + if %winbuild% GEQ 10240 if not defined _serexist if not defined _evalexist set _hwidgo=1
+    + if %winbuild% GTR 14393 if defined _ltscnexist set _hwidgo=
+
+变更 11:
+  类型: replace
+  位置: 行 404-406 -> 442-446
+  删除: 3 行
+  添加: 5 行
+  删除内容:
+    - if exist "%SystemRoot%\Servicing\Packages\Microsoft-Windows-Server*Edition~*.mum" set _ohookgo=
+    - if exist "%SystemRoot%\Servicing\Packages\Microsoft-Windows-*EvalEdition~*.mum" set _ohookgo=
+    - if exist "%SystemRoot%\Servicing\Packages\Microsoft-Windows-EnterpriseS*dition~*.mum" set _ohookgo=
+  添加内容:
+    + if defined _serexist set _ohookgo=
+    + if defined _evalexist set _ohookgo=
+    + if defined _ltscexist set _ohookgo=
+    + reg query HKLM\SOFTWARE\Microsoft\Office\ClickToRun\Configuration /v ProductReleaseIds %nul2% | find /i "O365" %nul% && set _ohookgo=1
+    + reg query HKLM\SOFTWARE\Wow6432Node\Microsoft\Office\ClickToRun\Configuration /v ProductReleaseIds %nul2% | find /i "O365" %nul% && set _ohookgo=1
+
+变更 12:
+  类型: insert
+  位置: 在行 413 后插入
+  添加: 3 行
+  添加内容:
+    + if %winbuild% GEQ 10240 if %winbuild% LEQ 19045 if not defined _serexist if not defined _evalexist if not defined _ltscexist (
+    + call :dk_color2 %_Green% "       Tip:" %_White% " To activate ESU updates after W10 EOL, use TSforge option."
+    + )
+
+变更 13:
+  类型: replace
+  位置: 行 575-575 -> 618-618
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - %psc% "$f=[io.file]::ReadAllText('!_batp!'); [io.file]::WriteAllText('!_pdesk!\$OEM$\$$\Setup\Scripts\MAS_AIO.cmd', '@::RANDOM-' + [Guid]::NewGuid().Guid + [Environment]::NewLine + $f, [System.Text.Encoding]::ASCII)"
+  添加内容:
+    + %psc% "$f=[System.IO.File]::ReadAllText('!_batp!'); [io.file]::WriteAllText('!_pdesk!\$OEM$\$$\Setup\Scripts\MAS_AIO.cmd', '@::RANDOM-' + [Guid]::NewGuid().Guid + [Environment]::NewLine + $f, [System.Text.Encoding]::ASCII)"
+
+变更 14:
+  类型: replace
+  位置: 行 798-798 -> 841-841
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - for /f "delims=" %%a in ('%psc% "$f=[io.file]::ReadAllText('!_batp!') -split ':getactivationid\:.*';iex ($f[1])"') do (set altapplist=%%a)
+  添加内容:
+    + for /f "delims=" %%a in ('%psc% "$f=[System.IO.File]::ReadAllText('!_batp!') -split ':getactivationid\:.*';. ([scriptblock]::Create($f[1]))"') do (set altapplist=%%a)
+
+变更 15:
+  类型: replace
+  位置: 行 856-857 -> 899-900
+  删除: 2 行
+  添加: 2 行
+  删除内容:
+    - set regionchange=
+    - if not "%name%"=="US" (
+  添加内容:
+    + ::  Skip changing region in top countries
+    + 
+
+变更 16:
+  类型: insert
+  位置: 在行 859 后插入
+  添加: 3 行
+  添加内容:
+    + for %%# in (US CN IN BR DE JP GB FR MX ID IT PK TR KR CA ES AU NG VN PL PH NL EG AR TH CO SA TW MY CL) do if /i "%name%"=="%%#" set regionchange=
+    + 
+    + if defined regionchange (
+
+变更 17:
+  类型: replace
+  位置: 行 861-861 -> 907-907
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - echo Changing Windows Region To USA          [Successful]
+  添加内容:
+    + echo Changing Windows Region To USA          [Successful] [Script will change it back]
+
+变更 18:
+  类型: insert
+  位置: 在行 932 后插入
+  添加: 1 行
+  添加内容:
+    + echo:
+
+变更 19:
+  类型: insert
+  位置: 在行 933 后插入
+  添加: 1 行
+  添加内容:
+    + echo:
+
+变更 20:
+  类型: insert
+  位置: 在行 1002 后插入
+  添加: 1 行
+  添加内容:
+    + echo:
+
+变更 21:
+  类型: insert
+  位置: 在行 1004 后插入
+  添加: 1 行
+  添加内容:
+    + echo:
+
+变更 22:
+  类型: insert
+  位置: 在行 1016 后插入
+  添加: 1 行
+  添加内容:
+    + echo:
+
+变更 23:
+  类型: insert
+  位置: 在行 1017 后插入
+  添加: 1 行
+  添加内容:
+    + echo:
+
+变更 24:
+  类型: insert
+  位置: 在行 1022 后插入
+  添加: 1 行
+  添加内容:
+    + echo:
+
+变更 25:
+  类型: insert
+  位置: 在行 1023 后插入
+  添加: 1 行
+  添加内容:
+    + echo:
+
+变更 26:
+  类型: insert
+  位置: 在行 1039 后插入
+  添加: 1 行
+  添加内容:
+    + echo:
+
+变更 27:
+  类型: insert
+  位置: 在行 1041 后插入
+  添加: 1 行
+  添加内容:
+    + echo:
+
+变更 28:
+  类型: insert
+  位置: 在行 1042 后插入
+  添加: 1 行
+  添加内容:
+    + echo:
+
+变更 29:
+  类型: insert
+  位置: 在行 1043 后插入
+  添加: 1 行
+  添加内容:
+    + echo:
+
+变更 30:
+  类型: insert
+  位置: 在行 1051 后插入
+  添加: 1 行
+  添加内容:
+    + echo:
+
+变更 31:
+  类型: insert
+  位置: 在行 1052 后插入
+  添加: 1 行
+  添加内容:
+    + echo:
+
+变更 32:
+  类型: insert
+  位置: 在行 1064 后插入
+  添加: 1 行
+  添加内容:
+    + echo:
+
+变更 33:
+  类型: insert
+  位置: 在行 1066 后插入
+  添加: 1 行
+  添加内容:
+    + echo:
+
+变更 34:
+  类型: replace
+  位置: 行 1120-1120 -> 1182-1182
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - for /f "tokens=6 delims=[]. " %%G in ('ver') do set winbuild=%%G
+  添加内容:
+    + for /f "tokens=2 delims=[]" %%G in ('ver') do for /f "tokens=2,3,4 delims=. " %%H in ("%%~G") do set "winbuild=%%J"
+
+变更 35:
+  类型: replace
+  位置: 行 1209-1209 -> 1271-1271
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - if %winbuild% GEQ 15063 %psc% "$f=[io.file]::ReadAllText('!_batp!') -split ':winsubstatus\:.*';iex ($f[1])" %nul2% | find /i "Subscription_is_activated" %nul% && (
+  添加内容:
+    + if %winbuild% GEQ 15063 %psc% "$f=[System.IO.File]::ReadAllText('!_batp!') -split ':winsubstatus\:.*';. ([scriptblock]::Create($f[1]))" %nul2% | find /i "Subscription_is_activated" %nul% && (
+
+变更 36:
+  类型: replace
+  位置: 行 1272-1272 -> 1334-1334
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - if not defined error (
+  添加内容:
+    + if not defined showfix (
+
+变更 37:
+  类型: insert
+  位置: 在行 1274 后插入
+  添加: 1 行
+  添加内容:
+    + echo:
+
+变更 38:
+  类型: insert
+  位置: 在行 1275 后插入
+  添加: 1 行
+  添加内容:
+    + echo:
+
+变更 39:
+  类型: insert
+  位置: 在行 1491 后插入
+  添加: 1 行
+  添加内容:
+    + echo:
+
+变更 40:
+  类型: insert
+  位置: 在行 1511 后插入
+  添加: 2 行
+  添加内容:
+    + ::==============================
+    + 
+
+变更 41:
+  类型: insert
+  位置: 在行 1514 后插入
+  添加: 6 行
+  添加内容:
+    + call :dk_color %Red% "Checking Sandboxing                     [Found, script may not work properly]"
+    + if not defined showfix (
+    + echo:
+    + call :dk_color %Blue% "If you are using any third-party antivirus, check if it is blocking the script."
+    + echo:
+    + )
+
+变更 42:
+  类型: replace
+  位置: 行 1516-1521 -> 1589-1650
+  删除: 6 行
+  添加: 62 行
+  删除内容:
+    - call :dk_color %Red% "Checking Sandboxing                     [Found, script may not work properly.]"
+    - call :dk_color %Blue% "If you are using any third-party antivirus, check if it is blocking the script."
+    - echo:
+    - )
+    - 
+    - ::========================================================================================================================================
+  添加内容:
+    + )
+    + 
+    + ::==============================
+    + 
+    + ::  Check WinPE mode
+    + 
+    + reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\WinPE" /v InstRoot %nul% && (
+    + 
+    + call :dk_color %Red% "Checking WinPE                          [Found]"
+    + if not defined showfix (
+    ... (还有 52 行)
+
+变更 43:
+  类型: insert
+  位置: 在行 1527 后插入
+  添加: 1 行
+  添加内容:
+    + set _regcorr=
+
+变更 44:
+  类型: replace
+  位置: 行 1531-1535 -> 1661-1665
+  删除: 5 行
+  添加: 5 行
+  删除内容:
+    - for %%G in (DependOnService Description DisplayName ErrorControl ImagePath ObjectName Start Type) do if not defined _corrupt (
+    - reg query HKLM\SYSTEM\CurrentControlSet\Services\%%# /v %%G %nul% || set _corrupt=1
+    - )
+    - 
+    - if defined _corrupt (if defined serv_cor (set "serv_cor=!serv_cor! %%#") else (set "serv_cor=%%#"))
+  添加内容:
+    + for %%G in (DependOnService Description DisplayName ErrorControl ImagePath ObjectName Start Type) do if not defined _regcorr (
+    + reg query HKLM\SYSTEM\CurrentControlSet\Services\%%# /v %%G %nul% || (set _corrupt=1&set _regcorr=-RegistryError)
+    + )
+    + 
+    + if defined _corrupt (if defined serv_cor (set "serv_cor=!serv_cor! %%#!_regcorr!") else (set "serv_cor=%%#!_regcorr!"))
+
+变更 45:
+  类型: insert
+  位置: 在行 1539 后插入
+  添加: 14 行
+  添加内容:
+    + call :dk_color %Red% "Checking Corrupt Services               [%serv_cor%]"
+    + 
+    + if not defined showfix (
+    + echo:
+    + if /i "%serv_cor%"=="sppsvc-RegistryError" (
+    + set fixes=%fixes% %mas%fix_service
+    + call :dk_color2 %Blue% "Check this webpage for help - " %_Yellow% " %mas%fix_service"
+    + ) else (
+    + set fixes=%fixes% %mas%in-place_repair_upgrade
+    + call :dk_color2 %Blue% "Check this webpage for help - " %_Yellow% " %mas%in-place_repair_upgrade"
+    ... (还有 4 行)
+
+变更 46:
+  类型: replace
+  位置: 行 1541-1544 -> 1685-1687
+  删除: 4 行
+  添加: 3 行
+  删除内容:
+    - call :dk_color %Red% "Checking Corrupt Services               [%serv_cor%]"
+    - )
+    - 
+    - ::========================================================================================================================================
+  添加内容:
+    + )
+    + 
+    + ::==============================
+
+变更 47:
+  类型: insert
+  位置: 在行 1579 后插入
+  添加: 15 行
+  添加内容:
+    + call :dk_color %Red% "Enabling Disabled Services              [Failed] [%serv_cste%]"
+    + 
+    + if not defined showfix (
+    + echo:
+    + echo %serv_cste% | findstr /i "ClipSVC sppsvc" %nul% && (
+    + echo A registry fix has been applied to enable the disabled service.
+    + echo:
+    + call :dk_color %Blue% "Reboot your machine using the restart option to fix this error."
+    + ) || (
+    + set fixes=%fixes% %mas%in-place_repair_upgrade
+    ... (还有 5 行)
+
+变更 48:
+  类型: replace
+  位置: 行 1580-1583 -> 1738-1741
+  删除: 4 行
+  添加: 4 行
+  删除内容:
+    - call :dk_color %Red% "Enabling Disabled Services              [Failed] [%serv_cste%]"
+    - )
+    - 
+    - ::========================================================================================================================================
+  添加内容:
+    + set showfix=1
+    + )
+    + 
+    + ::==============================
+
+变更 49:
+  类型: insert
+  位置: 在行 1605 后插入
+  添加: 13 行
+  添加内容:
+    + call :dk_color %Red% "Starting Services                       [Failed] [%serv_e%]"
+    + 
+    + if not defined showfix (
+    + set listwospp=%_serv:sppsvc=%
+    + echo %serv_e% | findstr /i "!listwospp!" %nul% && (
+    + set showfix=1
+    + echo:
+    + call :dk_color %Blue% "Reboot your machine using the restart option and run the script again."
+    + set fixes=%fixes% %mas%in-place_repair_upgrade
+    + call :dk_color2 %Blue% "If service error is still not fixed, do this - " %_Yellow% " %mas%in-place_repair_upgrade"
+    ... (还有 3 行)
+
+变更 50:
+  类型: replace
+  位置: 行 1606-1717 -> 1777-1781
+  删除: 112 行
+  添加: 5 行
+  删除内容:
+    - call :dk_color %Red% "Starting Services                       [Failed] [%serv_e%]"
+    - echo %serv_e% | findstr /i "ClipSVC-1058 sppsvc-1058" %nul% && (
+    - call :dk_color %Blue% "Reboot your machine using the restart option to fix this error."
+    - set showfix=1
+    - )
+    - echo %serv_e% | findstr /i "sppsvc-1060" %nul% && (
+    - set fixes=%fixes% %mas%fix_service
+    - call :dk_color2 %Blue% "Check this webpage for help - " %_Yellow% " %mas%fix_service"
+    - set showfix=1
+    - )
+    ... (还有 102 行)
+  添加内容:
+    + )
+    + 
+    + ::==============================
+    + 
+    + ::  Check WMI
+
+变更 51:
+  类型: insert
+  位置: 在行 1725 后插入
+  添加: 1 行
+  添加内容:
+    + 
+
+变更 52:
+  类型: delete
+  位置: 行 1726-1726
+  删除: 1 行
+  删除内容:
+    - set error=1
+
+变更 53:
+  类型: replace
+  位置: 行 1728-1749 -> 1792-1797
+  删除: 22 行
+  添加: 6 行
+  删除内容:
+    - if not defined showfix call :dk_color %Blue% "Go back to Main Menu, select Troubleshoot and run Fix WMI option."
+    - set showfix=1
+    - )
+    - 
+    - 
+    - if not defined notwinact (
+    - if %winbuild% GEQ 10240 (
+    - %nul% set /a "sum=%slcSKU%+%regSKU%+%wmiSKU%"
+    - set /a "sum/=3"
+    - if not "!sum!"=="%slcSKU%" (
+    ... (还有 12 行)
+  添加内容:
+    + 
+    + if not defined showfix (
+    + echo:
+    + call :dk_color %Blue% "Go back to Main Menu, select Troubleshoot and run Fix WMI option."
+    + echo:
+    + )
+
+变更 54:
+  类型: replace
+  位置: 行 1752-1756 -> 1800-1813
+  删除: 5 行
+  添加: 14 行
+  删除内容:
+    - call :dk_color2 %Red% "Checking Rearm                          " %Blue% "[System Restart Is Required]"
+    - )
+    - 
+    - 
+    - reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ClipSVC\Volatile\PersistedSystemState" %nul% && (
+  添加内容:
+    + )
+    + 
+    + ::==============================
+    + 
+    + ::  Check SPP Registry Key
+    + 
+    + if %winbuild% GEQ 7600 reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SoftwareProtectionPlatform\Plugins\Objects\msft:rm/algorithm/hwid/4.0" /f ba02fed39662 /d %nul% || (
+    + call :dk_color %Red% "Checking SPP Registry Key               [Incorrect ModuleId Found] [Most likely caused by gaming spoofers]"
+    + if not defined showfix (
+    + echo:
+    ... (还有 4 行)
+
+变更 55:
+  类型: replace
+  位置: 行 1759-1807 -> 1816-1820
+  删除: 49 行
+  添加: 5 行
+  删除内容:
+    - call :dk_color2 %Red% "Checking ClipSVC                        " %Blue% "[System Restart Is Required]"
+    - )
+    - 
+    - 
+    - ::  This "WLMS" service was included in previous Eval editions (which were activable) to automatically shut down the system every hour after the evaluation period expired and prevent SPPSVC from stopping.
+    - 
+    - if exist "%SysPath%\wlms\wlms.exe" (
+    - echo Checking Eval WLMS Service              [Found]
+    - )
+    - 
+    ... (还有 39 行)
+  添加内容:
+    + )
+    + 
+    + ::==============================
+    + 
+    + ::  Check TokenStore registry key
+
+变更 56:
+  类型: insert
+  位置: 在行 1813 后插入
+  添加: 1 行
+  添加内容:
+    + 
+
+变更 57:
+  类型: insert
+  位置: 在行 1814 后插入
+  添加: 7 行
+  添加内容:
+    + call :dk_color %Red% "Checking TokenStore Registry Key        [Correct Path Not Found] [!tokenstore!]"
+    + if not defined showfix (
+    + echo:
+    + set fixes=%fixes% %mas%in-place_repair_upgrade
+    + call :dk_color2 %Blue% "Check this webpage for help - " %_Yellow% " %mas%in-place_repair_upgrade"
+    + echo:
+    + )
+
+变更 58:
+  类型: replace
+  位置: 行 1817-1821 -> 1838-1841
+  删除: 5 行
+  添加: 4 行
+  删除内容:
+    - call :dk_color %Red% "Checking TokenStore Registry Key        [Correct Path Not Found] [!tokenstore!]"
+    - set fixes=%fixes% %mas%troubleshoot
+    - call :dk_color2 %Blue% "Check this webpage for help - " %_Yellow% " %mas%troubleshoot"
+    - )
+    - )
+  添加内容:
+    + )
+    + )
+    + 
+    + ::==============================
+
+变更 59:
+  类型: insert
+  位置: 在行 1826 后插入
+  添加: 1 行
+  添加内容:
+    + 
+
+变更 60:
+  类型: insert
+  位置: 在行 1827 后插入
+  添加: 1 行
+  添加内容:
+    + 
+
+变更 61:
+  类型: insert
+  位置: 在行 1833 后插入
+  添加: 1 行
+  添加内容:
+    + 
+
+变更 62:
+  类型: insert
+  位置: 在行 1837 后插入
+  添加: 6 行
+  添加内容:
+    + if not defined showfix (
+    + echo:
+    + set fixes=%fixes% %mas%in-place_repair_upgrade
+    + call :dk_color2 %Blue% "Check this webpage for help - " %_Yellow% " %mas%in-place_repair_upgrade"
+    + echo:
+    + )
+
+变更 63:
+  类型: replace
+  位置: 行 1842-1879 -> 1871-1871
+  删除: 38 行
+  添加: 1 行
+  删除内容:
+    - 
+    - if not defined notwinact (
+    - call :dk_actid 55c92734-d682-4d71-983e-d6ec3f16059f
+    - if not defined apps (
+    - %psc% "if (-not $env:_vis) {Start-Job { Stop-Service %_slser% -force } | Wait-Job -Timeout 20 | Out-Null}; $sls = Get-WmiObject SoftwareLicensingService; $f=[io.file]::ReadAllText('!_batp!') -split ':xrm\:.*';iex ($f[1]); ReinstallLicenses" %nul%
+    - call :dk_actid 55c92734-d682-4d71-983e-d6ec3f16059f
+    - if not defined apps (
+    - set "_notfoundids=Key Not Installed / Act ID Not Found"
+    - call :dk_actids 55c92734-d682-4d71-983e-d6ec3f16059f
+    - if not defined allapps (
+    ... (还有 28 行)
+  添加内容:
+    + ::==============================
+
+变更 64:
+  类型: replace
+  位置: 行 1884-1884 -> 1876-1876
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - if %winbuild% GEQ 9200 if not defined ps32onArm (
+  添加内容:
+    + if %winbuild% GEQ 9200 if not defined toerr if not defined ps32onArm if exist "%tokenstore%\" (
+
+变更 65:
+  类型: insert
+  位置: 在行 1912 后插入
+  添加: 6 行
+  添加内容:
+    + call :dk_color %Red% "Checking SPP Permissions                [!permerror!]"
+    + if not defined showfix (
+    + echo:
+    + call :dk_color %Blue% "%_fixmsg%"
+    + echo:
+    + )
+
+变更 66:
+  类型: delete
+  位置: 行 1913-1914
+  删除: 2 行
+  删除内容:
+    - call :dk_color %Red% "Checking SPP Permissions                [!permerror!]"
+    - if not defined showfix call :dk_color %Blue% "%_fixmsg%"
+
+变更 67:
+  类型: replace
+  位置: 行 1919-1923 -> 1915-1925
+  删除: 5 行
+  添加: 11 行
+  删除内容:
+    - 
+    - ::  If required services are not disabled or corrupted + if there is any error + SoftwareLicensingService errorlevel is not Zero + no fix was shown before
+    - 
+    - if not defined serv_cor if not defined serv_cste if defined error if /i not %error_code%==0 if not defined showfix (
+    - if not defined permerror if defined wpaerror (call :dk_color %Blue% "Go back to Main Menu, select Troubleshoot and run Fix WPA Registry option." & set showfix=1)
+  添加内容:
+    + ::==============================
+    + 
+    + ::  Check WPA Registry Errors
+    + 
+    + set chkalp=
+    + set wpainfo=NotFound
+    + for /f "delims=" %%a in ('%psc% "$f=[System.IO.File]::ReadAllText('!_batp!') -split ':wpatest\:.*';. ([scriptblock]::Create($f[1]))" %nul6%') do (set wpainfo=%%a)
+    + for /f "delims=0123456789" %%i in ("%wpainfo%") do set chkalp=%%i
+    + 
+    + if defined chkalp (
+    ... (还有 1 行)
+
+变更 68:
+  类型: insert
+  位置: 在行 1925 后插入
+  添加: 5 行
+  添加内容:
+    + echo "%wpainfo%" | find /i "Error Found" %nul% && (
+    + echo:
+    + call :dk_color %Blue% "Go back to Main Menu, select Troubleshoot and run Fix WPA Registry option."
+    + echo:
+    + set error=1
+
+变更 69:
+  类型: insert
+  位置: 在行 1926 后插入
+  添加: 58 行
+  添加内容:
+    + )
+    + )
+    + set wpainfo=a
+    + )
+    + 
+    + if not defined chkalp (
+    + if %wpainfo% GEQ 5000 (
+    + call :dk_color %Gray% "Checking WPA Registry Count             [%wpainfo%]"
+    + echo:
+    + call :dk_color %Blue% "A large number of WPA registries have been found, which may cause high CPU usage."
+    ... (还有 48 行)
+
+变更 70:
+  类型: replace
+  位置: 行 1927-1931 -> 1992-1995
+  删除: 5 行
+  添加: 4 行
+  删除内容:
+    - if not defined permerror call :dk_color %Blue% "If activation still fails then run Fix WPA Registry option."
+    - )
+    - )
+    - 
+    - if not defined showfix if defined wpaerror (
+  添加内容:
+    + call :dk_color %Blue% "If activation still fails then run Fix WPA Registry option."
+    + echo:
+    + )
+    + set error=1
+
+变更 71:
+  类型: replace
+  位置: 行 1933-1934 -> 1997-2193
+  删除: 2 行
+  添加: 197 行
+  删除内容:
+    - call :dk_color %Blue% "If activation fails then go back to Main Menu, select Troubleshoot and run Fix WPA Registry option."
+    - )
+  添加内容:
+    + )
+    + 
+    + ::==============================
+    + 
+    + ::  Check Activation IDs
+    + 
+    + call :dk_actid 55c92734-d682-4d71-983e-d6ec3f16059f
+    + 
+    + if not defined apps (
+    + %psc% "if (-not $env:_vis) {Start-Job { Stop-Service %_slser% -force } | Wait-Job -Timeout 20 | Out-Null}; $sls = Get-WmiObject SoftwareLicensingService; $f=[System.IO.File]::ReadAllText('!_batp!') -split ':xrm\:.*';. ([scriptblock]::Create($f[1])); ReinstallLicenses" %nul%
+    ... (还有 187 行)
+
+变更 72:
+  类型: replace
+  位置: 行 2045-2045 -> 2304-2304
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - ::  5th column = Ticket signature value. It's as it is, it's not encoded. (Check mass grave[.]dev/hwid#manual-activation to see how it's generated)
+  添加内容:
+    + ::  5th column = Ticket signature value. It's as it is, it's not encoded. (Check mass<>grave<.>dev/hwid#manual-activation to see how it's generated)
+
+变更 73:
+  类型: replace
+  位置: 行 2507-2507 -> 2766-2766
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - ::  mass grave[.]dev/office-license-is-not-genuine
+  添加内容:
+    + ::  mass<>grave<.>dev/office-license-is-not-genuine
+
+变更 74:
+  类型: replace
+  位置: 行 2549-2549 -> 2808-2808
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - if not defined ierror if not defined showfix if not defined serv_cor if not defined serv_cste call :dk_color %Blue% "%_fixmsg%"
+  添加内容:
+    + if not defined ierror if not defined showfix call :dk_color %Blue% "%_fixmsg%"
+
+变更 75:
+  类型: insert
+  位置: 在行 2746 后插入
+  添加: 2 行
+  添加内容:
+    + echo %_oIds% | find /i "Volume" %nul% || exit /b
+    + 
+
+变更 76:
+  类型: replace
+  位置: 行 2747-2747 -> 3008-3013
+  删除: 1 行
+  添加: 6 行
+  删除内容:
+    - if exist "!_oLPath!\ProPlus%%#PreviewVL_*.xrm-ms" if not exist "!_oLPath!\ProPlus%%#VL_*.xrm-ms" (
+  添加内容:
+    + if %%#==2013 set _offver=
+    + if %%#==2016 set _offver=
+    + if %%#==2019 set _offver=2019
+    + if %%#==2021 set _offver=2021
+    + if %%#==2024 set _offver=2024
+    + if exist "!_oLPath!\ProPlus!_offver!PreviewVL_*.xrm-ms" if not exist "!_oLPath!\ProPlus!_offver!VL_*.xrm-ms" (
+
+变更 77:
+  类型: replace
+  位置: 行 2873-2873 -> 3139-3139
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - %psc% "$sls = Get-WmiObject %sps%; $f=[io.file]::ReadAllText('!_batp!') -split ':xrm\:.*';iex ($f[1]); InstallLicenseArr '!_arr!'; InstallLicenseFile '"!_oLPath!\pkeyconfig-office.xrm-ms"'" %nul%
+  添加内容:
+    + %psc% "$sls = Get-WmiObject %sps%; $f=[System.IO.File]::ReadAllText('!_batp!') -split ':xrm\:.*';. ([scriptblock]::Create($f[1])); InstallLicenseArr '!_arr!'; InstallLicenseFile '"!_oLPath!\pkeyconfig-office.xrm-ms"'" %nul%
+
+变更 78:
+  类型: insert
+  位置: 在行 3247 后插入
+  添加: 1 行
+  添加内容:
+    + set vnextexist=
+
+变更 79:
+  类型: insert
+  位置: 在行 3251 后插入
+  添加: 1 行
+  添加内容:
+    + reg query HKU\%%#\Software\Microsoft\Office\%%x.0\Common\Licensing /s %nul2% | findstr /i "CIDToLicenseIdsMapping LicenseIdToEmailMapping @" %nul% && set vnextexist=1
+
+变更 80:
+  类型: insert
+  位置: 在行 3273 后插入
+  添加: 1 行
+  添加内容:
+    + reg query HKU\!defname!\Software\Microsoft\Office\16.0\Common\Licensing /s %nul2% | findstr /i "CIDToLicenseIdsMapping LicenseIdToEmailMapping @" %nul% && set vnextexist=1
+
+变更 81:
+  类型: insert
+  位置: 在行 3278 后插入
+  添加: 9 行
+  添加内容:
+    + )
+    + 
+    + if defined vnextexist (
+    + echo:
+    + call :dk_color %Gray% "Office vNext subscription detected:"
+    + call :dk_color %Blue% "If active, this license overrides other activation methods."
+    + call :dk_color %Blue% "If expiring soon, rerun the script after expiration."
+    + call :dk_color2 %Blue% "If expired and script activation fails, get help - " %_Yellow% " %mas%troubleshoot"
+    + echo:
+
+变更 82:
+  类型: replace
+  位置: 行 3374-3374 -> 3652-3660
+  删除: 1 行
+  添加: 9 行
+  删除内容:
+    - if %upk_result%==2 call :dk_color %Red% "Uninstalling Other/Grace Keys           [Failed]"
+  添加内容:
+    + if %upk_result%==2 (
+    + call :dk_color %Red% "Uninstalling Other/Grace Keys           [Failed]"
+    + if not defined showfix (
+    + echo:
+    + call :dk_color %Blue% "%_fixmsg%"
+    + echo:
+    + set showfix=1
+    + )
+    + )
+
+变更 83:
+  类型: replace
+  位置: 行 3385-3386 -> 3671-3672
+  删除: 2 行
+  添加: 2 行
+  删除内容:
+    - %psc% "Stop-Service sppsvc -force; $sls = Get-WmiObject SoftwareLicensingService; $f=[io.file]::ReadAllText('!_batp!') -split ':xrm\:.*';iex ($f[1]); ReinstallLicenses" %nul%
+    - if !errorlevel! NEQ 0 %psc% "$sls = Get-WmiObject SoftwareLicensingService; $f=[io.file]::ReadAllText('!_batp!') -split ':xrm\:.*';iex ($f[1]); ReinstallLicenses" %nul%
+  添加内容:
+    + %psc% "Stop-Service sppsvc -force; $sls = Get-WmiObject SoftwareLicensingService; $f=[System.IO.File]::ReadAllText('!_batp!') -split ':xrm\:.*';. ([scriptblock]::Create($f[1])); ReinstallLicenses" %nul%
+    + if !errorlevel! NEQ 0 %psc% "$sls = Get-WmiObject SoftwareLicensingService; $f=[System.IO.File]::ReadAllText('!_batp!') -split ':xrm\:.*';. ([scriptblock]::Create($f[1])); ReinstallLicenses" %nul%
+
+变更 84:
+  类型: replace
+  位置: 行 3722-3722 -> 4008-4008
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - %psc% "$f=[io.file]::ReadAllText('!_batp!') -split ':%_hook%\:.*';$encoded = ($f[1]) -replace '-', 'A' -replace '_', 'a';$bytes = [Con%b%vert]::FromBas%b%e64String($encoded); $PePath='%1'; $offset='%2'; $m=[io.file]::ReadAllText('!_batp!') -split ':hexedit\:.*';iex ($m[1])" %nul2% | find /i "Error found" %nul1% && set hasherror=1
+  添加内容:
+    + %psc% "$f=[System.IO.File]::ReadAllText('!_batp!') -split ':%_hook%\:.*';$encoded = ($f[1]) -replace '-', 'A' -replace '_', 'a';$bytes = [Con%b%vert]::FromBas%b%e64String($encoded); $PePath='%1'; $offset='%2'; $m=[System.IO.File]::ReadAllText('!_batp!') -split ':hexedit\:.*';. ([scriptblock]::Create($m[1]))" %nul2% | find /i "Error found" %nul1% && set hasherror=1
+
+变更 85:
+  类型: replace
+  位置: 行 3805-3805 -> 4091-4091
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - ::  mass grave[.]dev/ohook
+  添加内容:
+    + ::  mass<>grave<.>dev/ohook
+
+变更 86:
+  类型: replace
+  位置: 行 3811-3811 -> 4097-4097
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - ::  For any further question, feel free to contact us on mass grave[.]dev/contactus
+  添加内容:
+    + ::  For any further question, feel free to contact us on mass<>grave<.>dev/contactus
+
+变更 87:
+  类型: replace
+  位置: 行 4288-4289 -> 4574-4575
+  删除: 2 行
+  添加: 2 行
+  删除内容:
+    - call :dk_color %Gray% "Checking Internet Connection            [Not Connected]"
+    - call :dk_color %Blue% "Switching To KMS4k Activation Method because Internet is needed for StaticCID method."
+  添加内容:
+    + call :dk_color %Red% "Checking Internet Connection            [Not Connected]"
+    + call :dk_color %Blue% "Switching To KMS4k activation because Internet is needed for StaticCID method."
+
+变更 88:
+  类型: replace
+  位置: 行 4361-4361 -> 4647-4647
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - for /f "delims=" %%a in ('%psc% "$f=[io.file]::ReadAllText('!_batp!') -split ':wintsid\:.*';iex ($f[1])" %nul6%') do (
+  添加内容:
+    + for /f "delims=" %%a in ('%psc% "$f=[System.IO.File]::ReadAllText('!_batp!') -split ':wintsid\:.*';. ([scriptblock]::Create($f[1]))" %nul6%') do (
+
+变更 89:
+  类型: replace
+  位置: 行 4651-4651 -> 4937-4937
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - %psc% "$f=[io.file]::ReadAllText('!_batp!') -split ':tsforge\:.*';iex ($f[1])"
+  添加内容:
+    + %psc% "$f=[System.IO.File]::ReadAllText('!_batp!') -split ':tsforge\:.*';. ([scriptblock]::Create($f[1]))"
+
+变更 90:
+  类型: insert
+  位置: 在行 4699 后插入
+  添加: 8 行
+  添加内容:
+    + 
+    + set w10EsuEditions=Education-EducationN-Enterprise-EnterpriseN-Professional-ProfessionalEducation-ProfessionalEducationN-ProfessionalN-ProfessionalWorkstation-ProfessionalWorkstationN-ServerRdsh
+    + 
+    + set /a UBR=0
+    + for /f "skip=2 tokens=2*" %%a in ('reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v UBR %nul6%') do if not errorlevel 1 set /a UBR=%%b
+    + if %winbuild% EQU 19045 if %UBR% GEQ 6156 (
+    + set w10EsuEditionsLaterAdded=Core-CoreN-CoreCountrySpecific-CoreSingleLanguage-IoTEnterprise-
+    + )
+
+变更 91:
+  类型: replace
+  位置: 行 4716-4719 -> 5010-5013
+  删除: 4 行
+  添加: 4 行
+  删除内容:
+    - f520e45e-7413-4a34-a497-d2765967d094_Client-ESU-Year1_-Education-EducationN-Enterprise-EnterpriseN-Professional-ProfessionalEducation-ProfessionalEducationN-ProfessionalN-ProfessionalWorkstation-ProfessionalWorkstationN-ServerRdsh-
+    - 1043add5-23b1-4afb-9a0f-64343c8f3f8d_Client-ESU-Year2_-Education-EducationN-Enterprise-EnterpriseN-Professional-ProfessionalEducation-ProfessionalEducationN-ProfessionalN-ProfessionalWorkstation-ProfessionalWorkstationN-ServerRdsh-
+    - 83d49986-add3-41d7-ba33-87c7bfb5c0fb_Client-ESU-Year3_-Education-EducationN-Enterprise-EnterpriseN-Professional-ProfessionalEducation-ProfessionalEducationN-ProfessionalN-ProfessionalWorkstation-ProfessionalWorkstationN-ServerRdsh-
+    - 0b533b5e-08b6-44f9-b885-c2de291ba456_Client-ESU-Year6[4-6y]_-Education-EducationN-Enterprise-EnterpriseN-Professional-ProfessionalEducation-ProfessionalEducationN-ProfessionalN-ProfessionalWorkstation-ProfessionalWorkstationN-ServerRdsh-
+  添加内容:
+    + f520e45e-7413-4a34-a497-d2765967d094_Client-ESU-Year1_-%w10EsuEditions%-%w10EsuEditionsLaterAdded%
+    + 1043add5-23b1-4afb-9a0f-64343c8f3f8d_Client-ESU-Year2_-%w10EsuEditions%-%w10EsuEditionsLaterAdded%
+    + 83d49986-add3-41d7-ba33-87c7bfb5c0fb_Client-ESU-Year3_-%w10EsuEditions%-%w10EsuEditionsLaterAdded%
+    + 0b533b5e-08b6-44f9-b885-c2de291ba456_Client-ESU-Year6[4-6y]_-%w10EsuEditions%-%w10EsuEditionsLaterAdded%
+
+变更 92:
+  类型: replace
+  位置: 行 4765-4768 -> 5059-5064
+  删除: 4 行
+  添加: 6 行
+  删除内容:
+    - call :dk_color %Red% "Checking Activation ID                  [Commercial ESU is not supported for %tsedition%]"
+    - echo %esueditionlist% | find /i "Professional" %nul1% && (
+    - call :dk_color %Blue% "Go back to Main Menu, select Change Windows Edition option, and change it to [Professional] or any non-Home edition."
+    - ) || (
+  添加内容:
+    + call :dk_color %Red% "Checking Activation ID                  [Currently installed ESU License is not supported for %tsedition%]"
+    + echo:
+    + if %winbuild% EQU 19045 if not defined w10EsuEditionsLaterAdded (
+    + call :dk_color %Blue% "To get latest version, go to Windows settings and run Windows Update. After that, try the script again."
+    + goto :ts_off
+    + )
+
+变更 93:
+  类型: delete
+  位置: 行 4771-4771
+  删除: 1 行
+  删除内容:
+    - )
+
+变更 94:
+  类型: replace
+  位置: 行 5048-5048 -> 5343-5343
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - ::  mass grave[.]dev/office-license-is-not-genuine
+  添加内容:
+    + ::  mass<>grave<.>dev/office-license-is-not-genuine
+
+变更 95:
+  类型: replace
+  位置: 行 5126-5129 -> 5421-5424
+  删除: 4 行
+  添加: 4 行
+  删除内容:
+    - if defined _arr %psc% "$sls = Get-WmiObject %sps%; $f=[io.file]::ReadAllText('!_batp!') -split ':xrm\:.*';iex ($f[1]); InstallLicenseArr '!_arr!'" %nul%
+    - )
+    - 
+    - for /f "delims=" %%a in ('%psc% "$f=[io.file]::ReadAllText('!_batp!') -split ':wintsid\:.*';iex ($f[1])" %nul6%') do (
+  添加内容:
+    + if defined _arr %psc% "$sls = Get-WmiObject %sps%; $f=[System.IO.File]::ReadAllText('!_batp!') -split ':xrm\:.*';. ([scriptblock]::Create($f[1])); InstallLicenseArr '!_arr!'" %nul%
+    + )
+    + 
+    + for /f "delims=" %%a in ('%psc% "$f=[System.IO.File]::ReadAllText('!_batp!') -split ':wintsid\:.*';. ([scriptblock]::Create($f[1]))" %nul6%') do (
+
+变更 96:
+  类型: replace
+  位置: 行 5323-5323 -> 5618-5618
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - %psc% "$f=[io.file]::ReadAllText('!_batp!') -split ':tsforge\:.*';iex ($f[1])"
+  添加内容:
+    + %psc% "$f=[System.IO.File]::ReadAllText('!_batp!') -split ':tsforge\:.*';. ([scriptblock]::Create($f[1]))"
+
+变更 97:
+  类型: replace
+  位置: 行 5371-5371 -> 5666-5666
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - %psc% "$f=[io.file]::ReadAllText('!_batp!') -split ':listactids\:.*';iex ($f[1])"
+  添加内容:
+    + %psc% "$f=[System.IO.File]::ReadAllText('!_batp!') -split ':listactids\:.*';. ([scriptblock]::Create($f[1]))"
+
+变更 98:
+  类型: insert
+  位置: 在行 5506 后插入
+  添加: 1 行
+  添加内容:
+    + if not defined showfix call :dk_color %Blue% "%_fixmsg%"
+
+变更 99:
+  类型: replace
+  位置: 行 5520-5520 -> 5816-5816
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - %psc% "$f=[io.file]::ReadAllText('!_batp!') -split ':tsforge\:.*';& ([ScriptBlock]::Create($f[1])) %tsids%"
+  添加内容:
+    + %psc% "$f=[System.IO.File]::ReadAllText('!_batp!') -split ':tsforge\:.*';. ([scriptblock]::Create($f[1])) %tsids%"
+
+变更 100:
+  类型: replace
+  位置: 行 5522-5522 -> 5818-5818
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - if %_actman%==0 (if not defined error call :dk_color %Blue% "%_fixmsg%")
+  添加内容:
+    + if %_actman%==0 (if not defined showfix call :dk_color %Blue% "%_fixmsg%")
+
+变更 101:
+  类型: insert
+  位置: 在行 5526 后插入
+  添加: 5 行
+  添加内容:
+    + if /i %tsmethod%==KMS4k if %winbuild% GEQ 26200 (
+    + echo:
+    + call :dk_color %Gray% "In Windows settings, you may see a renewal notification for activation that can be ignored."
+    + if /i %_actmethod%==Auto call :dk_color %Gray% "To avoid this notification, run the script with an internet connection to use the StaticCID method."
+    + )
+
+变更 102:
+  类型: replace
+  位置: 行 5714-5714 -> 6015-6015
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - for /f "delims=" %%a in ('%psc% "$f=[io.file]::ReadAllText('!_batp!') -split ':offtsid\:.*';iex ($f[1])" %nul6%') do (
+  添加内容:
+    + for /f "delims=" %%a in ('%psc% "$f=[System.IO.File]::ReadAllText('!_batp!') -split ':offtsid\:.*';. ([scriptblock]::Create($f[1]))" %nul6%') do (
+
+变更 103:
+  类型: insert
+  位置: 在行 10918 后插入
+  添加: 1 行
+  添加内容:
+    + [void][LibTSforge.Utils]::Wow64EnableWow64FsRedirection($false)
+
+变更 104:
+  类型: delete
+  位置: 行 11672-11674
+  删除: 3 行
+  删除内容:
+    - ::  To remove KMS38 protection, run the script with /KMS38-RemoveProtection parameter or change 0 to 1 in below line
+    - set _rem=0
+    - 
+
+变更 105:
+  类型: delete
+  位置: 行 11695-11695
+  删除: 1 行
+  删除内容:
+    - if /i "%%A"=="/KMS38-RemoveProtection" set _rem=1
+
+变更 106:
+  类型: replace
+  位置: 行 11701-11701 -> 11999-11999
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - for %%A in (%_act% %_rem% %_NoEditionChange%) do (if "%%A"=="1" set _unattended=1)
+  添加内容:
+    + for %%A in (%_act% %_NoEditionChange%) do (if "%%A"=="1" set _unattended=1)
+
+变更 107:
+  类型: delete
+  位置: 行 11724-11725
+  删除: 2 行
+  删除内容:
+    - if %_rem%==1 goto :k_uninstall
+    - 
+
+变更 108:
+  类型: replace
+  位置: 行 11742-11742 -> 12038-12038
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - echo                 [2] Remove KM38 Protection
+  添加内容:
+    + echo                 [2] Remove KMS38 Activation
+
+变更 109:
+  类型: replace
+  位置: 行 12009-12010 -> 12305-12305
+  删除: 2 行
+  添加: 1 行
+  删除内容:
+    - %psc% "$f=[io.file]::ReadAllText('!_batp!') -split ':regdel\:.*';iex ($f[1])"
+    - %nul% reg delete "HKLM\%specific_kms%" /f
+  添加内容:
+    + call :dk_color %Blue% "Specific KMS registry is locked. %_fixmsg%"
+
+变更 110:
+  类型: replace
+  位置: 行 12018-12018 -> 12313-12313
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - echo Adding Specific KMS Host                [LocalHost 127.0.0.2] [Successful]
+  添加内容:
+    + echo Adding Specific KMS Host                [LocalHost] [Successful]
+
+变更 111:
+  类型: replace
+  位置: 行 12020-12020 -> 12315-12315
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - call :dk_color %Red% "Adding Specific KMS Host                [LocalHost 127.0.0.2] [Failed]"
+  添加内容:
+    + call :dk_color %Red% "Adding Specific KMS Host                [LocalHost] [Failed]"
+
+变更 112:
+  类型: insert
+  位置: 在行 12116 后插入
+  添加: 1 行
+  添加内容:
+    + echo:
+
+变更 113:
+  类型: insert
+  位置: 在行 12117 后插入
+  添加: 1 行
+  添加内容:
+    + echo:
+
+变更 114:
+  类型: replace
+  位置: 行 12176-12185 -> 12473-12475
+  删除: 10 行
+  添加: 3 行
+  删除内容:
+    - ::  Protect KMS38 if opted by the user and conditions are correct
+    - 
+    - if defined _k38 (
+    - %psc% "$f=[io.file]::ReadAllText('!_batp!') -split ':regdel\:.*';& ([ScriptBlock]::Create($f[1])) -protect"
+    - %nul% reg delete "HKLM\%specific_kms%" /f
+    - %nul% reg query "HKLM\%specific_kms%" && (
+    - echo Protect KMS38 From KMS                  [Successful] [Locked a Registry Key]
+    - ) || (
+    - call :dk_color %Red% "Protect KMS38 From KMS                  [Failed to Lock a Registry Key]"
+    - )
+  添加内容:
+    + if defined _k38 if %winbuild% GEQ 26200 (
+    + call :dk_color %Gray% "In Windows settings, you may see a renewal notification for activation that can be ignored."
+    + call :dk_color %Gray% "To avoid this notification, please use the HWID or TSforge activation options in the main menu."
+
+变更 115:
+  类型: replace
+  位置: 行 12217-12217 -> 12507-12507
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - title  Remove KMS38 Protection %masver%
+  添加内容:
+    + title  Remove KMS38 Activation %masver%
+
+变更 116:
+  类型: insert
+  位置: 在行 12222 后插入
+  添加: 1 行
+  添加内容:
+    + echo:
+
+变更 117:
+  类型: replace
+  位置: 行 12223-12229 -> 12514-12515
+  删除: 7 行
+  添加: 2 行
+  删除内容:
+    - %psc% "$f=[io.file]::ReadAllText('!_batp!') -split ':regdel\:.*';iex ($f[1])"
+    - %nul% reg delete "HKLM\%specific_kms%" /f
+    - )
+    - 
+    - echo:
+    - %nul% reg query "HKLM\%specific_kms%" && (
+    - call :dk_color %Red% "Removing Specific KMS Host              [Failed]"
+  添加内容:
+    + call :dk_color %Red% "Failed to remove specific KMS Host."
+    + call :dk_color %Blue% "%_fixmsg%"
+
+变更 118:
+  类型: replace
+  位置: 行 12231-12232 -> 12517-12525
+  删除: 2 行
+  添加: 9 行
+  删除内容:
+    - echo Removing Specific KMS Host              [Successful]
+    - )
+  添加内容:
+    + echo Successfully removed specific KMS Host.
+    + )
+    + 
+    + echo:
+    + echo KMS38 activation doesn't modify any Windows components and doesn't install any new files.
+    + echo:
+    + call :dk_color %Gray% "If you want to reset the activation status,"
+    + call :dk_color %Blue% "%_fixmsg%"
+    + echo:
+
+变更 119:
+  类型: delete
+  位置: 行 12235-12264
+  删除: 30 行
+  删除内容:
+    - 
+    - ::========================================================================================================================================
+    - 
+    - ::  This code runs to protect/undo below registry key for KMS38 protection
+    - ::  HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SoftwareProtectionPlatform\55c92734-d682-4d71-983e-d6ec3f16059f
+    - 
+    - ::  KMS38 protection stops 180 days KMS Activation from replacing KMS38 activation
+    - 
+    - :regdel:
+    - param (
+    ... (还有 20 行)
+
+变更 120:
+  类型: replace
+  位置: 行 13110-13110 -> 13373-13373
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - REM  mass grave[.]dev/office-license-is-not-genuine
+  添加内容:
+    + REM  mass<>grave<.>dev/office-license-is-not-genuine
+
+变更 121:
+  类型: insert
+  位置: 在行 13377 后插入
+  添加: 3 行
+  添加内容:
+    + echo:
+    + call :dk_color %Blue% "%_fixmsg%"
+    + echo:
+
+变更 122:
+  类型: insert
+  位置: 在行 13392 后插入
+  添加: 4 行
+  添加内容:
+    + echo:
+    + call :dk_color %Gray% "If you want to reset the activation status,"
+    + call :dk_color %Blue% "%_fixmsg%"
+    + echo:
+
+变更 123:
+  类型: replace
+  位置: 行 13448-13448 -> 13718-13718
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - ::   Homepage: mass grave[.]dev
+  添加内容:
+    + ::   Homepage: mass<>grave<.>dev
+
+变更 124:
+  类型: replace
+  位置: 行 13489-13489 -> 13759-13759
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - for /f "tokens=6 delims=[]. " %%G in ('ver') do set winbuild=%%G
+  添加内容:
+    + for /f "tokens=2 delims=[]" %%G in ('ver') do for /f "tokens=2,3,4 delims=. " %%H in ("%%~G") do set "winbuild=%%J"
+
+变更 125:
+  类型: replace
+  位置: 行 14002-14002 -> 14272-14272
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - %psc% "$f=[io.file]::ReadAllText('!_batp!') -split \":_extracttask\:.*`r`n\"; [io.file]::WriteAllText('%_dest%\Activation_task.cmd', '@::%randguid%' + [Environment]::NewLine + $f[1].Trim(), [System.Text.Encoding]::ASCII)"
+  添加内容:
+    + %psc% "$f=[System.IO.File]::ReadAllText('!_batp!') -split \":_extracttask\:.*`r`n\"; [io.file]::WriteAllText('%_dest%\Activation_task.cmd', '@::%randguid%' + [Environment]::NewLine + $f[1].Trim(), [System.Text.Encoding]::ASCII)"
+
+变更 126:
+  类型: replace
+  位置: 行 14032-14032 -> 14302-14302
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - %psc% "$f=[io.file]::ReadAllText('!_batp!') -split \":%~1\:.*`r`n\"; [io.file]::WriteAllText('%~2',$f[1].Trim(),[System.Text.Encoding]::%~3);"
+  添加内容:
+    + %psc% "$f=[System.IO.File]::ReadAllText('!_batp!') -split \":%~1\:.*`r`n\"; [io.file]::WriteAllText('%~2',$f[1].Trim(),[System.Text.Encoding]::%~3);"
+
+变更 127:
+  类型: replace
+  位置: 行 14057-14057 -> 14327-14327
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - echo   Homepage: mass grave[.]dev
+  添加内容:
+    + echo   Homepage: mass%w%grave%w%.dev
+
+变更 128:
+  类型: replace
+  位置: 行 14786-14786 -> 15056-15056
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - %psc% "$f=[IO.File]::ReadAllText('!_batp!') -split ':sppmgr\:.*';iex ($f[1])"
+  添加内容:
+    + %psc% "$f=[System.IO.File]::ReadAllText('!_batp!') -split ':sppmgr\:.*';. ([scriptblock]::Create($f[1]))"
+
+变更 129:
+  类型: insert
+  位置: 在行 16658 后插入
+  添加: 19 行
+  添加内容:
+    + echo Clearing KMS Cache...
+    + echo:
+    + call :_taskclear-cache
+    + 
+    + %nul% reg query "HKLM\%SPPk%\%_wApp%" && (
+    + echo Removing KMS38 protection...
+    + %psc% "$f=[System.IO.File]::ReadAllText('!_batp!') -split ':regdel\:.*';. ([scriptblock]::Create($f[1]))"
+    + %nul% reg delete "HKLM\%SPPk%\%_wApp%" /f
+    + %nul% reg query "HKLM\%SPPk%\%_wApp%" && (
+    + call :dk_color %Red% "Failed to remove KMS38 protection."
+    ... (还有 9 行)
+
+变更 130:
+  类型: replace
+  位置: 行 16683-16683 -> 16972-16972
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - %psc% "$f=[io.file]::ReadAllText('!_batp!') -split ':fixsppperms\:.*';iex ($f[1])" %nul%
+  添加内容:
+    + %psc% "$f=[System.IO.File]::ReadAllText('!_batp!') -split ':fixsppperms\:.*';. ([scriptblock]::Create($f[1]))" %nul%
+
+变更 131:
+  类型: replace
+  位置: 行 16753-16754 -> 17042-17043
+  删除: 2 行
+  添加: 2 行
+  删除内容:
+    - %psc% "$sls = Get-WmiObject SoftwareLicensingService; $f=[io.file]::ReadAllText('!_batp!') -split ':xrm\:.*';iex ($f[1]); ReinstallLicenses" %nul%
+    - if %errorlevel% NEQ 0 %psc% "$sls = Get-WmiObject SoftwareLicensingService; $f=[io.file]::ReadAllText('!_batp!') -split ':xrm\:.*';iex ($f[1]); ReinstallLicenses" %nul%
+  添加内容:
+    + %psc% "$sls = Get-WmiObject SoftwareLicensingService; $f=[System.IO.File]::ReadAllText('!_batp!') -split ':xrm\:.*';. ([scriptblock]::Create($f[1])); ReinstallLicenses" %nul%
+    + if %errorlevel% NEQ 0 %psc% "$sls = Get-WmiObject SoftwareLicensingService; $f=[System.IO.File]::ReadAllText('!_batp!') -split ':xrm\:.*';. ([scriptblock]::Create($f[1])); ReinstallLicenses" %nul%
+
+变更 132:
+  类型: replace
+  位置: 行 17373-17373 -> 17662-17662
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - %psc% "$f=[io.file]::ReadAllText('!_batp!') -split ':regown\:.*';iex ($f[1]);"
+  添加内容:
+    + %psc% "$f=[System.IO.File]::ReadAllText('!_batp!') -split ':regown\:.*';. ([scriptblock]::Create($f[1]));"
+
+变更 133:
+  类型: insert
+  位置: 在行 17402 后插入
+  添加: 30 行
+  添加内容:
+    + 
+    + ::========================================================================================================================================
+    + 
+    + ::  This code runs to undo below registry key KMS38 protection
+    + ::  HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SoftwareProtectionPlatform\55c92734-d682-4d71-983e-d6ec3f16059f
+    + 
+    + ::  This option is not used in KMS38 anymore, it's here only to remove previous versions protection.
+    + 
+    + :regdel:
+    + param (
+    ... (还有 20 行)
+
+变更 134:
+  类型: replace
+  位置: 行 17516-17516 -> 17835-17835
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - if %winbuild% LSS 10240 for /f "tokens=4" %%a in ('%psc% "$f=[io.file]::ReadAllText('!_batp!') -split ':cbsxml\:.*';& ([ScriptBlock]::Create($f[1])) -GetTargetEditions;" ^| findstr /i /c:"Target Edition : "') do (if defined _ptarget (set "_ptarget= !_ptarget! %%a ") else (set "_ptarget= %%a "))
+  添加内容:
+    + if %winbuild% LSS 10240 for /f "tokens=4" %%a in ('%psc% "$f=[System.IO.File]::ReadAllText('!_batp!') -split ':cbsxml\:.*';. ([scriptblock]::Create($f[1])) -GetTargetEditions;" ^| findstr /i /c:"Target Edition : "') do (if defined _ptarget (set "_ptarget= !_ptarget! %%a ") else (set "_ptarget= %%a "))
+
+变更 135:
+  类型: replace
+  位置: 行 17722-17722 -> 18041-18041
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - %psc% "$f=[io.file]::ReadAllText('!_batp!') -split ':dismapi\:.*';& ([ScriptBlock]::Create($f[1])) %targetedition% %key%"
+  添加内容:
+    + %psc% "$f=[System.IO.File]::ReadAllText('!_batp!') -split ':dismapi\:.*';. ([scriptblock]::Create($f[1])) %targetedition% %key%"
+
+变更 136:
+  类型: replace
+  位置: 行 17760-17760 -> 18079-18079
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - %psc% "$f=[io.file]::ReadAllText('!_batp!') -split ':cbsxml\:.*';& ([ScriptBlock]::Create($f[1])) -SetEdition %targetedition% %stage%"
+  添加内容:
+    + %psc% "$f=[System.IO.File]::ReadAllText('!_batp!') -split ':cbsxml\:.*';. ([scriptblock]::Create($f[1])) -SetEdition %targetedition% %stage%"
+
+变更 137:
+  类型: replace
+  位置: 行 18207-18207 -> 18526-18526
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - set h=
+  添加内容:
+    + set w=
+
+变更 138:
+  类型: replace
+  位置: 行 18209-18255 -> 18528-18574
+  删除: 47 行
+  添加: 47 行
+  删除内容:
+    - XGVPP-NMH47-7TTHJ-W3FW7-8HV%h%2C__OEM:NONSLP_Enterprise
+    - D6RD9-D4N8T-RT9QX-YW6YT-FCW%h%WJ______Retail_Starter
+    - 3V6Q6-NQXCX-V8YXR-9QCYV-QPF%h%CT__Volume:MAK_EnterpriseN
+    - 3NFXW-2T27M-2BDW6-4GHRV-68X%h%RX______Retail_StarterN
+    - VK7JG-NPHTM-C97JM-9MPGT-3V6%h%6T______Retail_Professional
+    - 2B87N-8KFHP-DKV6R-Y2C8J-PKC%h%KT______Retail_ProfessionalN
+    - 4CPRK-NM3K3-X6XXQ-RXX86-WXC%h%HW______Retail_CoreN
+    - N2434-X9D7W-8PF6X-8DV9T-8TY%h%MD______Retail_CoreCountrySpecific
+    - BT79Q-G7N6G-PGBYW-4YWX6-6F4%h%BT______Retail_CoreSingleLanguage
+    - YTMG3-N6DKC-DKB77-7M9GH-8HV%h%X7______Retail_Core
+    ... (还有 37 行)
+  添加内容:
+    + XGVPP-NMH47-7TTHJ-W3FW7-8HV%w%2C__OEM:NONSLP_Enterprise
+    + D6RD9-D4N8T-RT9QX-YW6YT-FCW%w%WJ______Retail_Starter
+    + 3V6Q6-NQXCX-V8YXR-9QCYV-QPF%w%CT__Volume:MAK_EnterpriseN
+    + 3NFXW-2T27M-2BDW6-4GHRV-68X%w%RX______Retail_StarterN
+    + VK7JG-NPHTM-C97JM-9MPGT-3V6%w%6T______Retail_Professional
+    + 2B87N-8KFHP-DKV6R-Y2C8J-PKC%w%KT______Retail_ProfessionalN
+    + 4CPRK-NM3K3-X6XXQ-RXX86-WXC%w%HW______Retail_CoreN
+    + N2434-X9D7W-8PF6X-8DV9T-8TY%w%MD______Retail_CoreCountrySpecific
+    + BT79Q-G7N6G-PGBYW-4YWX6-6F4%w%BT______Retail_CoreSingleLanguage
+    + YTMG3-N6DKC-DKB77-7M9GH-8HV%w%X7______Retail_Core
+    ... (还有 37 行)
+
+变更 139:
+  类型: insert
+  位置: 在行 18502 后插入
+  添加: 1 行
+  添加内容:
+    + set editedition=
+
+变更 140:
+  类型: replace
+  位置: 行 18504-18504 -> 18824-18824
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - %psc% "$f=[io.file]::ReadAllText('!_batp!') -split ':getlist\:.*';iex ($f[1])"
+  添加内容:
+    + %psc% "$f=[System.IO.File]::ReadAllText('!_batp!') -split ':getlist\:.*';. ([scriptblock]::Create($f[1]))"
+
+变更 141:
+  类型: replace
+  位置: 行 18578-18578 -> 18898-18898
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - %psc% "$f=[io.file]::ReadAllText('!_batp!') -split ':getappnames\:.*';iex ($f[1])"
+  添加内容:
+    + %psc% "$f=[System.IO.File]::ReadAllText('!_batp!') -split ':getappnames\:.*';. ([scriptblock]::Create($f[1]))"
+
+变更 142:
+  类型: replace
+  位置: 行 18620-18620 -> 18940-18941
+  删除: 1 行
+  添加: 2 行
+  删除内容:
+    - call :dk_color %Gray% "You can exclude the below apps from installation."
+  添加内容:
+    + call :dk_color %Gray% "To exclude the apps listed below from installation, toggle them from On to Off."
+    + if defined editedition call :dk_color %Gray% "Note: The On/Off status below does not reflect the current status of the installed apps."
+
+变更 143:
+  类型: replace
+  位置: 行 18747-18747 -> 19068-19070
+  删除: 1 行
+  添加: 3 行
+  删除内容:
+    - set "c2rcommand="%_c2rExe%" platform=%_oArch% culture=%_lang% productstoadd=%targetedition%.16_%_lang%_x-none cdnbaseurl.16=http://officecdn.microsoft.com/pr/%_updch% baseurl.16=http://officecdn.microsoft.com/pr/%_updch% version.16=%_version% mediatype.16=CDN sourcetype.16=CDN deliverymechanism=%_updch% %targetedition%.excludedapps.16=groove%excludelist% flt.useteamsaddon=disabled flt.usebingaddononinstall=disabled flt.usebingaddononupdate=disabled"
+  添加内容:
+    + call :oe_getlangs
+    + 
+    + set "c2rcommand="%_c2rExe%" platform=%_oArch% culture=%_lang% productstoadd=%targetedition%.16_%_allLangs% cdnbaseurl.16=http://officecdn.microsoft.com/pr/%_updch% baseurl.16=http://officecdn.microsoft.com/pr/%_updch% version.16=%_version% mediatype.16=CDN sourcetype.16=CDN deliverymechanism=%_updch% %targetedition%.excludedapps.16=groove%excludelist% flt.useteamsaddon=disabled flt.usebingaddononinstall=disabled flt.usebingaddononupdate=disabled"
+
+变更 144:
+  类型: insert
+  位置: 在行 18819 后插入
+  添加: 1 行
+  添加内容:
+    + set editedition=1
+
+变更 145:
+  类型: replace
+  位置: 行 18924-18930 -> 19248-19249
+  删除: 7 行
+  添加: 2 行
+  删除内容:
+    - set _lang=
+    - echo "%o16c2r_reg%" | find /i "Wow6432Node" %nul1% && (set _tok=10) || (set _tok=9)
+    - for /f "tokens=%_tok% delims=\" %%a in ('reg query "%o16c2r_reg%\ProductReleaseIDs\%_actconfig%\%targetedition%.16" /f "-" /k ^| findstr /i ".*16\\.*-.*"') do (
+    - if defined _lang (set "_lang=!_lang!_%%a") else (set "_lang=_%%a")
+    - )
+    - 
+    - set "c2rcommand="%_c2rExe%" platform=%_oArch% productstoremove=%targetedition%.16%_lang%"
+  添加内容:
+    + call :oe_getlangs %targetedition%
+    + set "c2rcommand="%_c2rExe%" platform=%_oArch% productstoremove=%targetedition%.16_%_allLangs%"
+
+变更 146:
+  类型: replace
+  位置: 行 19059-19059 -> 19378-19378
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - for /f "delims=" %%a in ('%psc% "$f=[io.file]::ReadAllText('!_batp!') -split ':getbuild\:.*';iex ($f[1])" %nul6%') do (set build=%%a)
+  添加内容:
+    + for /f "delims=" %%a in ('%psc% "$f=[System.IO.File]::ReadAllText('!_batp!') -split ':getbuild\:.*';. ([scriptblock]::Create($f[1]))" %nul6%') do (set build=%%a)
+
+变更 147:
+  类型: replace
+  位置: 行 19113-19113 -> 19432-19444
+  删除: 1 行
+  添加: 13 行
+  删除内容:
+    - set "c2rcommand="%_c2rExe%" platform=%_oArch% culture=%_lang% productstoadd=%_firstoId%.16_%_lang%_x-none cdnbaseurl.16=http://officecdn.microsoft.com/pr/%targetFFN% baseurl.16=http://officecdn.microsoft.com/pr/%targetFFN% version.16=%build% mediatype.16=CDN sourcetype.16=CDN deliverymechanism=%targetFFN% %_firstoId%.excludedapps.16=%_firstoIdExcludelist% flt.useteamsaddon=disabled flt.usebingaddononinstall=disabled flt.usebingaddononupdate=disabled"
+  添加内容:
+    + call :oe_getlangs %_firstoId%
+    + 
+    + echo %targetchannel% | find /i "2019 VL" %nul% && (
+    + for %%A in (en-gb es-mx fr-ca) do (
+    + echo %_allLangs% | find /i "%%A" %nul% && (
+    + %eline%
+    + echo [%%A] language is not supported on the Office 2019 Perpetual VL update channel. Aborting...
+    + goto :oe_goback
+    + )
+    + )
+    ... (还有 3 行)
+
+变更 148:
+  类型: insert
+  位置: 在行 19295 后插入
+  添加: 21 行
+  添加内容:
+    + ::  Check all the installed languages
+    + 
+    + :oe_getlangs
+    + 
+    + if "%1"=="" (
+    + set langreg=culture
+    + ) else (
+    + set langreg=%1.16
+    + )
+    + 
+    ... (还有 11 行)
+
+================================================================================
+报告结束
+================================================================================
