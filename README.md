@@ -29,11 +29,15 @@ Windows 和 Office 激活神器 ( Microsoft-Activation-Scripts 简称 MAS ) 的�
 > ```
 > 
 > - 此为官方英文版使用命令
+> 
+>    For Windows 8, 10, 11:
 > ```
->  # For Windows 8, 10, 11:
 >  irm https://get.activated.win | iex
->  
->  # For Windows 7:
+> ```
+>     
+>    &emsp;&emsp;&emsp;For Windows 7:
+>
+> ```
 >  iex ((New-Object Net.WebClient).DownloadString('https://get.activated.win'))
 > ```
 
