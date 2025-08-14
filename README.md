@@ -35,7 +35,7 @@ Windows 和 Office 激活神器 ( Microsoft-Activation-Scripts 简称 MAS ) 的�
 >  irm https://get.activated.win | iex
 > ```
 >     
->    &emsp;&emsp;&emsp;For Windows 7:
+>    &emsp;&emsp;For Windows 7:
 >
 > ```
 >  iex ((New-Object Net.WebClient).DownloadString('https://get.activated.win'))
