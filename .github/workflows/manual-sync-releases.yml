@@ -94,9 +94,20 @@ jobs:
               rm -f "gitee_check_$tag_name.json"
               continue
             elif [ "$http_code" = "200" ] && [ "$force_update" = "true" ]; then
-              echo "! Gitee上已存在Release: $tag_name (强制更新)"
+              echo "! Gitee上已存在Release: $tag_name (删除并重新创建)"
               existing_release_id=$(jq -r '.id' "gitee_check_$tag_name.json")
-              operation="update"
+              
+              # 验证获取的ID是否有效
+              if [ -z "$existing_release_id" ] || [ "$existing_release_id" = "null" ]; then
+                echo "无法获取现有Release ID，直接创建新Release"
+              else
+                echo "删除现有Release ID: $existing_release_id"
+                # 删除现有的Release
+                delete_response=$(curl -X DELETE \
+                  "https://gitee.com/api/v5/repos/${{ env.GITEE_REPO }}/releases/$existing_release_id?access_token=$gitee_token")
+                echo "删除结果: $delete_response"
+              fi
+              operation="create"
             elif [ "$http_code" = "404" ]; then
               echo "→ Gitee上不存在Release: $tag_name (创建新Release)"
               operation="create"
@@ -109,51 +120,31 @@ jobs:
             release_body_escaped=$(echo "$release_body" | jq -Rs .)
             release_name_escaped=$(echo "$release_name" | jq -Rs .)
             
-            if [ "$operation" = "create" ]; then
-              # 创建新Release
-              release_data=$(cat << EOF
-              {
-                "tag_name": "$tag_name",
-                "name": $release_name_escaped,
-                "body": $release_body_escaped,
-                "prerelease": $prerelease,
-                "target_commitish": "main"
-              }
-          EOF
-              )
-              
-              echo "创建Release: $tag_name"
-              api_response=$(curl -X POST \
-                "https://gitee.com/api/v5/repos/${{ env.GITEE_REPO }}/releases?access_token=$gitee_token" \
-                -H "Content-Type: application/json" \
-                -d "$release_data")
-              
-            else
-              # 更新现有Release
-              update_data=$(cat << EOF
-              {
-                "tag_name": "$tag_name",
-                "name": $release_name_escaped,
-                "body": $release_body_escaped,
-                "prerelease": $prerelease
-              }
-          EOF
-              )
-              
-              echo "更新Release: $tag_name"
-              api_response=$(curl -X PATCH \
-                "https://gitee.com/api/v5/repos/${{ env.GITEE_REPO }}/releases/$existing_release_id?access_token=$gitee_token" \
-                -H "Content-Type: application/json" \
-                -d "$update_data")
-            fi
+            # 创建Release数据
+            release_data=$(cat << EOF
+            {
+              "tag_name": "$tag_name",
+              "name": $release_name_escaped,
+              "body": $release_body_escaped,
+              "prerelease": $prerelease,
+              "target_commitish": "main"
+            }
+        EOF
+            )
+            
+            echo "创建Release: $tag_name"
+            api_response=$(curl -X POST \
+              "https://gitee.com/api/v5/repos/${{ env.GITEE_REPO }}/releases?access_token=$gitee_token" \
+              -H "Content-Type: application/json" \
+              -d "$release_data")
             
             # 检查操作结果
             new_release_id=$(echo "$api_response" | jq -r '.id // empty')
             if [ -z "$new_release_id" ] || [ "$new_release_id" = "null" ]; then
-              echo "✗ 操作失败: $tag_name"
+              echo "✗ 创建失败: $tag_name"
               echo "$api_response" | jq .
             else
-              echo "✓ 操作成功: $tag_name (ID: $new_release_id)"
+              echo "✓ 创建成功: $tag_name (ID: $new_release_id)"
               
               # 下载并上传assets（如果有）
               assets=$(echo "$release" | jq -r '.assets[]?')
