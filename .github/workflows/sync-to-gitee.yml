@@ -7,6 +7,8 @@ on:
   workflow_dispatch:  # 允许手动触发
   schedule:
     - cron: '5 0 * * *'
+  release:           # release发布时触发
+    types: [published]
 
 env:
   # 仓库名称
@@ -32,3 +34,124 @@ jobs:
           repository: cmontage/${{ env.REPO_NAME }}
           username: cmontage
           password: ${{ secrets.GITEE_PASSWORD }}
+
+  # 同步Release到Gitee
+  sync-release-to-gitee:
+    name: 同步Release到Gitee
+    runs-on: ubuntu-latest
+    if: github.event_name == 'release'
+    needs: mirror-to-gitee
+
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 获取Release信息
+        id: release
+        run: |
+          echo "tag_name=${{ github.event.release.tag_name }}" >> $GITHUB_OUTPUT
+          echo "name=${{ github.event.release.name }}" >> $GITHUB_OUTPUT
+          echo "body=${{ github.event.release.body }}" >> $GITHUB_OUTPUT
+          echo "prerelease=${{ github.event.release.prerelease }}" >> $GITHUB_OUTPUT
+          echo "draft=${{ github.event.release.draft }}" >> $GITHUB_OUTPUT
+
+      - name: 下载Release资源
+        id: download_assets
+        run: |
+          mkdir -p assets
+          release_id="${{ github.event.release.id }}"
+          
+          # 获取assets信息
+          curl -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+               -H "Accept: application/vnd.github.v3+json" \
+               "https://api.github.com/repos/${{ env.GITHUB_REPO }}/releases/${release_id}/assets" > assets.json
+          
+          # 下载每个asset
+          jq -r '.[] | "\(.browser_download_url) \(.name)"' assets.json | while read url name; do
+            echo "下载: $name"
+            curl -L -o "assets/$name" "$url"
+          done
+          
+          # 输出asset列表供后续步骤使用
+          jq -r '.[].name' assets.json | tr '\n' ',' | sed 's/,$//' > asset_names.txt
+          echo "asset_names=$(cat asset_names.txt)" >> $GITHUB_OUTPUT
+
+      - name: 创建Gitee Release
+        run: |
+          # 获取Gitee Access Token
+          gitee_token="${{ secrets.GITEE_ACCESS_TOKEN }}"
+          
+          if [ -z "$gitee_token" ]; then
+            echo "错误: 未设置 GITEE_ACCESS_TOKEN secret"
+            exit 1
+          fi
+          
+          # 准备release数据
+          tag_name="${{ steps.release.outputs.tag_name }}"
+          release_name="${{ steps.release.outputs.name }}"
+          release_body="${{ steps.release.outputs.body }}"
+          prerelease="${{ steps.release.outputs.prerelease }}"
+          
+          # 转义JSON字符串
+          release_body_escaped=$(echo "$release_body" | jq -Rs .)
+          release_name_escaped=$(echo "$release_name" | jq -Rs .)
+          
+          # 创建release的JSON数据
+          release_data=$(cat << EOF
+          {
+            "tag_name": "$tag_name",
+            "name": $release_name_escaped,
+            "body": $release_body_escaped,
+            "prerelease": $prerelease,
+            "target_commitish": "main"
+          }
+          EOF
+          )
+          
+          echo "创建Gitee Release: $tag_name"
+          
+          # 创建release
+          response=$(curl -X POST \
+            "https://gitee.com/api/v5/repos/${{ env.GITEE_REPO }}/releases" \
+            -H "Content-Type: application/json" \
+            -H "Authorization: token $gitee_token" \
+            -d "$release_data")
+          
+          echo "Gitee API响应: $response"
+          
+          # 检查是否创建成功
+          release_id=$(echo "$response" | jq -r '.id // empty')
+          if [ -z "$release_id" ] || [ "$release_id" = "null" ]; then
+            echo "创建Gitee Release失败"
+            echo "$response" | jq .
+            exit 1
+          fi
+          
+          echo "Gitee Release创建成功，ID: $release_id"
+          echo "gitee_release_id=$release_id" >> $GITHUB_ENV
+
+      - name: 上传资源到Gitee Release
+        if: steps.download_assets.outputs.asset_names != ''
+        run: |
+          gitee_token="${{ secrets.GITEE_ACCESS_TOKEN }}"
+          release_id="${{ env.gitee_release_id }}"
+          
+          # 上传每个asset
+          for asset_file in assets/*; do
+            if [ -f "$asset_file" ]; then
+              asset_name=$(basename "$asset_file")
+              echo "上传资源到Gitee: $asset_name"
+              
+              curl -X POST \
+                "https://gitee.com/api/v5/repos/${{ env.GITEE_REPO }}/releases/${release_id}/attach_files" \
+                -H "Authorization: token $gitee_token" \
+                -F "file=@$asset_file"
+              
+              echo "已上传: $asset_name"
+            fi
+          done
+
+      - name: 清理临时文件
+        run: |
+          rm -rf assets
+          rm -f assets.json asset_names.txt
