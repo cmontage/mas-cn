@@ -194,6 +194,7 @@ jobs:
             # 更新release的JSON数据
             update_data=$(cat << EOF
             {
+              "tag_name": "$tag_name",
               "name": $release_name_escaped,
               "body": $release_body_escaped,
               "prerelease": $prerelease

@@ -132,6 +132,7 @@ jobs:
               # 更新现有Release
               update_data=$(cat << EOF
               {
+                "tag_name": "$tag_name",
                 "name": $release_name_escaped,
                 "body": $release_body_escaped,
                 "prerelease": $prerelease
