@@ -168,7 +168,7 @@ jobs:
           echo "创建新的Gitee Release: $tag_name"
           
           # 创建release的JSON数据
-          release_data=$(cat << EOF
+          release_data=$(cat <<EOF
 {
   "tag_name": "$tag_name",
   "name": $release_name_escaped,

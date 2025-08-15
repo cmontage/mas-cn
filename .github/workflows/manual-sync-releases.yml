@@ -107,10 +107,8 @@ jobs:
                   "https://gitee.com/api/v5/repos/${{ env.GITEE_REPO }}/releases/$existing_release_id?access_token=$gitee_token")
                 echo "删除结果: $delete_response"
               fi
-              operation="create"
             elif [ "$http_code" = "404" ]; then
               echo "→ Gitee上不存在Release: $tag_name (创建新Release)"
-              operation="create"
             else
               echo "✗ 检查Release时出错: $tag_name (HTTP: $http_code)"
               continue
@@ -121,7 +119,7 @@ jobs:
             release_name_escaped=$(echo "$release_name" | jq -Rs .)
             
             # 创建Release数据
-            release_data=$(cat << EOF
+            release_data=$(cat <<EOF
 {
   "tag_name": "$tag_name",
   "name": $release_name_escaped,
