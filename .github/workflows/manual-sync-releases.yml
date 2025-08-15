@@ -122,14 +122,14 @@ jobs:
             
             # 创建Release数据
             release_data=$(cat << EOF
-            {
-              "tag_name": "$tag_name",
-              "name": $release_name_escaped,
-              "body": $release_body_escaped,
-              "prerelease": $prerelease,
-              "target_commitish": "main"
-            }
-        EOF
+{
+  "tag_name": "$tag_name",
+  "name": $release_name_escaped,
+  "body": $release_body_escaped,
+  "prerelease": $prerelease,
+  "target_commitish": "main"
+}
+EOF
             )
             
             echo "创建Release: $tag_name"
