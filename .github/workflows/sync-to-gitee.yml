@@ -55,8 +55,63 @@ jobs:
           echo "prerelease=${{ github.event.release.prerelease }}" >> $GITHUB_OUTPUT
           echo "draft=${{ github.event.release.draft }}" >> $GITHUB_OUTPUT
 
+      - name: 检查Gitee上是否已存在该Release
+        id: check_gitee_release
+        run: |
+          gitee_token="${{ secrets.GITEE_ACCESS_TOKEN }}"
+          tag_name="${{ steps.release.outputs.tag_name }}"
+          
+          if [ -z "$gitee_token" ]; then
+            echo "错误: 未设置 GITEE_ACCESS_TOKEN secret"
+            exit 1
+          fi
+          
+          echo "检查Gitee上是否存在Release: $tag_name"
+          
+          # 检查特定tag的release是否存在
+          response=$(curl -s -w "%{http_code}" \
+            "https://gitee.com/api/v5/repos/${{ env.GITEE_REPO }}/releases/tags/$tag_name?access_token=$gitee_token" \
+            -o gitee_release_check.json)
+          
+          http_code="${response: -3}"
+          
+          if [ "$http_code" = "200" ]; then
+            echo "Gitee上已存在Release: $tag_name"
+            echo "release_exists=true" >> $GITHUB_OUTPUT
+            
+            # 获取现有release信息
+            release_id=$(jq -r '.id' gitee_release_check.json)
+            echo "existing_release_id=$release_id" >> $GITHUB_OUTPUT
+            echo "现有Release ID: $release_id"
+            
+            # 检查是否需要更新（比较body内容）
+            existing_body=$(jq -r '.body' gitee_release_check.json)
+            current_body="${{ steps.release.outputs.body }}"
+            
+            if [ "$existing_body" != "$current_body" ]; then
+              echo "Release内容有更新，需要同步"
+              echo "need_update=true" >> $GITHUB_OUTPUT
+            else
+              echo "Release内容相同，无需更新"
+              echo "need_update=false" >> $GITHUB_OUTPUT
+            fi
+            
+          elif [ "$http_code" = "404" ]; then
+            echo "Gitee上不存在该Release，需要创建"
+            echo "release_exists=false" >> $GITHUB_OUTPUT
+            echo "need_update=false" >> $GITHUB_OUTPUT
+          else
+            echo "检查Gitee Release时出错，HTTP状态码: $http_code"
+            cat gitee_release_check.json
+            exit 1
+          fi
+          
+          # 清理临时文件
+          rm -f gitee_release_check.json
+
       - name: 下载Release资源
         id: download_assets
+        if: steps.check_gitee_release.outputs.release_exists == 'false' || steps.check_gitee_release.outputs.need_update == 'true'
         run: |
           mkdir -p assets
           release_id="${{ github.event.release.id }}"
@@ -76,7 +131,8 @@ jobs:
           jq -r '.[].name' assets.json | tr '\n' ',' | sed 's/,$//' > asset_names.txt
           echo "asset_names=$(cat asset_names.txt)" >> $GITHUB_OUTPUT
 
-      - name: 创建Gitee Release
+      - name: 创建或更新Gitee Release
+        if: steps.check_gitee_release.outputs.release_exists == 'false' || steps.check_gitee_release.outputs.need_update == 'true'
         run: |
           # 获取Gitee Access Token
           gitee_token="${{ secrets.GITEE_ACCESS_TOKEN }}"
@@ -96,42 +152,86 @@ jobs:
           release_body_escaped=$(echo "$release_body" | jq -Rs .)
           release_name_escaped=$(echo "$release_name" | jq -Rs .)
           
-          # 创建release的JSON数据
-          release_data=$(cat << EOF
-          {
-            "tag_name": "$tag_name",
-            "name": $release_name_escaped,
-            "body": $release_body_escaped,
-            "prerelease": $prerelease,
-            "target_commitish": "main"
-          }
+          if [ "${{ steps.check_gitee_release.outputs.release_exists }}" = "false" ]; then
+            # 创建新的release
+            echo "创建新的Gitee Release: $tag_name"
+            
+            # 创建release的JSON数据
+            release_data=$(cat << EOF
+            {
+              "tag_name": "$tag_name",
+              "name": $release_name_escaped,
+              "body": $release_body_escaped,
+              "prerelease": $prerelease,
+              "target_commitish": "main"
+            }
           EOF
-          )
-          
-          echo "创建Gitee Release: $tag_name"
-          
-          # 创建release
-          response=$(curl -X POST \
-            "https://gitee.com/api/v5/repos/${{ env.GITEE_REPO }}/releases" \
-            -H "Content-Type: application/json" \
-            -H "Authorization: token $gitee_token" \
-            -d "$release_data")
-          
-          echo "Gitee API响应: $response"
-          
-          # 检查是否创建成功
-          release_id=$(echo "$response" | jq -r '.id // empty')
-          if [ -z "$release_id" ] || [ "$release_id" = "null" ]; then
-            echo "创建Gitee Release失败"
-            echo "$response" | jq .
-            exit 1
+            )
+            
+            # 创建release
+            response=$(curl -X POST \
+              "https://gitee.com/api/v5/repos/${{ env.GITEE_REPO }}/releases" \
+              -H "Content-Type: application/json" \
+              -H "Authorization: token $gitee_token" \
+              -d "$release_data")
+            
+            echo "Gitee API响应: $response"
+            
+            # 检查是否创建成功
+            release_id=$(echo "$response" | jq -r '.id // empty')
+            if [ -z "$release_id" ] || [ "$release_id" = "null" ]; then
+              echo "创建Gitee Release失败"
+              echo "$response" | jq .
+              exit 1
+            fi
+            
+            echo "Gitee Release创建成功，ID: $release_id"
+            
+          else
+            # 更新现有的release
+            echo "更新现有的Gitee Release: $tag_name"
+            existing_release_id="${{ steps.check_gitee_release.outputs.existing_release_id }}"
+            
+            # 更新release的JSON数据
+            update_data=$(cat << EOF
+            {
+              "name": $release_name_escaped,
+              "body": $release_body_escaped,
+              "prerelease": $prerelease
+            }
+          EOF
+            )
+            
+            # 更新release
+            response=$(curl -X PATCH \
+              "https://gitee.com/api/v5/repos/${{ env.GITEE_REPO }}/releases/$existing_release_id" \
+              -H "Content-Type: application/json" \
+              -H "Authorization: token $gitee_token" \
+              -d "$update_data")
+            
+            echo "Gitee API响应: $response"
+            
+            # 检查是否更新成功
+            release_id=$(echo "$response" | jq -r '.id // empty')
+            if [ -z "$release_id" ] || [ "$release_id" = "null" ]; then
+              echo "更新Gitee Release失败"
+              echo "$response" | jq .
+              exit 1
+            fi
+            
+            echo "Gitee Release更新成功，ID: $release_id"
           fi
           
-          echo "Gitee Release创建成功，ID: $release_id"
           echo "gitee_release_id=$release_id" >> $GITHUB_ENV
 
+      - name: 跳过同步提示
+        if: steps.check_gitee_release.outputs.release_exists == 'true' && steps.check_gitee_release.outputs.need_update == 'false'
+        run: |
+          echo "Gitee上已存在相同的Release: ${{ steps.release.outputs.tag_name }}"
+          echo "内容无变化，跳过同步"
+
       - name: 上传资源到Gitee Release
-        if: steps.download_assets.outputs.asset_names != ''
+        if: (steps.check_gitee_release.outputs.release_exists == 'false' || steps.check_gitee_release.outputs.need_update == 'true') && steps.download_assets.outputs.asset_names != ''
         run: |
           gitee_token="${{ secrets.GITEE_ACCESS_TOKEN }}"
           release_id="${{ env.gitee_release_id }}"
@@ -152,6 +252,7 @@ jobs:
           done
 
       - name: 清理临时文件
+        if: steps.check_gitee_release.outputs.release_exists == 'false' || steps.check_gitee_release.outputs.need_update == 'true'
         run: |
           rm -rf assets
           rm -f assets.json asset_names.txt

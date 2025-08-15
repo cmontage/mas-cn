@@ -1,0 +1,199 @@
+name: Manual Sync All Releases to Gitee
+
+on:
+  workflow_dispatch:  # 手动触发
+    inputs:
+      force_update:
+        description: '强制更新所有Release（即使已存在）'
+        required: false
+        default: 'false'
+        type: boolean
+      max_releases:
+        description: '最大同步Release数量'
+        required: false
+        default: '10'
+        type: string
+
+env:
+  GITHUB_REPO: cmontage/mas-cn
+  GITEE_REPO: cmontage/mas-cn
+
+jobs:
+  sync-all-releases:
+    name: 批量同步Release到Gitee
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 获取所有GitHub Releases
+        id: get_releases
+        run: |
+          echo "获取GitHub上所有的Release..."
+          
+          # 获取Release列表
+          curl -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+               -H "Accept: application/vnd.github.v3+json" \
+               "https://api.github.com/repos/${{ env.GITHUB_REPO }}/releases?per_page=${{ github.event.inputs.max_releases }}" \
+               > github_releases.json
+          
+          # 检查是否有Release
+          release_count=$(jq length github_releases.json)
+          echo "找到 $release_count 个Release"
+          
+          if [ "$release_count" -eq 0 ]; then
+            echo "没有找到任何Release"
+            exit 0
+          fi
+          
+          echo "release_count=$release_count" >> $GITHUB_OUTPUT
+
+      - name: 同步每个Release到Gitee
+        if: steps.get_releases.outputs.release_count > 0
+        run: |
+          gitee_token="${{ secrets.GITEE_ACCESS_TOKEN }}"
+          force_update="${{ github.event.inputs.force_update }}"
+          
+          if [ -z "$gitee_token" ]; then
+            echo "错误: 未设置 GITEE_ACCESS_TOKEN secret"
+            exit 1
+          fi
+          
+          echo "开始批量同步Release..."
+          echo "强制更新模式: $force_update"
+          
+          # 读取每个release并处理
+          jq -c '.[]' github_releases.json | while read release; do
+            tag_name=$(echo "$release" | jq -r '.tag_name')
+            release_name=$(echo "$release" | jq -r '.name')
+            release_body=$(echo "$release" | jq -r '.body // ""')
+            prerelease=$(echo "$release" | jq -r '.prerelease')
+            draft=$(echo "$release" | jq -r '.draft')
+            
+            # 跳过草稿版本
+            if [ "$draft" = "true" ]; then
+              echo "跳过草稿版本: $tag_name"
+              continue
+            fi
+            
+            echo ""
+            echo "=================================================="
+            echo "处理Release: $tag_name"
+            echo "=================================================="
+            
+            # 检查Gitee上是否已存在
+            response=$(curl -s -w "%{http_code}" \
+              "https://gitee.com/api/v5/repos/${{ env.GITEE_REPO }}/releases/tags/$tag_name?access_token=$gitee_token" \
+              -o "gitee_check_$tag_name.json")
+            
+            http_code="${response: -3}"
+            
+            if [ "$http_code" = "200" ] && [ "$force_update" != "true" ]; then
+              echo "✓ Gitee上已存在Release: $tag_name (跳过)"
+              rm -f "gitee_check_$tag_name.json"
+              continue
+            elif [ "$http_code" = "200" ] && [ "$force_update" = "true" ]; then
+              echo "! Gitee上已存在Release: $tag_name (强制更新)"
+              existing_release_id=$(jq -r '.id' "gitee_check_$tag_name.json")
+              operation="update"
+            elif [ "$http_code" = "404" ]; then
+              echo "→ Gitee上不存在Release: $tag_name (创建新Release)"
+              operation="create"
+            else
+              echo "✗ 检查Release时出错: $tag_name (HTTP: $http_code)"
+              continue
+            fi
+            
+            # 准备release数据
+            release_body_escaped=$(echo "$release_body" | jq -Rs .)
+            release_name_escaped=$(echo "$release_name" | jq -Rs .)
+            
+            if [ "$operation" = "create" ]; then
+              # 创建新Release
+              release_data=$(cat << EOF
+              {
+                "tag_name": "$tag_name",
+                "name": $release_name_escaped,
+                "body": $release_body_escaped,
+                "prerelease": $prerelease,
+                "target_commitish": "main"
+              }
+          EOF
+              )
+              
+              echo "创建Release: $tag_name"
+              api_response=$(curl -X POST \
+                "https://gitee.com/api/v5/repos/${{ env.GITEE_REPO }}/releases" \
+                -H "Content-Type: application/json" \
+                -H "Authorization: token $gitee_token" \
+                -d "$release_data")
+              
+            else
+              # 更新现有Release
+              update_data=$(cat << EOF
+              {
+                "name": $release_name_escaped,
+                "body": $release_body_escaped,
+                "prerelease": $prerelease
+              }
+          EOF
+              )
+              
+              echo "更新Release: $tag_name"
+              api_response=$(curl -X PATCH \
+                "https://gitee.com/api/v5/repos/${{ env.GITEE_REPO }}/releases/$existing_release_id" \
+                -H "Content-Type: application/json" \
+                -H "Authorization: token $gitee_token" \
+                -d "$update_data")
+            fi
+            
+            # 检查操作结果
+            new_release_id=$(echo "$api_response" | jq -r '.id // empty')
+            if [ -z "$new_release_id" ] || [ "$new_release_id" = "null" ]; then
+              echo "✗ 操作失败: $tag_name"
+              echo "$api_response" | jq .
+            else
+              echo "✓ 操作成功: $tag_name (ID: $new_release_id)"
+              
+              # 下载并上传assets（如果有）
+              assets=$(echo "$release" | jq -r '.assets[]?')
+              if [ -n "$assets" ]; then
+                echo "处理附件..."
+                mkdir -p "assets_$tag_name"
+                
+                echo "$release" | jq -c '.assets[]' | while read asset; do
+                  asset_name=$(echo "$asset" | jq -r '.name')
+                  download_url=$(echo "$asset" | jq -r '.browser_download_url')
+                  
+                  echo "  下载: $asset_name"
+                  curl -L -o "assets_$tag_name/$asset_name" "$download_url"
+                  
+                  echo "  上传: $asset_name"
+                  curl -X POST \
+                    "https://gitee.com/api/v5/repos/${{ env.GITEE_REPO }}/releases/$new_release_id/attach_files" \
+                    -H "Authorization: token $gitee_token" \
+                    -F "file=@assets_$tag_name/$asset_name"
+                done
+                
+                rm -rf "assets_$tag_name"
+              fi
+            fi
+            
+            # 清理临时文件
+            rm -f "gitee_check_$tag_name.json"
+            
+            # 添加延迟以避免API限流
+            sleep 2
+          done
+          
+          echo ""
+          echo "=================================================="
+          echo "批量同步完成！"
+          echo "=================================================="
+
+      - name: 清理临时文件
+        run: |
+          rm -f github_releases.json
+          rm -f gitee_check_*.json
+          rm -rf assets_*
