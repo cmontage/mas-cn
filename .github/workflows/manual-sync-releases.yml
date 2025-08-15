@@ -52,11 +52,11 @@ jobs:
       - name: 同步每个Release到Gitee
         if: steps.get_releases.outputs.release_count > 0
         run: |
-          gitee_token="${{ secrets.GITEE_ACCESS_TOKEN }}"
+          gitee_token="${{ secrets.GITEE_PASSWORD }}"
           force_update="${{ github.event.inputs.force_update }}"
           
           if [ -z "$gitee_token" ]; then
-            echo "错误: 未设置 GITEE_ACCESS_TOKEN secret"
+            echo "错误: 未设置 GITEE_PASSWORD secret"
             exit 1
           fi
           
