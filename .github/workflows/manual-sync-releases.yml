@@ -124,9 +124,8 @@ jobs:
               
               echo "创建Release: $tag_name"
               api_response=$(curl -X POST \
-                "https://gitee.com/api/v5/repos/${{ env.GITEE_REPO }}/releases" \
+                "https://gitee.com/api/v5/repos/${{ env.GITEE_REPO }}/releases?access_token=$gitee_token" \
                 -H "Content-Type: application/json" \
-                -H "Authorization: token $gitee_token" \
                 -d "$release_data")
               
             else
@@ -142,9 +141,8 @@ jobs:
               
               echo "更新Release: $tag_name"
               api_response=$(curl -X PATCH \
-                "https://gitee.com/api/v5/repos/${{ env.GITEE_REPO }}/releases/$existing_release_id" \
+                "https://gitee.com/api/v5/repos/${{ env.GITEE_REPO }}/releases/$existing_release_id?access_token=$gitee_token" \
                 -H "Content-Type: application/json" \
-                -H "Authorization: token $gitee_token" \
                 -d "$update_data")
             fi
             
@@ -171,8 +169,7 @@ jobs:
                   
                   echo "  上传: $asset_name"
                   curl -X POST \
-                    "https://gitee.com/api/v5/repos/${{ env.GITEE_REPO }}/releases/$new_release_id/attach_files" \
-                    -H "Authorization: token $gitee_token" \
+                    "https://gitee.com/api/v5/repos/${{ env.GITEE_REPO }}/releases/$new_release_id/attach_files?access_token=$gitee_token" \
                     -F "file=@assets_$tag_name/$asset_name"
                 done
                 
