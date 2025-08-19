@@ -168,16 +168,13 @@ jobs:
           echo "创建新的Gitee Release: $tag_name"
           
           # 创建release的JSON数据
-          release_data=$(cat <<EOF
-{
-  "tag_name": "$tag_name",
-  "name": $release_name_escaped,
-  "body": $release_body_escaped,
-  "prerelease": $prerelease,
-  "target_commitish": "main"
-}
-EOF
-          )
+          release_data="{
+            \"tag_name\": \"$tag_name\",
+            \"name\": $release_name_escaped,
+            \"body\": $release_body_escaped,
+            \"prerelease\": $prerelease,
+            \"target_commitish\": \"main\"
+          }"
           
           # 创建release
           response=$(curl -X POST \

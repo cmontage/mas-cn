@@ -119,16 +119,13 @@ jobs:
             release_name_escaped=$(echo "$release_name" | jq -Rs .)
             
             # 创建Release数据
-            release_data=$(cat <<EOF
-{
-  "tag_name": "$tag_name",
-  "name": $release_name_escaped,
-  "body": $release_body_escaped,
-  "prerelease": $prerelease,
-  "target_commitish": "main"
-}
-EOF
-            )
+            release_data="{
+              \"tag_name\": \"$tag_name\",
+              \"name\": $release_name_escaped,
+              \"body\": $release_body_escaped,
+              \"prerelease\": $prerelease,
+              \"target_commitish\": \"main\"
+            }"
             
             echo "创建Release: $tag_name"
             api_response=$(curl -X POST \
