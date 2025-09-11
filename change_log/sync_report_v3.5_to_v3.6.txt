@@ -1,0 +1,610 @@
+================================================================================
+MAS脚本同步报告 - v3.5 -> v3.6
+================================================================================
+生成时间: 2025-09-11 21:00:08
+
+统计信息:
+----------------------------------------
+v3.5英文版行数: 19786
+v3.6英文版行数: 19797
+英文版行数变化: +11
+v3.5中文版行数: 19786
+v3.6中文版行数: 19797
+中文版行数变化: +11
+与英文v3.6行数差异: +0
+检测到的变更数: 52
+成功应用的变更数: 52
+
+变更总览:
+----------------------------------------
+replace: 48 处
+insert: 3 处
+delete: 1 处
+总计: 52 处变更
+
+应用日志:
+----------------------------------------
+✓ 变更 1: 替换行 1-2 (2 -> 2 行)
+✓ 变更 2: 替换行 8-8 (1 -> 1 行)
+✓ 变更 3: 替换行 15-15 (1 -> 1 行)
+✓ 变更 4: 替换行 2174-2174 (1 -> 1 行)
+✓ 变更 5: 替换行 2181-2181 (1 -> 1 行)
+✓ 变更 6: 在行 2184 后插入 4 行
+✓ 变更 7: 替换行 2189-2190 (2 -> 1 行)
+✓ 变更 8: 替换行 2307-2307 (1 -> 1 行)
+✓ 变更 9: 替换行 2769-2769 (1 -> 1 行)
+✓ 变更 10: 删除行 3727-3727 (1 行)
+✓ 变更 11: 在行 3755 后插入 1 行
+✓ 变更 12: 替换行 4094-4094 (1 -> 1 行)
+✓ 变更 13: 替换行 4100-4100 (1 -> 1 行)
+✓ 变更 14: 替换行 4286-4286 (1 -> 1 行)
+✓ 变更 15: 替换行 4421-4422 (2 -> 2 行)
+✓ 变更 16: 替换行 4431-4432 (2 -> 1 行)
+✓ 变更 17: 替换行 4543-4543 (1 -> 1 行)
+✓ 变更 18: 替换行 5345-5345 (1 -> 1 行)
+✓ 变更 19: 替换行 6325-6325 (1 -> 1 行)
+✓ 变更 20: 替换行 6567-6567 (1 -> 1 行)
+✓ 变更 21: 替换行 6593-6593 (1 -> 1 行)
+✓ 变更 22: 替换行 6723-6723 (1 -> 7 行)
+✓ 变更 23: 在行 6733 后插入 3 行
+✓ 变更 24: 替换行 6743-6743 (1 -> 1 行)
+✓ 变更 25: 替换行 6793-6793 (1 -> 1 行)
+✓ 变更 26: 替换行 7109-7109 (1 -> 1 行)
+✓ 变更 27: 替换行 7522-7522 (1 -> 1 行)
+✓ 变更 28: 替换行 7859-7859 (1 -> 1 行)
+✓ 变更 29: 替换行 7906-7906 (1 -> 1 行)
+✓ 变更 30: 替换行 8041-8041 (1 -> 1 行)
+✓ 变更 31: 替换行 8131-8131 (1 -> 1 行)
+✓ 变更 32: 替换行 8216-8216 (1 -> 1 行)
+✓ 变更 33: 替换行 8427-8427 (1 -> 1 行)
+✓ 变更 34: 替换行 8460-8460 (1 -> 1 行)
+✓ 变更 35: 替换行 8500-8500 (1 -> 1 行)
+✓ 变更 36: 替换行 8661-8661 (1 -> 1 行)
+✓ 变更 37: 替换行 8717-8717 (1 -> 1 行)
+✓ 变更 38: 替换行 8786-8786 (1 -> 1 行)
+✓ 变更 39: 替换行 8836-8836 (1 -> 1 行)
+✓ 变更 40: 替换行 8895-8895 (1 -> 1 行)
+✓ 变更 41: 替换行 9106-9106 (1 -> 1 行)
+✓ 变更 42: 替换行 9295-9295 (1 -> 1 行)
+✓ 变更 43: 替换行 9365-9365 (1 -> 1 行)
+✓ 变更 44: 替换行 9385-9385 (1 -> 1 行)
+✓ 变更 45: 替换行 9671-9671 (1 -> 1 行)
+✓ 变更 46: 替换行 9702-9702 (1 -> 1 行)
+✓ 变更 47: 替换行 9797-9797 (1 -> 1 行)
+✓ 变更 48: 替换行 10215-10215 (1 -> 1 行)
+✓ 变更 49: 替换行 10574-10574 (1 -> 1 行)
+✓ 变更 50: 替换行 10951-10951 (1 -> 1 行)
+✓ 变更 51: 替换行 13384-13384 (1 -> 1 行)
+✓ 变更 52: 替换行 13729-13729 (1 -> 1 行)
+
+详细变更记录:
+----------------------------------------
+
+变更 1:
+  类型: replace
+  位置: 行 1-2 -> 1-2
+  删除: 2 行
+  添加: 2 行
+  删除内容:
+    - @::hr47hf7-random
+    - @set masver=3.5
+  添加内容:
+    + @::r45f3r3-random
+    + @set masver=3.6
+
+变更 2:
+  类型: replace
+  位置: 行 8-8 -> 8-8
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - ::  For command line switches, check mass<>grave<.>dev/command_line_switches
+  添加内容:
+    + ::  For command line switches, check mass()grave(dot)dev/command_line_switches
+
+变更 3:
+  类型: replace
+  位置: 行 15-15 -> 15-15
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - ::   Homepage: mass<>grave<.>dev
+  添加内容:
+    + ::   Homepage: mass()grave(dot)dev
+
+变更 4:
+  类型: replace
+  位置: 行 2174-2174 -> 2174-2174
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - for /f "delims=" %%a in ('%psc% "(Get-ScheduledTask -TaskName 'SvcRestartTask' -TaskPath '\Microsoft\Windows\SoftwareProtectionPlatform\').State" %nul6%') do (set taskinfo=%%a)
+  添加内容:
+    + for /f "delims=" %%a in ('%psc% "$s=New-Object -ComObject 'Schedule.Service'; $s.Connect(); $state=$s.GetFolder('\Microsoft\Windows\SoftwareProtectionPlatform').GetTask('SvcRestartTask').State; @{0='Unknown';1='Disabled';2='Queued';3='Ready';4='Running'}[$state]" %nul6%') do (set taskinfo=%%a)
+
+变更 5:
+  类型: replace
+  位置: 行 2181-2181 -> 2181-2181
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - call :dk_color %Red% "Checking SvcRestartTask Status          [!taskinfo!, system might deactivate later]"
+  添加内容:
+    + call :dk_color %Gray% "Checking SvcRestartTask Status          [!taskinfo!. System might deactivate later.]"
+
+变更 6:
+  类型: insert
+  位置: 在行 2184 后插入
+  添加: 4 行
+  添加内容:
+    + echo "!taskinfo!" | findstr /i "Removed Not Found" %nul1% && (
+    + set fixes=%fixes% %mas%in-place_repair_upgrade
+    + call :dk_color2 %Blue% "Check this webpage for help - " %_Yellow% " %mas%in-place_repair_upgrade"
+    + ) || (
+
+变更 7:
+  类型: replace
+  位置: 行 2185-2186 -> 2189-2189
+  删除: 2 行
+  添加: 1 行
+  删除内容:
+    - set fixes=%fixes% %mas%troubleshoot
+    - call :dk_color2 %Blue% "Check this webpage for help - " %_Yellow% " %mas%troubleshoot"
+  添加内容:
+    + )
+
+变更 8:
+  类型: replace
+  位置: 行 2304-2304 -> 2307-2307
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - ::  5th column = Ticket signature value. It's as it is, it's not encoded. (Check mass<>grave<.>dev/hwid#manual-activation to see how it's generated)
+  添加内容:
+    + ::  5th column = Ticket signature value. It's as it is, it's not encoded. (Check mass()grave(dot)dev/hwid#manual-activation to see how it's generated)
+
+变更 9:
+  类型: replace
+  位置: 行 2766-2766 -> 2769-2769
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - ::  mass<>grave<.>dev/office-license-is-not-genuine
+  添加内容:
+    + ::  mass()grave(dot)dev/office-license-is-not-genuine
+
+变更 10:
+  类型: delete
+  位置: 行 3724-3724
+  删除: 1 行
+  删除内容:
+    - 14_fbf4ac36-31c8-4340-8666-79873129cf40_Retail________OutlookR
+
+变更 11:
+  类型: insert
+  位置: 在行 3753 后插入
+  添加: 1 行
+  添加内容:
+    + 14_fbf4ac36-31c8-4340-8666-79873129cf40_9D8FR-7GYBW-4YG8M-V36JK-VD%f%7CM_Retail________OutlookR
+
+变更 12:
+  类型: replace
+  位置: 行 4091-4091 -> 4094-4094
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - ::  mass<>grave<.>dev/ohook
+  添加内容:
+    + ::  mass()grave(dot)dev/ohook
+
+变更 13:
+  类型: replace
+  位置: 行 4097-4097 -> 4100-4100
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - ::  For any further question, feel free to contact us on mass<>grave<.>dev/contactus
+  添加内容:
+    + ::  For any further question, feel free to contact us on mass()grave(dot)dev/contactus
+
+变更 14:
+  类型: replace
+  位置: 行 4283-4283 -> 4286-4286
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - ::  In builds 19041 and later, the script will auto select StaticCID (requires internet). If no internet is detected, it will then auto select the KMS4k method. For builds lower than 19041, the script will auto select ZeroCID.
+  添加内容:
+    + ::  In builds 26100 and later, the script will auto select StaticCID (requires internet). If no internet is detected, it will then auto select the KMS4k method. For builds lower than 26100, the script will auto select ZeroCID.
+
+变更 15:
+  类型: replace
+  位置: 行 4418-4419 -> 4421-4422
+  删除: 2 行
+  添加: 2 行
+  删除内容:
+    - echo                  Builds ^>= 19041 - StaticCID (KMS4k if offline)
+    - echo                  Builds ^<  19041 - ZeroCID
+  添加内容:
+    + echo                  Builds ^>= 26100 - StaticCID (KMS4k if offline)
+    + echo                  Builds ^<  26100 - ZeroCID
+
+变更 16:
+  类型: replace
+  位置: 行 4428-4429 -> 4431-4431
+  删除: 2 行
+  添加: 1 行
+  删除内容:
+    - echo                  Works reliably on builds below 19041
+    - echo                  May break on builds between 19041-26100
+  添加内容:
+    + echo                  Works reliably on builds below 26100
+
+变更 17:
+  类型: replace
+  位置: 行 4541-4541 -> 4543-4543
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - if %winbuild% GEQ 19041 (
+  添加内容:
+    + if %winbuild% GEQ 26100 (
+
+变更 18:
+  类型: replace
+  位置: 行 5343-5343 -> 5345-5345
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - ::  mass<>grave<.>dev/office-license-is-not-genuine
+  添加内容:
+    + ::  mass()grave(dot)dev/office-license-is-not-genuine
+
+变更 19:
+  类型: replace
+  位置: 行 6323-6323 -> 6325-6325
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - // Common.cs
+  添加内容:
+    + // LibTSforge/Common.cs
+
+变更 20:
+  类型: replace
+  位置: 行 6565-6565 -> 6567-6567
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - // SPP/PKeyConfig.cs
+  添加内容:
+    + // LibTSforge/SPP/PKeyConfig.cs
+
+变更 21:
+  类型: replace
+  位置: 行 6591-6591 -> 6593-6593
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    -             return Start <= n && End <= n;
+  添加内容:
+    +             return Start <= n && n <= End;
+
+变更 22:
+  类型: replace
+  位置: 行 6721-6721 -> 6723-6729
+  删除: 1 行
+  添加: 7 行
+  删除内容:
+    -                     List<KeyRange> keyRanges = ranges[refActIdStr];
+  添加内容:
+    +                     List<KeyRange> keyRanges;
+    +                     ranges.TryGetValue(refActIdStr, out keyRanges);
+    + 
+    +                     if (keyRanges == null) 
+    +                     {
+    +                         continue;
+    +                     }
+
+变更 23:
+  类型: insert
+  位置: 在行 6725 后插入
+  添加: 3 行
+  添加内容:
+    +                         PKeyAlgorithm algorithm;
+    +                         algorithms.TryGetValue(group, out algorithm);
+    + 
+
+变更 24:
+  类型: replace
+  位置: 行 6732-6732 -> 6743-6743
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    -                             Algorithm = algorithms[group],
+  添加内容:
+    +                             Algorithm = algorithm,
+
+变更 25:
+  类型: replace
+  位置: 行 6782-6782 -> 6793-6793
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - // SPP/ProductKey.cs
+  添加内容:
+    + // LibTSforge/SPP/ProductKey.cs
+
+变更 26:
+  类型: replace
+  位置: 行 7098-7098 -> 7109-7109
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - // SPP/SLAPI.cs
+  添加内容:
+    + // LibTSforge/SPP/SLAPI.cs
+
+变更 27:
+  类型: replace
+  位置: 行 7511-7511 -> 7522-7522
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - // SPP/SPPUtils.cs
+  添加内容:
+    + // LibTSforge/SPP/SPPUtils.cs
+
+变更 28:
+  类型: replace
+  位置: 行 7848-7848 -> 7859-7859
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - // SPP/SPSys.cs
+  添加内容:
+    + // LibTSforge/SPP/SPSys.cs
+
+变更 29:
+  类型: replace
+  位置: 行 7895-7895 -> 7906-7906
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - // Crypto/CryptoUtils.cs
+  添加内容:
+    + // LibTSforge/Crypto/CryptoUtils.cs
+
+变更 30:
+  类型: replace
+  位置: 行 8030-8030 -> 8041-8041
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - // Crypto/Keys.cs
+  添加内容:
+    + // LibTSforge/Crypto/Keys.cs
+
+变更 31:
+  类型: replace
+  位置: 行 8120-8120 -> 8131-8131
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - // Crypto/PhysStoreCrypto.cs
+  添加内容:
+    + // LibTSforge/Crypto/PhysStoreCrypto.cs
+
+变更 32:
+  类型: replace
+  位置: 行 8205-8205 -> 8216-8216
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - // Modifiers/GenPKeyInstall.cs
+  添加内容:
+    + // LibTSforge/Modifiers/GenPKeyInstall.cs
+
+变更 33:
+  类型: replace
+  位置: 行 8416-8416 -> 8427-8427
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - // Modifiers/GracePeriodReset.cs
+  添加内容:
+    + // LibTSforge/Modifiers/GracePeriodReset.cs
+
+变更 34:
+  类型: replace
+  位置: 行 8449-8449 -> 8460-8460
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - // Modifiers/KeyChangeLockDelete.cs
+  添加内容:
+    + // LibTSforge/Modifiers/KeyChangeLockDelete.cs
+
+变更 35:
+  类型: replace
+  位置: 行 8489-8489 -> 8500-8500
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - // Modifiers/KMSHostCharge.cs
+  添加内容:
+    + // LibTSforge/Modifiers/KMSHostCharge.cs
+
+变更 36:
+  类型: replace
+  位置: 行 8650-8650 -> 8661-8661
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - // Modifiers/RearmReset.cs
+  添加内容:
+    + // LibTSforge/Modifiers/RearmReset.cs
+
+变更 37:
+  类型: replace
+  位置: 行 8706-8706 -> 8717-8717
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - // Modifiers/SetIIDParams.cs
+  添加内容:
+    + // LibTSforge/Modifiers/SetIIDParams.cs
+
+变更 38:
+  类型: replace
+  位置: 行 8775-8775 -> 8786-8786
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - // Modifiers/TamperedFlagsDelete.cs
+  添加内容:
+    + // LibTSforge/Modifiers/TamperedFlagsDelete.cs
+
+变更 39:
+  类型: replace
+  位置: 行 8825-8825 -> 8836-8836
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - // Modifiers/UniqueIdDelete.cs
+  添加内容:
+    + // LibTSforge/Modifiers/UniqueIdDelete.cs
+
+变更 40:
+  类型: replace
+  位置: 行 8884-8884 -> 8895-8895
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - // Activators/KMS4K.cs
+  添加内容:
+    + // LibTSforge/Activators/KMS4K.cs
+
+变更 41:
+  类型: replace
+  位置: 行 9095-9095 -> 9106-9106
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - // Activators/ZeroCID.cs
+  添加内容:
+    + // LibTSforge/Activators/ZeroCID.cs
+
+变更 42:
+  类型: replace
+  位置: 行 9284-9284 -> 9295-9295
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - // TokenStore/Common.cs
+  添加内容:
+    + // LibTSforge/TokenStore/Common.cs
+
+变更 43:
+  类型: replace
+  位置: 行 9354-9354 -> 9365-9365
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - // TokenStore/ITokenStore.cs
+  添加内容:
+    + // LibTSforge/TokenStore/ITokenStore.cs
+
+变更 44:
+  类型: replace
+  位置: 行 9374-9374 -> 9385-9385
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - // TokenStore/TokenStoreModern.cs
+  添加内容:
+    + // LibTSforge/TokenStore/TokenStoreModern.cs
+
+变更 45:
+  类型: replace
+  位置: 行 9660-9660 -> 9671-9671
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - // PhysicalStore/Common.cs
+  添加内容:
+    + // LibTSforge/PhysicalStore/Common.cs
+
+变更 46:
+  类型: replace
+  位置: 行 9691-9691 -> 9702-9702
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - // PhysicalStore/IPhysicalStore.cs
+  添加内容:
+    + // LibTSforge/PhysicalStore/IPhysicalStore.cs
+
+变更 47:
+  类型: replace
+  位置: 行 9786-9786 -> 9797-9797
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - // PhysicalStore/PhysicalStoreModern.cs
+  添加内容:
+    + // LibTSforge/PhysicalStore/PhysicalStoreModern.cs
+
+变更 48:
+  类型: replace
+  位置: 行 10204-10204 -> 10215-10215
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - // PhysicalStore/PhysicalStoreVista.cs
+  添加内容:
+    + // LibTSforge/PhysicalStore/PhysicalStoreVista.cs
+
+变更 49:
+  类型: replace
+  位置: 行 10563-10563 -> 10574-10574
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - // PhysicalStore/PhysicalStoreWin7.cs
+  添加内容:
+    + // LibTSforge/PhysicalStore/PhysicalStoreWin7.cs
+
+变更 50:
+  类型: replace
+  位置: 行 10940-10940 -> 10951-10951
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - // PhysicalStore/VariableBag.cs
+  添加内容:
+    + // LibTSforge/PhysicalStore/VariableBag.cs
+
+变更 51:
+  类型: replace
+  位置: 行 13373-13373 -> 13384-13384
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - REM  mass<>grave<.>dev/office-license-is-not-genuine
+  添加内容:
+    + REM  mass()grave(dot)dev/office-license-is-not-genuine
+
+变更 52:
+  类型: replace
+  位置: 行 13718-13718 -> 13729-13729
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - ::   Homepage: mass<>grave<.>dev
+  添加内容:
+    + ::   Homepage: mass()grave(dot)dev
+
+================================================================================
+报告结束
+================================================================================
