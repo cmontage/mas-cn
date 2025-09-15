@@ -181,8 +181,9 @@ if (-not $args) {
         "$env:USERPROFILE\AppData\Local\Temp\MAS_CN_$rand.cmd" 
     }
     
-    # 写入文件（添加标识符）
-    Set-Content -Path $FilePath -Value "@::: MAS-CN $version $rand `r`n$content" -Encoding UTF8
+    # 写入文件（添加标识符和代码页设置）
+    $fileHeader = "@::: MAS-CN $version $rand`r`n@echo off`r`n@chcp 65001 >nul 2>&1`r`n@echo on`r`n"
+    Set-Content -Path $FilePath -Value "$fileHeader$content" -Encoding UTF8
     CheckFile $FilePath
 
     Write-Host "文件已下载: " -NoNewline
@@ -208,11 +209,18 @@ if (-not $args) {
 
     # 以管理员权限运行
     try {
+        # 设置 CMD 启动参数，包含代码页设置以避免中文乱码
+        $cmdArgs = if ($psv -lt 3) {
+            "/c ""chcp 65001 >nul 2>&1 && """"$FilePath"" $args"""""
+        } else {
+            "/c ""chcp 65001 >nul 2>&1 && """"$FilePath"" $args"""""
+        }
+        
         if ($psv -lt 3) {
-            $p = Start-Process -FilePath $env:ComSpec -ArgumentList "/c """"$FilePath"" $args""" -Verb RunAs -PassThru
+            $p = Start-Process -FilePath $env:ComSpec -ArgumentList $cmdArgs -Verb RunAs -PassThru
             $p.WaitForExit()
         } else {
-            Start-Process -FilePath $env:ComSpec -ArgumentList "/c """"$FilePath"" $args""" -Wait -Verb RunAs
+            Start-Process -FilePath $env:ComSpec -ArgumentList $cmdArgs -Wait -Verb RunAs
         }
         
         Write-Host "MAS 激活脚本已启动！" -ForegroundColor Green
