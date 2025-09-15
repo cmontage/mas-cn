@@ -1,108 +1,254 @@
-# 编码设置
-$OutputEncoding = [System.Text.Encoding]::UTF8
-[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
-try { chcp 65001 | Out-Null } catch {}
+# MAS 中文版获取脚本 - 优化版本
+# 基于官方 get.ps1 结构改进
 
-# 设置TLS 1.2，确保与GitHub API通信安全
-[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-
-# 定义仓库信息
-$repoOwner = "cmontage"
-$repoName = "mas-cn"
-$giteeApiUrl = "https://gitee.com/api/v5/repos/$repoOwner/$repoName/releases/latest"
-$githubApiUrl = "https://api.github.com/repos/$repoOwner/$repoName/releases/latest"
-
-# 使用UTF-8专用的Write-Output函数
-function Write-UTF8Output {
-    param([string]$Message, [string]$ForegroundColor = "White")
-    
-    if ($null -ne $Host.UI.RawUI) {
-        Write-Host $Message -ForegroundColor $ForegroundColor
-    } else {
-        # 远程执行时尝试使用不同方式输出
-        [Console]::ForegroundColor = $ForegroundColor
-        [Console]::WriteLine($Message)
-        [Console]::ResetColor()
-    }
+if (-not $args) {
+    Write-Host ''
+    Write-Host '需要帮助？查看项目主页: ' -NoNewline
+    Write-Host 'https://github.com/cmontage/mas-cn' -ForegroundColor Green
+    Write-Host ''
 }
 
-Write-UTF8Output "正在获取 $repoName 的最新版本信息..." "Cyan"
+& {
+    $psv = (Get-Host).Version.Major
+    $troubleshoot = 'https://github.com/cmontage/mas-cn/issues'
+    
+    # 检查 PowerShell 执行模式
+    if ($ExecutionContext.SessionState.LanguageMode.value__ -ne 0) {
+        Write-Host "PowerShell 未在完整语言模式下运行。"
+        Write-Host "帮助 - https://massgrave.dev/troubleshoot" -ForegroundColor White -BackgroundColor Blue
+        return
+    }
 
-try {
+    # 检查 .NET 环境
+    try {
+        [void][System.AppDomain]::CurrentDomain.GetAssemblies(); [void][System.Math]::Sqrt(144)
+    }
+    catch {
+        Write-Host "错误: $($_.Exception.Message)" -ForegroundColor Red
+        Write-Host "PowerShell 无法加载 .NET 命令。"
+        Write-Host "帮助 - https://massgrave.dev/troubleshoot" -ForegroundColor White -BackgroundColor Blue
+        return
+    }
+
+    # 检查第三方杀毒软件
+    function Check3rdAV {
+        $cmd = if ($psv -ge 3) { 'Get-CimInstance' } else { 'Get-WmiObject' }
+        try {
+            $avList = & $cmd -Namespace root\SecurityCenter2 -Class AntiVirusProduct -ErrorAction SilentlyContinue | 
+                      Where-Object { $_.displayName -notlike '*windows*' } | 
+                      Select-Object -ExpandProperty displayName
+
+            if ($avList) {
+                Write-Host '第三方杀毒软件可能会阻止脚本运行 - ' -ForegroundColor White -BackgroundColor Blue -NoNewline
+                Write-Host " $($avList -join ', ')" -ForegroundColor DarkRed -BackgroundColor White
+            }
+        } catch {
+            # 静默处理杀毒软件检测错误
+        }
+    }
+
+    # 检查文件是否创建成功
+    function CheckFile {
+        param ([string]$FilePath)
+        if (-not (Test-Path $FilePath)) {
+            Check3rdAV
+            Write-Host "无法在临时文件夹中创建 MAS 文件，操作中止！"
+            Write-Host "帮助 - $troubleshoot" -ForegroundColor White -BackgroundColor Blue
+            throw
+        }
+    }
+
+    # 设置安全协议
+    try { [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 } catch {}
+
+    # 定义仓库信息
+    $repoOwner = "cmontage"
+    $repoName = "mas-cn"
+    
+    # 定义多个下载源（优先 Gitee）
+    $URLs = @(
+        "https://gitee.com/api/v5/repos/$repoOwner/$repoName/releases/latest",
+        "https://api.github.com/repos/$repoOwner/$repoName/releases/latest"
+    )
+
+    Write-Progress -Activity "获取版本信息..." -Status "请稍等"
+    
     $latestRelease = $null
     $source = "unknown"
+    $errors = @()
     
-    # 优先尝试从Gitee获取
-    Write-UTF8Output "尝试从Gitee获取最新版本..." "Yellow"
-    try {
-        $latestRelease = Invoke-RestMethod -Uri $giteeApiUrl -Method Get -Headers @{
-            "User-Agent" = "PowerShell Script"
-        } -TimeoutSec 10
-        
-        if ($latestRelease -and $latestRelease.tag_name) {
-            $source = "Gitee"
-            Write-UTF8Output "成功从Gitee获取版本信息" "Green"
-        } else {
-            throw "Gitee响应无效"
-        }
-    } catch {
-        Write-UTF8Output "从Gitee获取失败: $($_.Exception.Message)" "Yellow"
-        
-        # 回退到GitHub
-        Write-UTF8Output "回退到GitHub获取最新版本..." "Yellow"
+    # 随机尝试下载源
+    foreach ($URL in $URLs | Sort-Object { Get-Random }) {
         try {
-            $latestRelease = Invoke-RestMethod -Uri $githubApiUrl -Method Get -Headers @{
-                "User-Agent" = "PowerShell Script"
-            } -TimeoutSec 15
-            $source = "GitHub"
-            Write-UTF8Output "成功从GitHub获取版本信息" "Green"
-        } catch {
-            throw "无法从GitHub和Gitee获取版本信息: $($_.Exception.Message)"
+            $headers = @{ "User-Agent" = "PowerShell MAS-CN Script" }
+            
+            if ($psv -ge 3) {
+                $response = Invoke-RestMethod -Uri $URL -Headers $headers -TimeoutSec 15
+            } else {
+                $w = New-Object Net.WebClient
+                $w.Headers.Add("User-Agent", "PowerShell MAS-CN Script")
+                $responseText = $w.DownloadString($URL)
+                $response = $responseText | ConvertFrom-Json
+            }
+            
+            if ($response -and $response.tag_name) {
+                $latestRelease = $response
+                $source = if ($URL -like "*gitee*") { "Gitee" } else { "GitHub" }
+                break
+            }
+        }
+        catch {
+            $errors += $_
         }
     }
     
-    # 获取版本号
+    Write-Progress -Activity "获取版本信息..." -Status "完成" -Completed
+
+    if (-not $latestRelease) {
+        Check3rdAV
+        foreach ($err in $errors) {
+            Write-Host "错误: $($err.Exception.Message)" -ForegroundColor Red
+        }
+        Write-Host "无法从任何可用的仓库获取 MAS 版本信息，操作中止！"
+        Write-Host "检查杀毒软件或防火墙是否阻止了连接。"
+        Write-Host "帮助 - $troubleshoot" -ForegroundColor White -BackgroundColor Blue
+        return
+    }
+
+    # 显示版本信息
     $version = $latestRelease.tag_name
-    Write-UTF8Output "找到最新版本: $version (来源: $source)" "Green"
-    
-    # 查找cmd文件
+    Write-Host "找到最新版本: " -NoNewline
+    Write-Host "$version" -ForegroundColor Green -NoNewline
+    Write-Host " (来源: $source)"
+
+    # 查找 CMD 文件
     $cmdAsset = $latestRelease.assets | Where-Object { $_.name -like "*.cmd" -or $_.name -like "*.bat" } | Select-Object -First 1
     
-    if ($null -eq $cmdAsset) {
-        Write-UTF8Output "未在最新版本中找到cmd文件！" "Red"
-        exit 1
+    if (-not $cmdAsset) {
+        Write-Host "未在版本 $version 中找到 CMD 文件！" -ForegroundColor Red
+        Write-Host "帮助 - $troubleshoot" -ForegroundColor White -BackgroundColor Blue
+        return
     }
-    
+
     $downloadUrl = $cmdAsset.browser_download_url
     $fileName = $cmdAsset.name
+
+    Write-Progress -Activity "下载 MAS 文件..." -Status "请稍等"
+
+    # 下载文件内容
+    $response = $null
+    $downloadErrors = @()
     
-    # 使用临时目录而不是相对路径
-    $tempDir = [System.IO.Path]::GetTempPath()
-    $downloadPath = Join-Path -Path $tempDir -ChildPath $fileName
-    
-    Write-UTF8Output "正在从 $source 下载 $fileName 到 $tempDir..." "Cyan"
-    Write-UTF8Output "下载链接: $downloadUrl" "Gray"
-    
-    # 下载文件
-    Invoke-WebRequest -Uri $downloadUrl -OutFile $downloadPath -TimeoutSec 30
-    
-    # 验证文件是否下载成功
-    if (Test-Path $downloadPath) {
-        $fileSize = (Get-Item $downloadPath).Length
-        Write-UTF8Output "下载完成: $downloadPath (大小: $([math]::Round($fileSize/1KB, 2)) KB)" "Green"
-        
-        # 启动cmd文件
-        Write-UTF8Output "正在启动 $fileName..." "Cyan"
-        try {
-            Start-Process -FilePath $downloadPath
-            Write-UTF8Output "MAS 激活脚本已启动！" "Green"
-        } catch {
-            Write-UTF8Output "启动失败: $($_.Exception.Message)" "Red"
-            Write-UTF8Output "您可以手动运行: $downloadPath" "Yellow"
+    try {
+        if ($psv -ge 3) {
+            $response = Invoke-WebRequest -Uri $downloadUrl -TimeoutSec 30
+            $content = $response.Content
+        } else {
+            $w = New-Object Net.WebClient
+            $content = $w.DownloadString($downloadUrl)
         }
-    } else {
-        Write-UTF8Output "文件下载失败！" "Red"
     }
-} catch {
-    Write-UTF8Output "发生错误: $_" "Red"
-}
+    catch {
+        $downloadErrors += $_
+    }
+
+    Write-Progress -Activity "下载 MAS 文件..." -Status "完成" -Completed
+
+    if (-not $content) {
+        Check3rdAV
+        foreach ($err in $downloadErrors) {
+            Write-Host "下载错误: $($err.Exception.Message)" -ForegroundColor Red
+        }
+        Write-Host "无法下载 MAS 文件，操作中止！"
+        Write-Host "帮助 - $troubleshoot" -ForegroundColor White -BackgroundColor Blue
+        return
+    }
+
+    # 检查 AutoRun 注册表（可能导致 CMD 崩溃）
+    $paths = "HKCU:\SOFTWARE\Microsoft\Command Processor", "HKLM:\SOFTWARE\Microsoft\Command Processor"
+    foreach ($path in $paths) { 
+        if (Get-ItemProperty -Path $path -Name "Autorun" -ErrorAction SilentlyContinue) { 
+            Write-Warning "发现 AutoRun 注册表，CMD 可能会崩溃！`n手动复制粘贴以下命令来修复...`nRemove-ItemProperty -Path '$path' -Name 'Autorun'"
+        } 
+    }
+
+    # 创建临时文件
+    $rand = [Guid]::NewGuid().Guid
+    $isAdmin = [bool]([Security.Principal.WindowsIdentity]::GetCurrent().Groups -match 'S-1-5-32-544')
+    $FilePath = if ($isAdmin) { 
+        "$env:SystemRoot\Temp\MAS_CN_$rand.cmd" 
+    } else { 
+        "$env:USERPROFILE\AppData\Local\Temp\MAS_CN_$rand.cmd" 
+    }
+    
+    # 写入文件（添加标识符）
+    Set-Content -Path $FilePath -Value "@::: MAS-CN $version $rand `r`n$content" -Encoding UTF8
+    CheckFile $FilePath
+
+    Write-Host "文件已下载: " -NoNewline
+    Write-Host "$fileName" -ForegroundColor Green -NoNewline
+    Write-Host " (大小: $([math]::Round($content.Length/1KB, 2)) KB)"
+
+    # 验证 CMD 环境
+    $env:ComSpec = "$env:SystemRoot\system32\cmd.exe"
+    $chkcmd = & $env:ComSpec /c "echo CMD is working"
+    if ($chkcmd -notcontains "CMD is working") {
+        Write-Warning "cmd.exe 工作异常。`n报告问题: $troubleshoot"
+    }
+
+    # 检查架构兼容性
+    if ($psv -lt 3) {
+        if (Test-Path "$env:SystemRoot\Sysnative") {
+            Write-Warning "当前使用 x86 PowerShell 运行，建议使用 x64 PowerShell..."
+            return
+        }
+    }
+
+    Write-Host "正在启动 MAS 中文版激活脚本..." -ForegroundColor Cyan
+
+    # 以管理员权限运行
+    try {
+        if ($psv -lt 3) {
+            $p = Start-Process -FilePath $env:ComSpec -ArgumentList "/c """"$FilePath"" $args""" -Verb RunAs -PassThru
+            $p.WaitForExit()
+        } else {
+            Start-Process -FilePath $env:ComSpec -ArgumentList "/c """"$FilePath"" $args""" -Wait -Verb RunAs
+        }
+        
+        Write-Host "MAS 激活脚本已启动！" -ForegroundColor Green
+    }
+    catch {
+        Write-Host "启动失败: $($_.Exception.Message)" -ForegroundColor Red
+        
+        # 检查杀毒软件拦截
+        if ($_.Exception.Message -like "*病毒*" -or $_.Exception.Message -like "*垃圾软件*" -or 
+            $_.Exception.Message -like "*virus*" -or $_.Exception.Message -like "*malware*" -or
+            $_.Exception.Message -like "*blocked*" -or $_.Exception.Message -like "*阻止*") {
+            
+            Check3rdAV
+            Write-Host "`n=== 杀毒软件误报处理指南 ===" -ForegroundColor Yellow
+            Write-Host "MAS 被错误识别为恶意软件。这是激活工具的常见误报。" -ForegroundColor Yellow
+            Write-Host "`n解决方案：" -ForegroundColor Green
+            Write-Host "1. 临时关闭 Windows Defender 实时保护"
+            Write-Host "2. 将临时文件夹添加到排除列表: $(Split-Path $FilePath)"
+            Write-Host "3. 手动以管理员身份运行: $FilePath"
+            Write-Host "`n项目地址: https://github.com/massgravel/Microsoft-Activation-Scripts" -ForegroundColor Blue
+            
+            # 打开文件所在目录
+            try {
+                Start-Process -FilePath "explorer.exe" -ArgumentList "/select,`"$FilePath`""
+            } catch {
+                Write-Host "文件位置: $FilePath"
+            }
+        }
+    }
+
+    CheckFile $FilePath
+
+    # 清理临时文件
+    $FilePaths = @("$env:SystemRoot\Temp\MAS_CN*.cmd", "$env:USERPROFILE\AppData\Local\Temp\MAS_CN*.cmd")
+    foreach ($FilePattern in $FilePaths) { 
+        Get-Item $FilePattern -ErrorAction SilentlyContinue | Remove-Item 
+    }
+
+} @args
