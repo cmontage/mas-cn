@@ -135,16 +135,20 @@ if (-not $args) {
 
     Write-Progress -Activity "下载 MAS 文件..." -Status "请稍等"
 
-    # 下载文件内容
-    $response = $null
+    # 下载文件内容（以二进制方式保持原始编码）
+    $content = $null
     $downloadErrors = @()
     
     try {
         if ($psv -ge 3) {
+            # 以字节方式下载以保持原始编码
             $response = Invoke-WebRequest -Uri $downloadUrl -TimeoutSec 30
-            $content = $response.Content
+            $contentBytes = $response.Content
+            # 转换为字符串但保持原始编码
+            $content = [System.Text.Encoding]::Default.GetString($contentBytes)
         } else {
             $w = New-Object Net.WebClient
+            $w.Encoding = [System.Text.Encoding]::Default
             $content = $w.DownloadString($downloadUrl)
         }
     }
@@ -181,9 +185,9 @@ if (-not $args) {
         "$env:USERPROFILE\AppData\Local\Temp\MAS_CN_$rand.cmd" 
     }
     
-    # 写入文件（添加标识符和代码页设置）
-    $fileHeader = "@::: MAS-CN $version $rand`r`n@chcp 65001 >nul 2>&1`r`n"
-    Set-Content -Path $FilePath -Value "$fileHeader$content" -Encoding UTF8
+    # 写入文件（保持原始编码）
+    $fileHeader = "@::: MAS-CN $version $rand`r`n"
+    Set-Content -Path $FilePath -Value "$fileHeader$content" -Encoding Default
     CheckFile $FilePath
 
     # 验证文件内容（调试用）
