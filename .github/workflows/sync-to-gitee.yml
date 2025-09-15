@@ -1,4 +1,4 @@
-name: Repo Sync to Gitee
+name: Sync to Gitee (Code + Releases)
 
 on:
   # push:             # main分支提交代码即触发
@@ -6,7 +6,7 @@ on:
   #     - main
   workflow_dispatch:  # 允许手动触发
   schedule:
-    - cron: '5 0 * * *'
+    - cron: '5 0 * * *'  # 每天凌晨0:05执行
   release:           # release发布时触发
     types: [published]
 
@@ -226,3 +226,155 @@ jobs:
         run: |
           rm -rf assets
           rm -f assets.json asset_names.txt
+
+  # 定时同步所有缺失的Release
+  sync-missing-releases:
+    name: 同步缺失的Release到Gitee
+    runs-on: ubuntu-latest
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    needs: mirror-to-gitee
+
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 获取所有GitHub Releases
+        id: get_releases
+        run: |
+          echo "获取GitHub Release列表..."
+          curl -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+               -H "Accept: application/vnd.github.v3+json" \
+               "https://api.github.com/repos/${{ env.GITHUB_REPO }}/releases?per_page=10" \
+               > github_releases.json
+          
+          release_count=$(jq length github_releases.json)
+          echo "找到 $release_count 个Release"
+          echo "release_count=$release_count" >> $GITHUB_OUTPUT
+
+      - name: 同步缺失的Release
+        if: steps.get_releases.outputs.release_count > 0
+        run: |
+          gitee_token="${{ secrets.GITEE_PASSWORD }}"
+          
+          if [ -z "$gitee_token" ]; then
+            echo "错误: 未设置 GITEE_PASSWORD secret"
+            exit 1
+          fi
+          
+          echo "开始检查和同步缺失的Release..."
+          sync_count=0
+          
+          # 处理每个release
+          jq -c '.[]' github_releases.json | while read release; do
+            tag_name=$(echo "$release" | jq -r '.tag_name')
+            release_name=$(echo "$release" | jq -r '.name')
+            release_body=$(echo "$release" | jq -r '.body // ""')
+            prerelease=$(echo "$release" | jq -r '.prerelease')
+            draft=$(echo "$release" | jq -r '.draft')
+            
+            # 跳过草稿版本
+            if [ "$draft" = "true" ]; then
+              echo "跳过草稿版本: $tag_name"
+              continue
+            fi
+            
+            echo ""
+            echo "=== 检查Release: $tag_name ==="
+            
+            # 检查Gitee上是否已存在此Release
+            response=$(curl -s -w "%{http_code}" \
+              "https://gitee.com/api/v5/repos/${{ env.GITEE_REPO }}/releases/tags/$tag_name?access_token=$gitee_token" \
+              -o "gitee_check_$tag_name.json")
+            
+            http_code="${response: -3}"
+            
+            if [ "$http_code" = "200" ]; then
+              echo "✓ Gitee上已存在Release: $tag_name"
+              rm -f "gitee_check_$tag_name.json"
+              continue
+            elif [ "$http_code" = "404" ]; then
+              echo "→ Gitee上缺失Release: $tag_name，开始创建..."
+            else
+              echo "✗ 检查Release时出错: $tag_name (HTTP: $http_code)"
+              continue
+            fi
+            
+            # 准备release数据
+            release_body_escaped=$(echo "$release_body" | jq -Rs .)
+            release_name_escaped=$(echo "$release_name" | jq -Rs .)
+            
+            # 创建Release数据
+            release_data="{
+              \"tag_name\": \"$tag_name\",
+              \"name\": $release_name_escaped,
+              \"body\": $release_body_escaped,
+              \"prerelease\": $prerelease,
+              \"target_commitish\": \"main\"
+            }"
+            
+            echo "创建Gitee Release: $tag_name"
+            api_response=$(curl -X POST \
+              "https://gitee.com/api/v5/repos/${{ env.GITEE_REPO }}/releases?access_token=$gitee_token" \
+              -H "Content-Type: application/json" \
+              -d "$release_data")
+            
+            # 检查创建结果
+            new_release_id=$(echo "$api_response" | jq -r '.id // empty')
+            if [ -z "$new_release_id" ] || [ "$new_release_id" = "null" ]; then
+              echo "✗ 创建失败: $tag_name"
+              echo "API响应: $api_response"
+              
+              # 检查是否是因为标签不存在
+              if echo "$api_response" | grep -q "标签不存在"; then
+                echo "提示: 标签 $tag_name 可能还未同步到Gitee"
+              fi
+            else
+              echo "✓ 创建成功: $tag_name (ID: $new_release_id)"
+              sync_count=$((sync_count + 1))
+              
+              # 处理附件（如果有）
+              assets_count=$(echo "$release" | jq '.assets | length')
+              if [ "$assets_count" -gt 0 ]; then
+                echo "  处理 $assets_count 个附件..."
+                mkdir -p "assets_$tag_name"
+                
+                echo "$release" | jq -c '.assets[]' | while read asset; do
+                  asset_name=$(echo "$asset" | jq -r '.name')
+                  download_url=$(echo "$asset" | jq -r '.browser_download_url')
+                  
+                  echo "    下载: $asset_name"
+                  if curl -L -o "assets_$tag_name/$asset_name" "$download_url"; then
+                    echo "    上传: $asset_name"
+                    curl -X POST \
+                      "https://gitee.com/api/v5/repos/${{ env.GITEE_REPO }}/releases/$new_release_id/attach_files?access_token=$gitee_token" \
+                      -F "file=@assets_$tag_name/$asset_name"
+                  else
+                    echo "    下载失败: $asset_name"
+                  fi
+                done
+                
+                rm -rf "assets_$tag_name"
+              fi
+            fi
+            
+            # 清理临时文件
+            rm -f "gitee_check_$tag_name.json"
+            
+            # 添加延迟避免API限流
+            sleep 3
+          done
+          
+          echo ""
+          echo "=== 同步完成 ==="
+          if [ "$sync_count" -gt 0 ]; then
+            echo "成功同步 $sync_count 个Release"
+          else
+            echo "没有需要同步的Release"
+          fi
+
+      - name: 清理临时文件
+        if: always()
+        run: |
+          rm -f github_releases.json
+          rm -f gitee_check_*.json
+          rm -rf assets_*
