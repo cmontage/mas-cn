@@ -76,17 +76,24 @@ jobs:
           http_code="${response: -3}"
           
           if [ "$http_code" = "200" ]; then
-            echo "Gitee上已存在Release: $tag_name"
-            echo "release_exists=true" >> $GITHUB_OUTPUT
-            
-            # 获取现有release信息
-            release_id=$(jq -r '.id' gitee_release_check.json)
-            echo "existing_release_id=$release_id" >> $GITHUB_OUTPUT
-            echo "现有Release ID: $release_id"
-            
-            # 检查是否需要更新（比较body内容）
-            existing_body=$(jq -r '.body' gitee_release_check.json)
-            current_body="${{ steps.release.outputs.body }}"
+            # 检查响应内容是否为null或空（表示标签存在但没有release）
+            response_content=$(cat gitee_release_check.json)
+            if [ "$response_content" = "null" ] || [ -z "$response_content" ] || [ "$response_content" = "{}" ]; then
+              echo "标签存在但无Release: $tag_name，需要创建Release"
+              echo "release_exists=false" >> $GITHUB_OUTPUT
+              echo "need_update=false" >> $GITHUB_OUTPUT
+            else
+              echo "Gitee上已存在Release: $tag_name"
+              echo "release_exists=true" >> $GITHUB_OUTPUT
+              
+              # 获取现有release信息
+              release_id=$(jq -r '.id' gitee_release_check.json)
+              echo "existing_release_id=$release_id" >> $GITHUB_OUTPUT
+              echo "现有Release ID: $release_id"
+              
+              # 检查是否需要更新（比较body内容）
+              existing_body=$(jq -r '.body' gitee_release_check.json)
+              current_body="${{ steps.release.outputs.body }}"
             
             if [ "$existing_body" != "$current_body" ]; then
               echo "Release内容有更新，需要删除并重新创建"
@@ -282,6 +289,7 @@ jobs:
             echo "=== 检查Release: $tag_name ==="
             
             # 检查Gitee上是否已存在此Release
+            echo "检查Release: $tag_name"
             response=$(curl -s -w "%{http_code}" \
               "https://gitee.com/api/v5/repos/${{ env.GITEE_REPO }}/releases/tags/$tag_name?access_token=$gitee_token" \
               -o "gitee_check_$tag_name.json")
@@ -289,11 +297,19 @@ jobs:
             http_code="${response: -3}"
             
             if [ "$http_code" = "200" ]; then
-              echo "✓ Gitee上已存在Release: $tag_name"
-              rm -f "gitee_check_$tag_name.json"
-              continue
+              # 检查响应内容是否为null或空（表示标签存在但没有release）
+              response_content=$(cat "gitee_check_$tag_name.json")
+              if [ "$response_content" = "null" ] || [ -z "$response_content" ] || [ "$response_content" = "{}" ]; then
+                echo "→ 标签存在但无Release: $tag_name，需要创建Release"
+                release_exists="false"
+              else
+                echo "✓ Gitee上已存在Release: $tag_name"
+                rm -f "gitee_check_$tag_name.json"
+                continue
+              fi
             elif [ "$http_code" = "404" ]; then
-              echo "→ Gitee上缺失Release: $tag_name，开始创建..."
+              echo "→ Gitee上不存在标签或Release: $tag_name"
+              release_exists="false"
             else
               echo "✗ 检查Release时出错: $tag_name (HTTP: $http_code)"
               continue
