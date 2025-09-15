@@ -182,9 +182,15 @@ if (-not $args) {
     }
     
     # 写入文件（添加标识符和代码页设置）
-    $fileHeader = "@::: MAS-CN $version $rand`r`n@echo off`r`n@chcp 65001 >nul 2>&1`r`n@echo on`r`n"
+    $fileHeader = "@::: MAS-CN $version $rand`r`n@chcp 65001 >nul 2>&1`r`n"
     Set-Content -Path $FilePath -Value "$fileHeader$content" -Encoding UTF8
     CheckFile $FilePath
+
+    # 验证文件内容（调试用）
+    $fileSize = (Get-Item $FilePath).Length
+    Write-Host "临时文件创建成功:" -ForegroundColor Green
+    Write-Host "  路径: $FilePath" -ForegroundColor Gray  
+    Write-Host "  大小: $([math]::Round($fileSize/1KB, 2)) KB" -ForegroundColor Gray
 
     Write-Host "文件已下载: " -NoNewline
     Write-Host "$fileName" -ForegroundColor Green -NoNewline
@@ -209,24 +215,32 @@ if (-not $args) {
 
     # 以管理员权限运行
     try {
-        # 设置 CMD 启动参数，包含代码页设置以避免中文乱码
-        $cmdArgs = if ($psv -lt 3) {
-            "/c ""chcp 65001 >nul 2>&1 && """"$FilePath"" $args"""""
-        } else {
-            "/c ""chcp 65001 >nul 2>&1 && """"$FilePath"" $args"""""
-        }
-        
+        # 简化启动参数，避免引号嵌套问题
         if ($psv -lt 3) {
-            $p = Start-Process -FilePath $env:ComSpec -ArgumentList $cmdArgs -Verb RunAs -PassThru
+            $p = Start-Process -FilePath $env:ComSpec -ArgumentList "/c `"$FilePath`" $args" -Verb RunAs -PassThru
             $p.WaitForExit()
         } else {
-            Start-Process -FilePath $env:ComSpec -ArgumentList $cmdArgs -Wait -Verb RunAs
+            Start-Process -FilePath $env:ComSpec -ArgumentList "/c `"$FilePath`" $args" -Wait -Verb RunAs
         }
         
         Write-Host "MAS 激活脚本已启动！" -ForegroundColor Green
     }
     catch {
         Write-Host "启动失败: $($_.Exception.Message)" -ForegroundColor Red
+        
+        # 提供诊断信息
+        Write-Host "`n=== 诊断信息 ===" -ForegroundColor Yellow
+        Write-Host "临时文件: $FilePath" -ForegroundColor Gray
+        Write-Host "文件存在: $(Test-Path $FilePath)" -ForegroundColor Gray
+        Write-Host "文件大小: $((Get-Item $FilePath -ErrorAction SilentlyContinue).Length) bytes" -ForegroundColor Gray
+        
+        # 显示文件前几行用于调试
+        try {
+            Write-Host "文件前5行内容:" -ForegroundColor Gray
+            Get-Content $FilePath -TotalCount 5 -ErrorAction SilentlyContinue | ForEach-Object { Write-Host "  $_" -ForegroundColor DarkGray }
+        } catch {
+            Write-Host "无法读取文件内容" -ForegroundColor Red
+        }
         
         # 检查杀毒软件拦截
         if ($_.Exception.Message -like "*病毒*" -or $_.Exception.Message -like "*垃圾软件*" -or 
