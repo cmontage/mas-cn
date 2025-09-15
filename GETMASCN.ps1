@@ -135,17 +135,30 @@ if (-not $args) {
 
     Write-Progress -Activity "下载 MAS 文件..." -Status "请稍等"
 
-    # 下载文件内容（以二进制方式保持原始编码）
+    # 下载文件内容（兼容不同API格式）
     $content = $null
     $downloadErrors = @()
     
     try {
         if ($psv -ge 3) {
-            # 以字节方式下载以保持原始编码
             $response = Invoke-WebRequest -Uri $downloadUrl -TimeoutSec 30
-            $contentBytes = $response.Content
-            # 转换为字符串但保持原始编码
-            $content = [System.Text.Encoding]::Default.GetString($contentBytes)
+            
+            # 检查响应内容类型并相应处理
+            Write-Host "响应内容类型: $($response.Content.GetType().Name)" -ForegroundColor Gray
+            
+            if ($response.Content -is [byte[]]) {
+                # GitHub 风格 - 二进制数据
+                Write-Host "使用二进制解码方式" -ForegroundColor Gray
+                $content = [System.Text.Encoding]::Default.GetString($response.Content)
+            } elseif ($response.Content -is [string]) {
+                # Gitee 风格 - 字符串数据
+                Write-Host "使用字符串方式" -ForegroundColor Gray
+                $content = $response.Content
+            } else {
+                # 其他情况，尝试转换为字符串
+                Write-Host "使用通用转换方式" -ForegroundColor Gray
+                $content = $response.Content.ToString()
+            }
         } else {
             $w = New-Object Net.WebClient
             $w.Encoding = [System.Text.Encoding]::Default
