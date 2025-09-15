@@ -140,33 +140,54 @@ if (-not $args) {
     $downloadErrors = @()
     
     try {
+        Write-Host "下载链接: $downloadUrl" -ForegroundColor Gray
+        
         if ($psv -ge 3) {
-            $response = Invoke-WebRequest -Uri $downloadUrl -TimeoutSec 30
-            
-            # 检查响应内容类型并相应处理
-            Write-Host "响应内容类型: $($response.Content.GetType().Name)" -ForegroundColor Gray
-            
-            if ($response.Content -is [byte[]]) {
-                # GitHub 风格 - 二进制数据
-                Write-Host "使用二进制解码方式" -ForegroundColor Gray
-                $content = [System.Text.Encoding]::Default.GetString($response.Content)
-            } elseif ($response.Content -is [string]) {
-                # Gitee 风格 - 字符串数据
-                Write-Host "使用字符串方式" -ForegroundColor Gray
-                $content = $response.Content
-            } else {
-                # 其他情况，尝试转换为字符串
-                Write-Host "使用通用转换方式" -ForegroundColor Gray
-                $content = $response.Content.ToString()
+            try {
+                $response = Invoke-WebRequest -Uri $downloadUrl -TimeoutSec 30
+                
+                # 详细的调试信息
+                Write-Host "HTTP状态码: $($response.StatusCode)" -ForegroundColor Gray
+                Write-Host "内容长度: $($response.Content.Length)" -ForegroundColor Gray
+                Write-Host "响应内容类型: $($response.Content.GetType().Name)" -ForegroundColor Gray
+                
+                # 简化处理 - 直接使用字符串方式
+                $content = $response.Content -as [string]
+                
+                if (-not $content) {
+                    # 如果直接转换失败，尝试其他方法
+                    if ($response.RawContent) {
+                        $content = $response.RawContent
+                        # 移除HTTP头部，只保留内容部分
+                        $contentStart = $content.IndexOf("`r`n`r`n")
+                        if ($contentStart -ge 0) {
+                            $content = $content.Substring($contentStart + 4)
+                        }
+                    } else {
+                        throw "无法获取响应内容"
+                    }
+                }
+                
+            } catch {
+                Write-Host "Invoke-WebRequest 失败: $($_.Exception.Message)" -ForegroundColor Yellow
+                # 回退到 .NET WebClient
+                Write-Host "尝试使用 WebClient..." -ForegroundColor Yellow
+                $w = New-Object Net.WebClient
+                $content = $w.DownloadString($downloadUrl)
             }
         } else {
             $w = New-Object Net.WebClient
-            $w.Encoding = [System.Text.Encoding]::Default
             $content = $w.DownloadString($downloadUrl)
         }
+        
+        if ($content) {
+            Write-Host "下载成功，内容长度: $($content.Length) 字符" -ForegroundColor Green
+        }
+        
     }
     catch {
         $downloadErrors += $_
+        Write-Host "下载异常: $($_.Exception.Message)" -ForegroundColor Red
     }
 
     Write-Progress -Activity "下载 MAS 文件..." -Status "完成" -Completed
