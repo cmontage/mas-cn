@@ -51,7 +51,7 @@ jobs:
         run: |
           echo "tag_name=${{ github.event.release.tag_name }}" >> $GITHUB_OUTPUT
           echo "name=${{ github.event.release.name }}" >> $GITHUB_OUTPUT
-          echo "body=" >> $GITHUB_OUTPUT
+          echo "body=更新内容：[见此处](https://github.com/${{ env.GITHUB_REPO }}/releases/tag/${{ github.event.release.tag_name }})" >> $GITHUB_OUTPUT
           echo "prerelease=${{ github.event.release.prerelease }}" >> $GITHUB_OUTPUT
           echo "draft=${{ github.event.release.draft }}" >> $GITHUB_OUTPUT
 
@@ -91,15 +91,15 @@ jobs:
               echo "existing_release_id=$release_id" >> $GITHUB_OUTPUT
               echo "现有Release ID: $release_id"
               
-              # 检查是否需要更新（比较标题内容）
-              existing_name=$(jq -r '.name' gitee_release_check.json)
-              current_name="${{ steps.release.outputs.name }}"
+              # 检查是否需要更新（比较body内容）
+              existing_body=$(jq -r '.body' gitee_release_check.json)
+              current_body="${{ steps.release.outputs.body }}"
             
-            if [ "$existing_name" != "$current_name" ]; then
-              echo "Release标题有更新，需要删除并重新创建"
+            if [ "$existing_body" != "$current_body" ]; then
+              echo "Release内容有更新，需要删除并重新创建"
               echo "need_update=true" >> $GITHUB_OUTPUT
             else
-              echo "Release标题相同，无需更新"
+              echo "Release内容相同，无需更新"
               echo "need_update=false" >> $GITHUB_OUTPUT
             fi
               echo "need_update=false" >> $GITHUB_OUTPUT
@@ -275,7 +275,7 @@ jobs:
           jq -c '.[]' github_releases.json | while read release; do
             tag_name=$(echo "$release" | jq -r '.tag_name')
             release_name=$(echo "$release" | jq -r '.name')
-            release_body=""  # 不同步描述内容
+            release_body="更新内容：[见此处](https://github.com/${{ env.GITHUB_REPO }}/releases/tag/$tag_name)"
             prerelease=$(echo "$release" | jq -r '.prerelease')
             draft=$(echo "$release" | jq -r '.draft')
             
