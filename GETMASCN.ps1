@@ -135,7 +135,7 @@ if (-not $args) {
 
     Write-Progress -Activity "下载 MAS 文件..." -Status "请稍等"
 
-    # 下载文件内容（兼容不同API格式）
+    # 下载文件内容（兼容 Gitee 和 GitHub API）
     $content = $null
     $downloadErrors = @()
     
@@ -144,44 +144,34 @@ if (-not $args) {
         
         if ($psv -ge 3) {
             try {
-                $response = Invoke-WebRequest -Uri $downloadUrl -TimeoutSec 30
+                # 使用 WebClient 确保编码正确
+                $webClient = New-Object System.Net.WebClient
+                $webClient.Encoding = [System.Text.Encoding]::UTF8
+                $webClient.Headers.Add("User-Agent", "PowerShell MAS-CN Script")
                 
-                # 详细的调试信息
-                Write-Host "HTTP状态码: $($response.StatusCode)" -ForegroundColor Gray
-                Write-Host "内容长度: $($response.Content.Length)" -ForegroundColor Gray
-                Write-Host "响应内容类型: $($response.Content.GetType().Name)" -ForegroundColor Gray
+                # 直接下载为字符串，避免类型转换问题
+                $content = $webClient.DownloadString($downloadUrl)
                 
-                # 简化处理 - 直接使用字符串方式
-                $content = $response.Content -as [string]
-                
-                if (-not $content) {
-                    # 如果直接转换失败，尝试其他方法
-                    if ($response.RawContent) {
-                        $content = $response.RawContent
-                        # 移除HTTP头部，只保留内容部分
-                        $contentStart = $content.IndexOf("`r`n`r`n")
-                        if ($contentStart -ge 0) {
-                            $content = $content.Substring($contentStart + 4)
-                        }
-                    } else {
-                        throw "无法获取响应内容"
-                    }
-                }
+                Write-Host "下载成功，内容长度: $($content.Length) 字符" -ForegroundColor Green
                 
             } catch {
-                Write-Host "Invoke-WebRequest 失败: $($_.Exception.Message)" -ForegroundColor Yellow
-                # 回退到 .NET WebClient
-                Write-Host "尝试使用 WebClient..." -ForegroundColor Yellow
-                $w = New-Object Net.WebClient
-                $content = $w.DownloadString($downloadUrl)
+                Write-Host "WebClient UTF-8 下载失败: $($_.Exception.Message)" -ForegroundColor Yellow
+                
+                # 备用方法：使用默认编码
+                try {
+                    $webClient = New-Object System.Net.WebClient
+                    $webClient.Headers.Add("User-Agent", "PowerShell MAS-CN Script")
+                    $content = $webClient.DownloadString($downloadUrl)
+                    Write-Host "使用默认编码下载成功" -ForegroundColor Green
+                } catch {
+                    throw "所有下载方法都失败了"
+                }
             }
         } else {
-            $w = New-Object Net.WebClient
-            $content = $w.DownloadString($downloadUrl)
-        }
-        
-        if ($content) {
-            Write-Host "下载成功，内容长度: $($content.Length) 字符" -ForegroundColor Green
+            # PowerShell v2 兼容模式
+            $webClient = New-Object System.Net.WebClient
+            $webClient.Headers.Add("User-Agent", "PowerShell MAS-CN Script")
+            $content = $webClient.DownloadString($downloadUrl)
         }
         
     }
@@ -219,9 +209,22 @@ if (-not $args) {
         "$env:USERPROFILE\AppData\Local\Temp\MAS_CN_$rand.cmd" 
     }
     
-    # 写入文件（保持原始编码）
-    $fileHeader = "@::: MAS-CN $version $rand`r`n"
-    Set-Content -Path $FilePath -Value "$fileHeader$content" -Encoding Default
+    # 写入文件（使用 UTF-8 编码，但保存为 ANSI 以兼容 CMD）
+    try {
+        $fileHeader = "@::: MAS-CN $version $rand`r`n"
+        $fullContent = "$fileHeader$content"
+        
+        # 确保以正确编码保存，兼容中文显示
+        [System.IO.File]::WriteAllText($FilePath, $fullContent, [System.Text.Encoding]::GetEncoding("GB2312"))
+        
+        Write-Host "文件保存编码: GB2312 (中文兼容)" -ForegroundColor Gray
+        
+    } catch {
+        # 备用编码方式
+        Set-Content -Path $FilePath -Value "$fileHeader$content" -Encoding Default
+        Write-Host "使用默认编码保存文件" -ForegroundColor Yellow
+    }
+    
     CheckFile $FilePath
 
     # 验证文件内容（调试用）
@@ -251,14 +254,16 @@ if (-not $args) {
 
     Write-Host "正在启动 MAS 中文版激活脚本..." -ForegroundColor Cyan
 
-    # 以管理员权限运行
+    # 以管理员权限运行，设置正确的编码页
     try {
-        # 简化启动参数，避免引号嵌套问题
+        # 设置中文编码页，避免乱码
+        $cmdArgs = "/c chcp 936>nul & `"$FilePath`" $args"
+        
         if ($psv -lt 3) {
-            $p = Start-Process -FilePath $env:ComSpec -ArgumentList "/c `"$FilePath`" $args" -Verb RunAs -PassThru
+            $p = Start-Process -FilePath $env:ComSpec -ArgumentList $cmdArgs -Verb RunAs -PassThru
             $p.WaitForExit()
         } else {
-            Start-Process -FilePath $env:ComSpec -ArgumentList "/c `"$FilePath`" $args" -Wait -Verb RunAs
+            Start-Process -FilePath $env:ComSpec -ArgumentList $cmdArgs -Wait -Verb RunAs
         }
         
         Write-Host "MAS 激活脚本已启动！" -ForegroundColor Green
@@ -275,7 +280,9 @@ if (-not $args) {
         # 显示文件前几行用于调试
         try {
             Write-Host "文件前5行内容:" -ForegroundColor Gray
-            Get-Content $FilePath -TotalCount 5 -ErrorAction SilentlyContinue | ForEach-Object { Write-Host "  $_" -ForegroundColor DarkGray }
+            Get-Content $FilePath -TotalCount 5 -Encoding Default -ErrorAction SilentlyContinue | ForEach-Object { 
+                Write-Host "  $_" -ForegroundColor DarkGray 
+            }
         } catch {
             Write-Host "无法读取文件内容" -ForegroundColor Red
         }
@@ -302,8 +309,6 @@ if (-not $args) {
             }
         }
     }
-
-    CheckFile $FilePath
 
     # 清理临时文件
     $FilePaths = @("$env:SystemRoot\Temp\MAS_CN*.cmd", "$env:USERPROFILE\AppData\Local\Temp\MAS_CN*.cmd")
