@@ -1,0 +1,157 @@
+================================================================================
+MAS脚本同步报告 - v3.6 -> v3.7
+================================================================================
+生成时间: 2025-09-28 15:49:09
+
+统计信息:
+----------------------------------------
+v3.6英文版行数: 19797
+v3.7英文版行数: 19861
+英文版行数变化: +64
+v3.6中文版行数: 19797
+v3.7中文版行数: 19861
+中文版行数变化: +64
+与英文v3.7行数差异: +0
+检测到的变更数: 7
+成功应用的变更数: 7
+
+变更总览:
+----------------------------------------
+replace: 6 处
+insert: 1 处
+总计: 7 处变更
+
+应用日志:
+----------------------------------------
+✓ 变更 1: 替换行 2-2 (1 -> 1 行)
+✓ 变更 2: 替换行 2307-2311 (5 -> 4 行)
+✓ 变更 3: 替换行 2318-2350 (33 -> 33 行)
+✓ 变更 4: 替换行 2358-2358 (1 -> 1 行)
+✓ 变更 5: 替换行 2366-2370 (5 -> 2 行)
+✓ 变更 6: 在行 2373 后插入 71 行
+✓ 变更 7: 替换行 12428-12434 (7 -> 4 行)
+
+详细变更记录:
+----------------------------------------
+
+变更 1:
+  类型: replace
+  位置: 行 2-2 -> 2-2
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - @set masver=3.6
+  添加内容:
+    + @set masver=3.7
+
+变更 2:
+  类型: replace
+  位置: 行 2307-2311 -> 2307-2310
+  删除: 5 行
+  添加: 4 行
+  删除内容:
+    - ::  5th column = Ticket signature value. It's as it is, it's not encoded. (Check mass()grave(dot)dev/hwid#manual-activation to see how it's generated)
+    - ::  6th column = 1 = activation is not working (at the time of writing this), 0 = activation is working
+    - ::  7th column = Key Type
+    - ::  8th column = WMI Edition ID (For reference only)
+    - ::  9th column = Version name incase same Edition ID is used in different OS versions with different key
+  添加内容:
+    + ::  5th column = 1 = activation is not working (at the time of writing this), 0 = activation is working
+    + ::  6th column = Key Type
+    + ::  7th column = WMI Edition ID (For reference only)
+    + ::  8th column = Version name incase same Edition ID is used in different OS versions with different key
+
+变更 3:
+  类型: replace
+  位置: 行 2319-2351 -> 2318-2350
+  删除: 33 行
+  添加: 33 行
+  删除内容:
+    - 8b351c9c-f398-4515-9900-09df49427262_XGVPP-NMH47-7TTHJ-W3FW7-8H%f%V2C___4_X19-99683_HGNKjkKcKQHO6n8srMUrDh/MElffBZarLqCMD9rWtgFKf3YzYOLDPEMGhuO/auNMKCeiU7ebFbQALS/MyZ7TvidMQ2dvzXeXXKzPBjfwQx549WJUU7qAQ9Txg9cR9SAT8b12Pry2iBk+nZWD9VtHK3kOnEYkvp5WTCTsrSi6Re4_0_OEM:NONSLP_Enterprise
+    - c83cef07-6b72-4bbc-a28f-a00386872839_3V6Q6-NQXCX-V8YXR-9QCYV-QP%f%FCT__27_X19-98746_NHn2n0N1UfVf00CfaI5LCDMDsKdVAWpD/HAfUrcTAKsw9d2Sks4h5MhyH/WUx+B6dFi8ol7D3AHorR8y9dqVS1Bd2FdZNJl/tTR1PGwYn6KL88NS19aHmFNdX8s4438vaa+Ty8Qk8EDcwm/wscC8lQmi3/RgUKYdyGFvpbGSVlk_0_Volume:MAK_EnterpriseN
+    - 4de7cb65-cdf1-4de9-8ae8-e3cce27b9f2c_VK7JG-NPHTM-C97JM-9MPGT-3V%f%66T__48_X19-98841_Yl/jNfxJ1SnaIZCIZ4m6Pf3ySNoQXifNeqfltNaNctx+onwiivOx7qcSn8dFtURzgMzSOFnsRQzb5IrvuqHoxWWl1S3JIQn56FvKsvSx7aFXIX3+2Q98G1amPV/WEQ0uHA5d7Ya6An+g0Z0zRP7evGoomTs4YuweaWiZQjQzSpA_0_____Retail_Professional
+    - 9fbaf5d6-4d83-4422-870d-fdda6e5858aa_2B87N-8KFHP-DKV6R-Y2C8J-PK%f%CKT__49_X19-98859_Ge0mRQbW8ALk7T09V+1k1yg66qoS0lhkgPIROOIOgxKmWPAvsiLAYPKDqM4+neFCA/qf1dHFmdh0VUrwFBPYsK251UeWuElj4bZFVISL6gUt1eZwbGfv5eurQ0i+qZiFv+CcQOEFsd5DD4Up6xPLLQS3nAXODL5rSrn2sHRoCVY_0_____Retail_ProfessionalN
+    - f742e4ff-909d-4fe9-aacb-3231d24a0c58_4CPRK-NM3K3-X6XXQ-RXX86-WX%f%CHW__98_X19-98877_vel4ytVtnE8FhvN87Cflz9sbh5QwHD1YGOeej9QP7hF3vlBR4EX2/S/09gRneeXVbQnjDOCd2KFMKRUWHLM7ZhFBk8AtlG+kvUawPZ+CIrwrD3mhi7NMv8UX/xkLK3HnBupMEuEwsMJgCUD8Pn6om1mEiQebHBAqu4cT7GN9Y0g_0_____Retail_CoreN
+    - 1d1bac85-7365-4fea-949a-96978ec91ae0_N2434-X9D7W-8PF6X-8DV9T-8T%f%YMD__99_X19-99652_Nv17eUTrr1TmUX6frlI7V69VR6yWb7alppCFJPcdjfI+xX4/Cf2np3zm7jmC+zxFb9nELUs477/ydw2KCCXFfM53bKpBQZKHE5+MdGJGxebOCcOtJ3hrkDJtwlVxTQmUgk5xnlmpk8PHg82M2uM5B7UsGLxGKK4d3hi0voSyKeI_0_____Retail_CoreCountrySpecific
+    - 3ae2cc14-ab2d-41f4-972f-5e20142771dc_BT79Q-G7N6G-PGBYW-4YWX6-6F%f%4BT_100_X19-99661_FV2Eao/R5v8sGrfQeOjQ4daokVlNOlqRCDZXuaC45bQd5PsNU3t1b4AwWeYM8TAwbHauzr4tPG0UlsUqUikCZHy0poROx35bBBMBym6Zbm9wDBVyi7nCzBtwS86eOonQ3cU6WfZxhZRze0POdR33G3QTNPrnVIM2gf6nZJYqDOA_0_____Retail_CoreSingleLanguage
+    - 2b1f36bb-c1cd-4306-bf5c-a0367c2d97d8_YTMG3-N6DKC-DKB77-7M9GH-8H%f%VX7_101_X19-98868_GH/jwFxIcdQhNxJIlFka8c1H48PF0y7TgJwaryAUzqSKXynONLw7MVciDJFVXTkCjbXSdxLSWpPIC50/xyy1rAf8aC7WuN/9cRNAvtFPC1IVAJaMeq1vf4mCqRrrxJQP6ZEcuAeHFzLe/LLovGWCd8rrs6BbBwJXCvAqXImvycQ_0_____Retail_Core
+    - 2a6137f3-75c0-4f26-8e3e-d83d802865a4_XKCNC-J26Q9-KFHD2-FKTHY-KD%f%72Y_119_X19-99606_hci78IRWDLBtdbnAIKLDgV9whYgtHc1uYyp9y6FszE9wZBD5Nc8CUD2pI2s2RRd3M04C4O7M3tisB3Ov/XVjpAbxlX3MWfUR5w4MH0AphbuQX0p5MuHEDYyfqlRgBBRzOKePF06qfYvPQMuEfDpKCKFwNojQxBV8O0Arf5zmrIw_0_OEM:NONSLP_PPIPro
+    - e558417a-5123-4f6f-91e7-385c1c7ca9d4_YNMGQ-8RYV3-4PGQ3-C8XTP-7C%f%FBY_121_X19-98886_x9tPFDZmjZMf29zFeHV5SHbXj8Wd8YAcCn/0hbpLcId4D7OWqkQKXxXHIegRlwcWjtII0sZ6WYB0HQV2KH3LvYRnWKpJ5SxeOgdzBIJ6fhegYGGyiXsBv9sEb3/zidPU6ZK9LugVGAcRZ6HQOiXyOw+Yf5H35iM+2oDZXSpjvJw_0_____Retail_Education
+    ... (还有 23 行)
+  添加内容:
+    + 8b351c9c-f398-4515-9900-09df49427262_XGVPP-NMH47-7TTHJ-W3FW7-8H%f%V2C___4_X19-99683_0_OEM:NONSLP_Enterprise
+    + c83cef07-6b72-4bbc-a28f-a00386872839_3V6Q6-NQXCX-V8YXR-9QCYV-QP%f%FCT__27_X19-98746_0_Volume:MAK_EnterpriseN
+    + 4de7cb65-cdf1-4de9-8ae8-e3cce27b9f2c_VK7JG-NPHTM-C97JM-9MPGT-3V%f%66T__48_X19-98841_0_____Retail_Professional
+    + 9fbaf5d6-4d83-4422-870d-fdda6e5858aa_2B87N-8KFHP-DKV6R-Y2C8J-PK%f%CKT__49_X19-98859_0_____Retail_ProfessionalN
+    + f742e4ff-909d-4fe9-aacb-3231d24a0c58_4CPRK-NM3K3-X6XXQ-RXX86-WX%f%CHW__98_X19-98877_0_____Retail_CoreN
+    + 1d1bac85-7365-4fea-949a-96978ec91ae0_N2434-X9D7W-8PF6X-8DV9T-8T%f%YMD__99_X19-99652_0_____Retail_CoreCountrySpecific
+    + 3ae2cc14-ab2d-41f4-972f-5e20142771dc_BT79Q-G7N6G-PGBYW-4YWX6-6F%f%4BT_100_X19-99661_0_____Retail_CoreSingleLanguage
+    + 2b1f36bb-c1cd-4306-bf5c-a0367c2d97d8_YTMG3-N6DKC-DKB77-7M9GH-8H%f%VX7_101_X19-98868_0_____Retail_Core
+    + 2a6137f3-75c0-4f26-8e3e-d83d802865a4_XKCNC-J26Q9-KFHD2-FKTHY-KD%f%72Y_119_X19-99606_0_OEM:NONSLP_PPIPro
+    + e558417a-5123-4f6f-91e7-385c1c7ca9d4_YNMGQ-8RYV3-4PGQ3-C8XTP-7C%f%FBY_121_X19-98886_0_____Retail_Education
+    ... (还有 23 行)
+
+变更 4:
+  类型: replace
+  位置: 行 2359-2359 -> 2358-2358
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - if %%F==1 set notworking=1
+  添加内容:
+    + if %%E==1 set notworking=1
+
+变更 5:
+  类型: replace
+  位置: 行 2367-2371 -> 2366-2367
+  删除: 5 行
+  添加: 2 行
+  删除内容:
+    - set "string=OSMajorVersion=5;OSMinorVersion=1;OSPlatformId=2;PP=0;Pfn=Microsoft.Windows.%%C.%%D_8wekyb3d8bbwe;PKeyIID=465145217131314304264339481117862266242033457260311819664735280;$([char]0)"
+    - for /f "tokens=* delims=" %%i in ('%psc% [conv%f%ert]::ToBas%f%e64String([Text.En%f%coding]::Uni%f%code.GetBytes("""!string!"""^)^)') do set "encoded=%%i"
+    - echo "!encoded!" | find "AAAA" %nul1% || exit /b
+    - 
+    - <nul set /p "=<?xml version="1.0" encoding="utf-8"?><genuineAuthorization xmlns="http://www.microsoft.com/DRM/SL/GenuineAuthorization/1.0"><version>1.0</version><genuineProperties origin="sppclient"><properties>OA3xOriginalProductId=;OA3xOriginalProductKey=;SessionId=!encoded!;TimeStampClient=2022-10-11T12:00:00Z</properties><signatures><signature name="clientLockboxKey" method="rsa-sha256">%%E=</signature></signatures></genuineProperties></genuineAuthorization>" >"%tdir%\GenuineTicket"
+  添加内容:
+    + set "SessionIdStr=OSMajorVersion=5;OSMinorVersion=1;OSPlatformId=2;PP=0;Pfn=Microsoft.Windows.%%C.%%D_8wekyb3d8bbwe;PKeyIID=465145217131314304264339481117862266242033457260311819664735280;"
+    + %psc% "$f=[System.IO.File]::ReadAllText('!_batp!') -split ':sign\:.*';. ([scriptblock]::Create($f[1]))"
+
+变更 6:
+  类型: insert
+  位置: 在行 2377 后插入
+  添加: 71 行
+  添加内容:
+    + 
+    + ::========================================================================================================================================
+    + 
+    + :sign:
+    + $ErrorActionPreference = "Stop"
+    + 
+    + function SignProperties {
+    +     param (
+    +         $Properties,
+    +         $rsa
+    ... (还有 61 行)
+
+变更 7:
+  类型: replace
+  位置: 行 12361-12367 -> 12428-12431
+  删除: 7 行
+  添加: 4 行
+  删除内容:
+    - ::  Signature value is as it is, it's not encoded
+    - ::  Session ID is in Base64 encoded format. It's decoded value is "OSMajorVersion=5;OSMinorVersion=1;OSPlatformId=2;PP=0;GVLKExp=2038-01-19T03:14:07Z;DownlevelGenuineState=1;"
+    - ::  Check mass grave [.] dev/kms38#manual-activation to see how it's generated
+    - 
+    - set "signature=C52iGEoH+1VqzI6kEAqOhUyrWuEObnivzaVjyef8WqItVYd/xGDTZZ3bkxAI9hTpobPFNJyJx6a3uriXq3HVd7mlXfSUK9ydeoUdG4eqMeLwkxeb6jQWJzLOz41rFVSMtBL0e+ycCATebTaXS4uvFYaDHDdPw2lKY8ADj3MLgsA="
+    - set "sessionId=TwBTAE0AYQBqAG8AcgBWAGUAcgBzAGkAbwBuAD0ANQA7AE8AUwBNAGkAbgBvAHIAVgBlAHIAcwBpAG8AbgA9ADEAOwBPAFMAUABsAGEAdABmAG8AcgBtAEkAZAA9ADIAOwBQAFAAPQAwADsARwBWAEwASwBFAHgAcAA9ADIAMAAzADgALQAwADEALQAxADkAVAAwADMAOgAxADQAOgAwADcAWgA7AEQAbwB3AG4AbABlAHYAZQBsAEcAZQBuAHUAaQBuAGUAUwB0AGEAdABlAD0AMQA7AAAA"
+    - <nul set /p "=<?xml version="1.0" encoding="utf-8"?><genuineAuthorization xmlns="http://www.microsoft.com/DRM/SL/GenuineAuthorization/1.0"><version>1.0</version><genuineProperties origin="sppclient"><properties>OA3xOriginalProductId=;OA3xOriginalProductKey=;SessionId=%sessionId%;TimeStampClient=2022-10-11T12:00:00Z</properties><signatures><signature name="clientLockboxKey" method="rsa-sha256">%signature%</signature></signatures></genuineProperties></genuineAuthorization>" >"%tdir%\GenuineTicket"
+  添加内容:
+    + ::  Generate ticket
+    + 
+    + set "SessionIdStr=OSMajorVersion=5;OSMinorVersion=1;OSPlatformId=2;PP=0;GVLKExp=2038-01-19T03:14:07Z;DownlevelGenuineState=1;"
+    + %psc% "$f=[System.IO.File]::ReadAllText('!_batp!') -split ':sign\:.*';. ([scriptblock]::Create($f[1]))"
+
+================================================================================
+报告结束
+================================================================================
