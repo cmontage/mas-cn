@@ -1,0 +1,751 @@
+================================================================================
+MAS脚本同步报告 - v3.7 -> v3.8
+================================================================================
+生成时间: 2025-11-19 03:22:00
+
+统计信息:
+----------------------------------------
+v3.7英文版行数: 19861
+v3.8英文版行数: 19276
+英文版行数变化: -585
+v3.7中文版行数: 19861
+v3.8中文版行数: 19276
+中文版行数变化: -585
+与英文v3.8行数差异: +0
+检测到的变更数: 53
+成功应用的变更数: 53
+
+变更总览:
+----------------------------------------
+replace: 33 处
+delete: 5 处
+insert: 15 处
+总计: 53 处变更
+
+应用日志:
+----------------------------------------
+✓ 变更 1: 替换行 2-2 (1 -> 1 行)
+✓ 变更 2: 删除行 394-394 (1 行)
+✓ 变更 3: 在行 456 后插入 1 行
+✓ 变更 4: 替换行 476-477 (2 -> 1 行)
+✓ 变更 5: 替换行 479-481 (3 -> 3 行)
+✓ 变更 6: 替换行 484-484 (1 -> 1 行)
+✓ 变更 7: 替换行 491-491 (1 -> 1 行)
+✓ 变更 8: 替换行 494-502 (9 -> 8 行)
+✓ 变更 9: 替换行 577-585 (9 -> 8 行)
+✓ 变更 10: 替换行 591-591 (1 -> 1 行)
+✓ 变更 11: 替换行 594-600 (7 -> 6 行)
+✓ 变更 12: 删除行 637-641 (5 行)
+✓ 变更 13: 替换行 722-723 (2 -> 2 行)
+✓ 变更 14: 在行 1468 后插入 5 行
+✓ 变更 15: 在行 1784 后插入 7 行
+✓ 变更 16: 删除行 1984-1989 (6 行)
+✓ 变更 17: 替换行 2130-2130 (1 -> 3 行)
+✓ 变更 18: 在行 2350 后插入 1 行
+✓ 变更 19: 替换行 2580-2581 (2 -> 2 行)
+✓ 变更 20: 替换行 3621-3624 (4 -> 4 行)
+✓ 变更 21: 替换行 4549-4550 (2 -> 2 行)
+✓ 变更 22: 替换行 5055-5055 (1 -> 6 行)
+✓ 变更 23: 替换行 5064-5065 (2 -> 2 行)
+✓ 变更 24: 替换行 5815-5815 (1 -> 1 行)
+✓ 变更 25: 替换行 5822-5822 (1 -> 1 行)
+✓ 变更 26: 替换行 5896-5896 (1 -> 1 行)
+✓ 变更 27: 替换行 5902-5902 (1 -> 1 行)
+✓ 变更 28: 替换行 5905-5905 (1 -> 1 行)
+✓ 变更 29: 替换行 5908-5910 (3 -> 7 行)
+✓ 变更 30: 在行 11284 后插入 1 行
+✓ 变更 31: 替换行 11383-11383 (1 -> 6 行)
+✓ 变更 32: 替换行 11402-11402 (1 -> 7 行)
+✓ 变更 33: 删除行 12068-12817 (750 行)
+✓ 变更 34: 替换行 12224-12225 (2 -> 2 行)
+✓ 变更 35: 替换行 12343-12343 (1 -> 1 行)
+✓ 变更 36: 在行 13915 后插入 57 行
+✓ 变更 37: 在行 14449 后插入 41 行
+✓ 变更 38: 在行 14974 后插入 1 行
+✓ 变更 39: 在行 15065 后插入 9 行
+✓ 变更 40: 替换行 15076-15084 (9 -> 1 行)
+✓ 变更 41: 在行 15324 后插入 1 行
+✓ 变更 42: 替换行 16270-16270 (1 -> 1 行)
+✓ 变更 43: 在行 16277 后插入 34 行
+✓ 变更 44: 替换行 16630-16631 (2 -> 2 行)
+✓ 变更 45: 在行 16673 后插入 1 行
+✓ 变更 46: 删除行 16675-16675 (1 行)
+✓ 变更 47: 替换行 16677-16679 (3 -> 1 行)
+✓ 变更 48: 替换行 16704-16713 (10 -> 10 行)
+✓ 变更 49: 在行 16730 后插入 7 行
+✓ 变更 50: 替换行 17243-17244 (2 -> 2 行)
+✓ 变更 51: 在行 17390 后插入 3 行
+✓ 变更 52: 在行 17394 后插入 1 行
+✓ 变更 53: 替换行 17447-17447 (1 -> 1 行)
+
+详细变更记录:
+----------------------------------------
+
+变更 1:
+  类型: replace
+  位置: 行 2-2 -> 2-2
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - @set masver=3.7
+  添加内容:
+    + @set masver=3.8
+
+变更 2:
+  类型: delete
+  位置: 行 394-394
+  删除: 1 行
+  删除内容:
+    - echo "%_args%" | find /i "/KMS38"  %nul% && (setlocal & cls & (call :KMS38Activation   %_args% %_silent%) & endlocal)
+
+变更 3:
+  类型: insert
+  位置: 在行 457 后插入
+  添加: 1 行
+  添加内容:
+    + echo:
+
+变更 4:
+  类型: replace
+  位置: 行 476-477 -> 476-476
+  删除: 2 行
+  添加: 1 行
+  删除内容:
+    - echo:             [4] KMS38               - Windows
+    - echo:             [5] Online KMS          - Windows / Office
+  添加内容:
+    + echo:             [4] Online KMS          - Windows / Office
+
+变更 5:
+  类型: replace
+  位置: 行 480-482 -> 479-481
+  删除: 3 行
+  添加: 3 行
+  删除内容:
+    - echo:             [6] Check Activation Status
+    - echo:             [7] Change Windows Edition
+    - echo:             [8] Change Office Edition
+  添加内容:
+    + echo:             [5] Check Activation Status
+    + echo:             [6] Change Windows Edition
+    + echo:             [7] Change Office Edition
+
+变更 6:
+  类型: replace
+  位置: 行 485-485 -> 484-484
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - echo:             [9] Troubleshoot
+  添加内容:
+    + echo:             [8] Troubleshoot
+
+变更 7:
+  类型: replace
+  位置: 行 492-492 -> 491-491
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - choice /C:123456789EH0 /N
+  添加内容:
+    + choice /C:12345678EH0 /N
+
+变更 8:
+  类型: replace
+  位置: 行 495-503 -> 494-501
+  删除: 9 行
+  添加: 8 行
+  删除内容:
+    - if %_erl%==12 exit /b
+    - if %_erl%==11 (start %selfgit% & start %github% & start %mas%troubleshoot & goto :MainMenu)
+    - if %_erl%==10 goto :Extras
+    - if %_erl%==9 setlocal & call :troubleshoot      & cls & endlocal & goto :MainMenu
+    - if %_erl%==8 setlocal & call :change_offedition & cls & endlocal & goto :MainMenu
+    - if %_erl%==7 setlocal & call :change_winedition & cls & endlocal & goto :MainMenu
+    - if %_erl%==6 setlocal & call :check_actstatus   & cls & endlocal & goto :MainMenu
+    - if %_erl%==5 setlocal & call :KMSActivation     & cls & endlocal & goto :MainMenu
+    - if %_erl%==4 setlocal & call :KMS38Activation   & cls & endlocal & goto :MainMenu
+  添加内容:
+    + if %_erl%==11 exit /b
+    + if %_erl%==10 (start %selfgit% & start %github% & start %mas%troubleshoot & goto :MainMenu)
+    + if %_erl%==9 goto :Extras
+    + if %_erl%==8 setlocal & call :troubleshoot      & cls & endlocal & goto :MainMenu
+    + if %_erl%==7 setlocal & call :change_offedition & cls & endlocal & goto :MainMenu
+    + if %_erl%==6 setlocal & call :change_winedition & cls & endlocal & goto :MainMenu
+    + if %_erl%==5 setlocal & call :check_actstatus   & cls & endlocal & goto :MainMenu
+    + if %_erl%==4 setlocal & call :KMSActivation     & cls & endlocal & goto :MainMenu
+
+变更 9:
+  类型: replace
+  位置: 行 579-587 -> 577-584
+  删除: 9 行
+  添加: 8 行
+  删除内容:
+    - echo:            [1] HWID             [Windows]
+    - echo:            [2] Ohook            [Office]
+    - echo:            [3] TSforge          [Windows / ESU / Office]
+    - echo:            [4] KMS38            [Windows]
+    - echo:            [5] Online KMS       [Windows / Office]
+    - echo:
+    - echo:            [6] HWID    [Windows] ^+ Ohook [Office]
+    - echo:            [7] HWID    [Windows] ^+ Ohook [Office] ^+ TSforge [ESU]
+    - echo:            [8] TSforge [Windows] ^+ Online KMS [Office]
+  添加内容:
+    + echo:            [1] HWID       [Windows]
+    + echo:            [2] Ohook      [Office]
+    + echo:            [3] TSforge    [Windows / ESU / Office]
+    + echo:            [4] Online KMS [Windows / Office]
+    + echo:
+    + echo:            [5] HWID       [Windows] ^+ Ohook [Office]
+    + echo:            [6] HWID       [Windows] ^+ Ohook [Office] ^+ TSforge [ESU]
+    + echo:            [7] TSforge    [Windows / ESU] ^+ Ohook [Office]
+
+变更 10:
+  类型: replace
+  位置: 行 594-594 -> 591-591
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - choice /C:12345678R0 /N
+  添加内容:
+    + choice /C:1234567R0 /N
+
+变更 11:
+  类型: replace
+  位置: 行 597-603 -> 594-599
+  删除: 7 行
+  添加: 6 行
+  删除内容:
+    - if %_erl%==10 goto:Extras
+    - if %_erl%==9 start %mas%oem-folder &goto:Extract$OEM$2
+    - if %_erl%==8 (set "_oem=TSforge [Windows] + Online KMS [Office]" & set "para=/Z-Windows /K-Office" &goto:Extract$OEM$3)
+    - if %_erl%==7 (set "_oem=HWID [Windows] + Ohook [Office] + TSforge [ESU]" & set "para=/HWID /Ohook /Z-ESU" &goto:Extract$OEM$3)
+    - if %_erl%==6 (set "_oem=HWID [Windows] + Ohook [Office]" & set "para=/HWID /Ohook" &goto:Extract$OEM$3)
+    - if %_erl%==5 (set "_oem=Online KMS" & set "para=/K-WindowsOffice" &goto:Extract$OEM$3)
+    - if %_erl%==4 (set "_oem=KMS38" & set "para=/KMS38" &goto:Extract$OEM$3)
+  添加内容:
+    + if %_erl%==9 goto:Extras
+    + if %_erl%==8 start %mas%oem-folder &goto:Extract$OEM$2
+    + if %_erl%==7 (set "_oem=TSforge [Windows / ESU] + Ohook [Office]" & set "para=/Z-Windows /Z-ESU /Ohook" &goto:Extract$OEM$3)
+    + if %_erl%==6 (set "_oem=HWID [Windows] + Ohook [Office] + TSforge [ESU]" & set "para=/HWID /Ohook /Z-ESU" &goto:Extract$OEM$3)
+    + if %_erl%==5 (set "_oem=HWID [Windows] + Ohook [Office]" & set "para=/HWID /Ohook" &goto:Extract$OEM$3)
+    + if %_erl%==4 (set "_oem=Online KMS" & set "para=/K-WindowsOffice" &goto:Extract$OEM$3)
+
+变更 12:
+  类型: delete
+  位置: 行 641-645
+  删除: 5 行
+  删除内容:
+    - echo "%_oem%" | find /i "KMS38" 1>nul && (
+    - echo:
+    - echo To KMS38 activate Server Cor/Acor editions ^(No GUI Versions^),
+    - echo Check this page %mas%oem-folder
+    - )
+
+变更 13:
+  类型: replace
+  位置: 行 731-732 -> 722-723
+  删除: 2 行
+  添加: 2 行
+  删除内容:
+    - set fixes=%fixes% %mas%troubleshoot
+    - call :dk_color2 %Blue% "Check this webpage for help - " %_Yellow% " %mas%troubleshoot"
+  添加内容:
+    + set fixes=%fixes% %mas%in-place_repair_upgrade
+    + call :dk_color2 %Blue% "If it still shows the same error, do this - " %_Yellow% " %mas%in-place_repair_upgrade"
+
+变更 14:
+  类型: insert
+  位置: 在行 1477 后插入
+  添加: 5 行
+  添加内容:
+    + if %spperror% EQU 1053 (
+    + echo:
+    + call :dk_color %Blue% "Reboot your machine using the restart option and try again."
+    + call :dk_color %Blue% "If it still does not work, go back to Main Menu, select Troubleshoot and run Fix WPA Registry option."
+    + )
+
+变更 15:
+  类型: insert
+  位置: 在行 1788 后插入
+  添加: 7 行
+  添加内容:
+    + 
+    + if %_wmic% EQU 1 wmic path %sps% get Version %nul%
+    + if %_wmic% EQU 0 %psc% "try { $null=([WMISEARCHER]'SELECT * FROM %sps%').Get().Version; exit 0 } catch { exit $_.Exception.InnerException.HResult }" %nul%
+    + set error_code=%errorlevel%
+    + cmd /c exit /b %error_code%
+    + if %error_code% NEQ 0 set "error_code=0x%=ExitCode%"
+    + 
+
+变更 16:
+  类型: delete
+  位置: 行 1981-1986
+  删除: 6 行
+  删除内容:
+    - if %_wmic% EQU 1 wmic path %sps% get Version %nul%
+    - if %_wmic% EQU 0 %psc% "try { $null=([WMISEARCHER]'SELECT * FROM %sps%').Get().Version; exit 0 } catch { exit $_.Exception.InnerException.HResult }" %nul%
+    - set error_code=%errorlevel%
+    - cmd /c exit /b %error_code%
+    - if %error_code% NEQ 0 set "error_code=0x%=ExitCode%"
+    - 
+
+变更 17:
+  类型: replace
+  位置: 行 2133-2133 -> 2130-2132
+  删除: 1 行
+  添加: 3 行
+  删除内容:
+    - if exist "%SysPath%\wlms\wlms.exe" (
+  添加内容:
+    + sc query wlms %nul%
+    + 
+    + if %errorlevel% NEQ 1060 (
+
+变更 18:
+  类型: insert
+  位置: 在行 2351 后插入
+  添加: 1 行
+  添加内容:
+    + 1bc2140b-285b-4351-b99c-26a126104b29_TMP2N-KGFHJ-PWM6F-68KCQ-3P%f%JBP_210_X23-60513_0_____Retail_WNC
+
+变更 19:
+  类型: replace
+  位置: 行 2580-2581 -> 2580-2581
+  删除: 2 行
+  添加: 2 行
+  删除内容:
+    - set fixes=%fixes% %mas%troubleshoot
+    - call :dk_color2 %Blue% "Check this webpage for help - " %_Yellow% " %mas%troubleshoot"
+  添加内容:
+    + set fixes=%fixes% %mas%in-place_repair_upgrade
+    + call :dk_color2 %Blue% "If it still shows the same error, do this - " %_Yellow% " %mas%in-place_repair_upgrade"
+
+变更 20:
+  类型: replace
+  位置: 行 3621-3624 -> 3621-3624
+  删除: 4 行
+  添加: 4 行
+  删除内容:
+    - call :dk_color %Gray% "Office vNext subscription detected:"
+    - call :dk_color %Blue% "If active, this license overrides other activation methods."
+    - call :dk_color %Blue% "If expiring soon, rerun the script after expiration."
+    - call :dk_color2 %Blue% "If expired and script activation fails, get help - " %_Yellow% " %mas%troubleshoot"
+  添加内容:
+    + call :dk_color %Gray% "The logged-in Office account has a subscription license."
+    + call :dk_color %Blue% "If the subscription is active, it overrides other activation methods."
+    + call :dk_color %Blue% "If it is expiring soon, rerun the activation script after it expires."
+    + call :dk_color2 %Blue% "If it has already expired and activation fails, get help here - " %_Yellow% " %mas%troubleshoot"
+
+变更 21:
+  类型: replace
+  位置: 行 4549-4550 -> 4549-4550
+  删除: 2 行
+  添加: 2 行
+  删除内容:
+    - set fixes=%fixes% %mas%troubleshoot
+    - call :dk_color2 %Blue% "Check this webpage for help - " %_Yellow% " %mas%troubleshoot"
+  添加内容:
+    + set fixes=%fixes% %mas%in-place_repair_upgrade
+    + call :dk_color2 %Blue% "If it still shows the same error, do this - " %_Yellow% " %mas%in-place_repair_upgrade"
+
+变更 22:
+  类型: replace
+  位置: 行 5055-5055 -> 5055-5060
+  删除: 1 行
+  添加: 6 行
+  删除内容:
+    - set w10EsuEditions=Education-EducationN-Enterprise-EnterpriseN-Professional-ProfessionalEducation-ProfessionalEducationN-ProfessionalN-ProfessionalWorkstation-ProfessionalWorkstationN-ServerRdsh
+  添加内容:
+    + set w10EsuEditions=Education-EducationN-Enterprise-EnterpriseN-Professional-ProfessionalEducation-ProfessionalEducationN-ProfessionalN-ProfessionalWorkstation-ProfessionalWorkstationN
+    + 
+    + set minbuild=0
+    + if /i %tsedition%==ServerRdsh set minbuild=5552
+    + for %%# in (Core CoreN CoreCountrySpecific CoreSingleLanguage) do (if /i %tsedition%==%%# set minbuild=6156)
+    + if /i %tsedition%==PPIPro set minbuild=6388
+
+变更 23:
+  类型: replace
+  位置: 行 5059-5060 -> 5064-5065
+  删除: 2 行
+  添加: 2 行
+  删除内容:
+    - if %winbuild% EQU 19045 if %UBR% GEQ 6156 (
+    - set w10EsuEditionsLaterAdded=Core-CoreN-CoreCountrySpecific-CoreSingleLanguage-IoTEnterprise-
+  添加内容:
+    + if %winbuild% EQU 19045 if %minbuild% GTR 0 if %UBR% GEQ %minbuild% (
+    + set w10EsuEditionsLaterAdded=%tsedition%-
+
+变更 24:
+  类型: replace
+  位置: 行 5810-5810 -> 5815-5815
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    -         $_.Name -notlike "*CountrySpecific*"
+  添加内容:
+    +         $_.Name -like "*ESU*" -or $_.Name -notlike "*CountrySpecific*"
+
+变更 25:
+  类型: replace
+  位置: 行 5817-5817 -> 5822-5822
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    -         $_.Name -notlike "*CloudEdition*"
+  添加内容:
+    +         $_.Name -like "*ESU*" -or $_.Name -notlike "*CloudEdition*"
+
+变更 26:
+  类型: replace
+  位置: 行 5891-5891 -> 5896-5896
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - if /i %tsmethod%==KMS4k if %winbuild% GEQ 26200 (
+  添加内容:
+    + if /i %tsmethod%==KMS4k if %winbuild% GEQ 26100 (
+
+变更 27:
+  类型: replace
+  位置: 行 5897-5897 -> 5902-5902
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - call :dk_color %Gray% "Windows Update can receive 1-3 years of ESU. 4-6 years ESU is not officially supported, but you can manually install updates."
+  添加内容:
+    + call :dk_color %Gray% "Windows Update gets 1-3 years of ESU; 4-6 are unofficial but let you install Server 2008 R2 updates manually."
+
+变更 28:
+  类型: replace
+  位置: 行 5900-5900 -> 5905-5905
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - call :dk_color %Gray% "ESU is not officially supported on Windows 8.1, but you can manually install updates until Jan-2024."
+  添加内容:
+    + call :dk_color %Gray% "ESU is not officially supported on Windows 8.1, but updates can be installed manually until January 2024."
+
+变更 29:
+  类型: replace
+  位置: 行 5903-5905 -> 5908-5914
+  删除: 3 行
+  添加: 7 行
+  删除内容:
+    - call :dk_color %Gray% "Windows Update can receive 1-3 years of ESU. 4-6 years ESU is not officially supported, but it might be useful."
+    - )
+    - )
+  添加内容:
+    + call :dk_color %Gray% "Windows Update gets 1-3 years of ESU; 4-6 are unofficial but may let you install LTSC updates manually."
+    + if exist %SysPath%\ClipESUConsumer.exe (%SysPath%\ClipESUConsumer.exe -evaluateEligibility)
+    + if exist %SysPath%\ClipESU.exe (%SysPath%\ClipESU.exe %nul%)
+    + )
+    + )
+    + 
+    + if defined esuexistsup echo Help: %mas%tsforge#windows-esu
+
+变更 30:
+  类型: insert
+  位置: 在行 11275 后插入
+  添加: 1 行
+  添加内容:
+    + $build = [System.Environment]::OSVersion.Version.Build
+
+变更 31:
+  类型: replace
+  位置: 行 11373-11373 -> 11383-11388
+  删除: 1 行
+  添加: 6 行
+  删除内容:
+    -                 if ($GracePeriodStatus -gt 259200) { $activated = 1 }
+  添加内容:
+    +                 if ($GracePeriodStatus -eq 259200 -or ([datetime]::Now.AddMinutes($GracePeriodStatus)).Year -gt 2038) {
+    +                     if ((($build -ge 26100 -and $GracePeriodStatus -ge 259200) -or 
+    +                             ($build -lt 26100 -and $GracePeriodStatus -gt 259200))) {
+    +                         $activated = 1
+    +                     }
+    +                 }
+
+变更 32:
+  类型: replace
+  位置: 行 11387-11387 -> 11402-11408
+  删除: 1 行
+  添加: 7 行
+  删除内容:
+    -                         Write-Host "[$prodName] is activated till $([DateTime]::Now.AddMinutes($GracePeriodStatus).ToString('yyyy-MM-dd HH:mm:ss')) with $env:tsmethod." -ForegroundColor White -BackgroundColor DarkGreen
+  添加内容:
+    +                         if ($build -ge 26100) {
+    +                             Write-Host "[$prodName] is activated with KMS4k for over 4,000 years." -ForegroundColor White -BackgroundColor DarkGreen
+    +                             Write-Host "From build 26100.7019, Windows will always display and stay at 180 days remaining if the actual period is longer." -ForegroundColor White -BackgroundColor Darkgray
+    +                         }
+    +                         else {
+    +                             Write-Host "[$prodName] is activated till $([DateTime]::Now.AddMinutes($GracePeriodStatus).ToString('yyyy-MM-dd HH:mm:ss')) with $env:tsmethod." -ForegroundColor White -BackgroundColor DarkGreen
+    +                         }
+
+变更 33:
+  类型: delete
+  位置: 行 12047-12796
+  删除: 750 行
+  删除内容:
+    - :KMS38Activation
+    - 
+    - ::  To activate, run the script with "/KMS38" parameter or change 0 to 1 in below line
+    - set _act=0
+    - 
+    - ::  To disable changing edition if current edition doesn't support KMS38 activation, change the value to 1 from 0 or run the script with "/KMS38-NoEditionChange" parameter
+    - set _NoEditionChange=0
+    - 
+    - ::  If value is changed in above lines or parameter is used then script will run in unattended mode
+    - 
+    ... (还有 740 行)
+
+变更 34:
+  类型: replace
+  位置: 行 12953-12954 -> 12224-12225
+  删除: 2 行
+  添加: 2 行
+  删除内容:
+    - set fixes=%fixes% %mas%troubleshoot
+    - call :dk_color2 %Blue% "Check this webpage for help - " %_Yellow% " %mas%troubleshoot"
+  添加内容:
+    + set fixes=%fixes% %mas%in-place_repair_upgrade
+    + call :dk_color2 %Blue% "If it still shows the same error, do this - " %_Yellow% " %mas%in-place_repair_upgrade"
+
+变更 35:
+  类型: replace
+  位置: 行 13072-13072 -> 12343-12343
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - if defined allapps if not defined key call :kms38fallback
+  添加内容:
+    + if defined allapps if not defined key call :kmsfallback
+
+变更 36:
+  类型: insert
+  位置: 在行 14644 后插入
+  添加: 57 行
+  添加内容:
+    + 
+    + ::========================================================================================================================================
+    + 
+    + ::  Get Windows installed key channel
+    + 
+    + :k_channel
+    + 
+    + set _gvlk=
+    + if %_wmic% EQU 1 for /f "tokens=2 delims==" %%# in ('wmic path %spp% where "ApplicationID='55c92734-d682-4d71-983e-d6ec3f16059f' and PartialProductKey IS NOT NULL AND LicenseDependsOn is NULL and Description like '%%KMSCLIENT%%'" Get Name /value %nul6%') do (echo %%# findstr /i "Windows" %nul1% && set _gvlk=1)
+    + if %_wmic% EQU 0 for /f "tokens=2 delims==" %%# in ('%psc% "(([WMISEARCHER]'SELECT Name FROM %spp% WHERE ApplicationID=''55c92734-d682-4d71-983e-d6ec3f16059f'' AND PartialProductKey IS NOT NULL AND LicenseDependsOn is NULL and Description like ''%%KMSCLIENT%%''').Get()).Name | %% {echo ('Name='+$_)}" %nul6%') do (echo %%# findstr /i "Windows" %nul1% && set _gvlk=1)
+    ... (还有 47 行)
+
+变更 37:
+  类型: insert
+  位置: 在行 15121 后插入
+  添加: 41 行
+  添加内容:
+    + ::========================================================================================================================================
+    + 
+    + ::  Below code is used to get alternate edition name and key if current edition doesn't support K-M-S activation
+    + 
+    + ::  1st column = Current SKU ID
+    + ::  2nd column = Current Edition Name
+    + ::  3rd column = Current Edition Activation ID
+    + ::  4th column = Alternate Edition Activation ID
+    + ::  5th column = Alternate Edition GVLK
+    + ::  6th column = Alternate Edition Name
+    ... (还有 31 行)
+
+变更 38:
+  类型: insert
+  位置: 在行 15605 后插入
+  添加: 1 行
+  添加内容:
+    + 	DetectActType
+
+变更 39:
+  类型: insert
+  位置: 在行 15695 后插入
+  添加: 9 行
+  添加内容:
+    + function DetectActType
+    + {
+    + 	$VLType = strGetRegistry ($SPKeyPath + '\' + $strApp + '\' + $licID) "VLActivationType"
+    + 	if ($null -EQ $VLType) {$VLType = strGetRegistry ($SPKeyPath + '\' + $strApp) "VLActivationType"}
+    + 	if ($null -EQ $VLType) {$VLType = strGetRegistry ($SPKeyPath) "VLActivationType"}
+    + 	if ($null -EQ $VLType -Or $VLType -GT 3) {$VLType = 0}
+    + 	if ($null -NE $VLType) {CONOUT "Configured Activation Type: $($VLActTypes[$VLType])"}
+    + }
+    + 
+
+变更 40:
+  类型: replace
+  位置: 行 15697-15705 -> 15076-15076
+  删除: 9 行
+  添加: 1 行
+  删除内容:
+    - 	if ($win8)
+    - 	{
+    - 		$VLType = strGetRegistry ($SPKeyPath + '\' + $strApp + '\' + $licID) "VLActivationType"
+    - 		if ($null -EQ $VLType) {$VLType = strGetRegistry ($SPKeyPath + '\' + $strApp) "VLActivationType"}
+    - 		if ($null -EQ $VLType) {$VLType = strGetRegistry ($SPKeyPath) "VLActivationType"}
+    - 		if ($null -EQ $VLType -Or $VLType -GT 3) {$VLType = 0}
+    - 	}
+    - 	if ($null -NE $VLType) {CONOUT "Configured Activation Type: $($VLActTypes[$VLType])"}
+    - 
+  添加内容:
+    + 	if ($win8) {DetectActType}
+
+变更 41:
+  类型: insert
+  位置: 在行 15953 后插入
+  添加: 1 行
+  添加内容:
+    + 		$cKmsClient = $null
+
+变更 42:
+  类型: replace
+  位置: 行 16898-16898 -> 16270-16270
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - echo ClipSVC license rebuilding is supported only on Windows 10/11 and their Server equivalents.
+  添加内容:
+    + echo ClipSVC license rebuilding is supported only on Windows 10/11.
+
+变更 43:
+  类型: insert
+  位置: 在行 16905 后插入
+  添加: 34 行
+  添加内容:
+    + echo Skipping...
+    + goto :rebuildspptok
+    + )
+    + 
+    + set _partial=
+    + set _keymatch=
+    + for /f "tokens=2 delims==" %%# in ('%psc% "(([WMISEARCHER]'SELECT PartialProductKey FROM SoftwareLicensingProduct WHERE ApplicationID=''55c92734-d682-4d71-983e-d6ec3f16059f'' AND PartialProductKey IS NOT NULL AND LicenseDependsOn is NULL').Get()).PartialProductKey | %% {echo ('PartialProductKey='+$_)}" %nul6%') do set "_partial=%%#"
+    + for %%# in (8HV2C QPFCT 3V66T PKCKT WXCHW 8TYMD 6F4BT 8HVX7 KD72Y 7CFBY DRR8H P39PB DYJWX MDWWW 9HKR4 M7V2X 2YV77 WT2RQ MHBPB QPF8P 2YV66 VMJ2C DJ4F6 CKFFD YY74H J8JXD BHDCD T6R4W D32MH RRK69 3PJBP) do if /i "%_partial%"=="%%#" set _keymatch=1
+    + 
+    + if not defined _keymatch (
+    ... (还有 24 行)
+
+变更 44:
+  类型: replace
+  位置: 行 17224-17225 -> 16630-16631
+  删除: 2 行
+  添加: 2 行
+  删除内容:
+    - for /f "skip=2 tokens=2*" %%a in ('"reg query %_86%\ClickToRun /v InstallPath" %nul6%') do if exist "%%b\root\Licenses16\ProPlus*.xrm-ms"    (set "c2r16_86=Office 16.0 C2R x86"      & call :getc2rrepair c2r16repair86 OfficeClickToRun.exe)
+    - for /f "skip=2 tokens=2*" %%a in ('"reg query %_68%\ClickToRun /v InstallPath" %nul6%') do if exist "%%b\root\Licenses16\ProPlus*.xrm-ms"    (set "c2r16_68=Office 16.0 C2R x86/x64"  & call :getc2rrepair c2r16repair68 OfficeClickToRun.exe)
+  添加内容:
+    + for /f "skip=2 tokens=2*" %%a in ('"reg query %_86%\ClickToRun /v InstallPath" %nul6%') do if exist "%%b\root\Licenses16\ProPlus*.xrm-ms"    (set "c2r16_86=Office 16.0 C2R x86"      & call :getc2r16repair c2r16repair86 OfficeClickToRun.exe)
+    + for /f "skip=2 tokens=2*" %%a in ('"reg query %_68%\ClickToRun /v InstallPath" %nul6%') do if exist "%%b\root\Licenses16\ProPlus*.xrm-ms"    (set "c2r16_68=Office 16.0 C2R x86/x64"  & call :getc2r16repair c2r16repair68 OfficeClickToRun.exe)
+
+变更 45:
+  类型: insert
+  位置: 在行 17267 后插入
+  添加: 1 行
+  添加内容:
+    + echo:
+
+变更 46:
+  类型: delete
+  位置: 行 17268-17268
+  删除: 1 行
+  删除内容:
+    - echo:
+
+变更 47:
+  类型: replace
+  位置: 行 17271-17273 -> 16677-16677
+  删除: 3 行
+  添加: 1 行
+  删除内容:
+    - echo:
+    - ) else (
+    - echo:
+  添加内容:
+    + ) else if not defined c2r16_68 if not defined c2r16_86 (
+
+变更 48:
+  类型: replace
+  位置: 行 17300-17309 -> 16704-16713
+  删除: 10 行
+  添加: 10 行
+  删除内容:
+    - if defined msi14_68 if exist "%msi14repair68%" echo Running - "%msi14repair68%"                    & "%msi14repair68%"
+    - if defined msi14_86 if exist "%msi14repair86%" echo Running - "%msi14repair86%"                    & "%msi14repair86%"
+    - if defined msi15_68 if exist "%msi15repair68%" echo Running - "%msi15repair68%"                    & "%msi15repair68%"
+    - if defined msi15_86 if exist "%msi15repair86%" echo Running - "%msi15repair86%"                    & "%msi15repair86%"
+    - if defined msi16_68 if exist "%msi16repair68%" echo Running - "%msi16repair68%"                    & "%msi16repair68%"
+    - if defined msi16_86 if exist "%msi16repair86%" echo Running - "%msi16repair86%"                    & "%msi16repair86%"
+    - if defined c2r15_68 if exist "%c2r15repair68%" echo Running - "%c2r15repair68%" REPAIRUI RERUNMODE & "%c2r15repair68%" REPAIRUI RERUNMODE
+    - if defined c2r15_86 if exist "%c2r15repair86%" echo Running - "%c2r15repair86%" REPAIRUI RERUNMODE & "%c2r15repair86%" REPAIRUI RERUNMODE
+    - if defined c2r16_68 if exist "%c2r16repair68%" echo Running - "%c2r16repair68%" scenario=Repair    & "%c2r16repair68%" scenario=Repair
+    - if defined c2r16_86 if exist "%c2r16repair86%" echo Running - "%c2r16repair86%" scenario=Repair    & "%c2r16repair86%" scenario=Repair
+  添加内容:
+    + if defined msi14_68 if exist "%msi14repair68%" echo Running - "%msi14repair68%"                                        & "%msi14repair68%"
+    + if defined msi14_86 if exist "%msi14repair86%" echo Running - "%msi14repair86%"                                        & "%msi14repair86%"
+    + if defined msi15_68 if exist "%msi15repair68%" echo Running - "%msi15repair68%"                                        & "%msi15repair68%"
+    + if defined msi15_86 if exist "%msi15repair86%" echo Running - "%msi15repair86%"                                        & "%msi15repair86%"
+    + if defined msi16_68 if exist "%msi16repair68%" echo Running - "%msi16repair68%"                                        & "%msi16repair68%"
+    + if defined msi16_86 if exist "%msi16repair86%" echo Running - "%msi16repair86%"                                        & "%msi16repair86%"
+    + if defined c2r15_68 if exist "%c2r15repair68%" echo Running - "%c2r15repair68%" REPAIRUI RERUNMODE                     & "%c2r15repair68%" REPAIRUI RERUNMODE
+    + if defined c2r15_86 if exist "%c2r15repair86%" echo Running - "%c2r15repair86%" REPAIRUI RERUNMODE                     & "%c2r15repair86%" REPAIRUI RERUNMODE
+    + if defined c2r16_68 if exist "%c2r16repair68%" echo Running - "%c2r16repair68%" Scenario=Repair RepairType=QuickRepair & "%c2r16repair68%" Scenario=Repair RepairType=QuickRepair
+    + if defined c2r16_86 if exist "%c2r16repair86%" echo Running - "%c2r16repair86%" Scenario=Repair RepairType=QuickRepair & "%c2r16repair86%" Scenario=Repair RepairType=QuickRepair
+
+变更 49:
+  类型: insert
+  位置: 在行 17326 后插入
+  添加: 7 行
+  添加内容:
+    + )
+    + exit /b
+    + 
+    + :getc2r16repair
+    + 
+    + for %%# in (%_68% %_86%) do (
+    + for /f "skip=2 tokens=2*" %%a in ('"reg query %%#\ClickToRun\Configuration /v ClientFolder" %nul6%') do if exist "%%b\%2" (set "%1=%%b\%2")
+
+变更 50:
+  类型: replace
+  位置: 行 17832-17833 -> 17243-17244
+  删除: 2 行
+  添加: 2 行
+  删除内容:
+    - set fixes=%fixes% %mas%troubleshoot
+    - call :dk_color2 %Blue% "Check this webpage for help - " %_Yellow% " %mas%troubleshoot"
+  添加内容:
+    + set fixes=%fixes% %mas%in-place_repair_upgrade
+    + call :dk_color2 %Blue% "If it still shows the same error, do this - " %_Yellow% " %mas%in-place_repair_upgrade"
+
+变更 51:
+  类型: insert
+  位置: 在行 17979 后插入
+  添加: 3 行
+  添加内容:
+    + if /i %%A==IoTEnterprise (
+    + echo [!counter!]  %%A [GAC, not LTSC]
+    + ) else (
+
+变更 52:
+  类型: insert
+  位置: 在行 17980 后插入
+  添加: 1 行
+  添加内容:
+    + )
+
+变更 53:
+  类型: replace
+  位置: 行 18032-18032 -> 17447-17447
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - set "keyflow=Retail Volume:GVLK Volume:MAK OEM:NONSLP OEM:DM PGS:TB Retail:TB:Eval"
+  添加内容:
+    + set "keyflow=Retail OEM:NONSLP OEM:DM Volume:MAK Volume:GVLK PGS:TB Retail:TB:Eval"
+
+================================================================================
+报告结束
+================================================================================
