@@ -1,0 +1,207 @@
+================================================================================
+MAS脚本同步报告 - v3.8 -> v3.9
+================================================================================
+生成时间: 2025-11-24 19:50:25
+
+统计信息:
+----------------------------------------
+v3.8英文版行数: 19276
+v3.9英文版行数: 19268
+英文版行数变化: -8
+v3.8中文版行数: 19276
+v3.9中文版行数: 19268
+中文版行数变化: -8
+与英文v3.9行数差异: +0
+检测到的变更数: 14
+成功应用的变更数: 14
+
+变更总览:
+----------------------------------------
+replace: 12 处
+delete: 2 处
+总计: 14 处变更
+
+应用日志:
+----------------------------------------
+✓ 变更 1: 替换行 1-2 (2 -> 2 行)
+✓ 变更 2: 替换行 8-8 (1 -> 1 行)
+✓ 变更 3: 替换行 15-15 (1 -> 1 行)
+✓ 变更 4: 替换行 2836-2836 (1 -> 1 行)
+✓ 变更 5: 替换行 4161-4161 (1 -> 1 行)
+✓ 变更 6: 替换行 4167-4167 (1 -> 1 行)
+✓ 变更 7: 替换行 5059-5059 (1 -> 1 行)
+✓ 变更 8: 删除行 5088-5091 (4 行)
+✓ 变更 9: 替换行 5413-5413 (1 -> 1 行)
+✓ 变更 10: 替换行 5903-5903 (1 -> 1 行)
+✓ 变更 11: 替换行 12715-12715 (1 -> 1 行)
+✓ 变更 12: 替换行 13060-13060 (1 -> 1 行)
+✓ 变更 13: 删除行 14464-14466 (3 行)
+✓ 变更 14: 替换行 18799-18812 (14 -> 13 行)
+
+详细变更记录:
+----------------------------------------
+
+变更 1:
+  类型: replace
+  位置: 行 1-2 -> 1-2
+  删除: 2 行
+  添加: 2 行
+  删除内容:
+    - @::r45f3r3-random
+    - @set masver=3.8
+  添加内容:
+    + @::sfh437frandom
+    + @set masver=3.9
+
+变更 2:
+  类型: replace
+  位置: 行 8-8 -> 8-8
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - ::  For command line switches, check mass()grave(dot)dev/command_line_switches
+  添加内容:
+    + ::  For command line switches, check mass{}grave{dot}dev/command_line_switches
+
+变更 3:
+  类型: replace
+  位置: 行 15-15 -> 15-15
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - ::   Homepage: mass()grave(dot)dev
+  添加内容:
+    + ::   Homepage: mass{}grave{dot}dev
+
+变更 4:
+  类型: replace
+  位置: 行 2836-2836 -> 2836-2836
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - ::  mass()grave(dot)dev/office-license-is-not-genuine
+  添加内容:
+    + ::  mass{}grave{dot}dev/office-license-is-not-genuine
+
+变更 5:
+  类型: replace
+  位置: 行 4161-4161 -> 4161-4161
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - ::  mass()grave(dot)dev/ohook
+  添加内容:
+    + ::  mass{}grave{dot}dev/ohook
+
+变更 6:
+  类型: replace
+  位置: 行 4167-4167 -> 4167-4167
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - ::  For any further question, feel free to contact us on mass()grave(dot)dev/contactus
+  添加内容:
+    + ::  For any further question, feel free to contact us on mass{}grave{dot}dev/contactus
+
+变更 7:
+  类型: replace
+  位置: 行 5059-5059 -> 5059-5059
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - for %%# in (Core CoreN CoreCountrySpecific CoreSingleLanguage) do (if /i %tsedition%==%%# set minbuild=6156)
+  添加内容:
+    + for %%# in (Core CoreN CoreCountrySpecific CoreSingleLanguage IoTEnterprise) do (if /i %tsedition%==%%# set minbuild=6156)
+
+变更 8:
+  类型: delete
+  位置: 行 5088-5091
+  删除: 4 行
+  删除内容:
+    - b8527af1-5389-447c-9a88-2d1691ea33d3_Client-IoT-ESU-Year1_-IoTEnterprise-
+    - 7b76ee02-0a75-4f08-85d5-bd0feadad0c0_Client-IoT-ESU-Year2_-IoTEnterprise-
+    - 4dac5a0c-5709-4595-a32c-14a56a4a6b31_Client-IoT-ESU-Year3_-IoTEnterprise-
+    - f69e2d51-3bbd-4ddf-8da7-a145e9dca597_Client-IoT-ESU-Year6[4-6y]_-IoTEnterprise-
+
+变更 9:
+  类型: replace
+  位置: 行 5417-5417 -> 5413-5413
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - ::  mass()grave(dot)dev/office-license-is-not-genuine
+  添加内容:
+    + ::  mass{}grave{dot}dev/office-license-is-not-genuine
+
+变更 10:
+  类型: replace
+  位置: 行 5907-5907 -> 5903-5903
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - echo "%tsids%" | findstr /i "0b533b5e-08b6-44f9-b885-c2de291ba456 f69e2d51-3bbd-4ddf-8da7-a145e9dca597" %nul1% && (
+  添加内容:
+    + echo "%tsids%" | findstr /i "83d49986-add3-41d7-ba33-87c7bfb5c0fb 0b533b5e-08b6-44f9-b885-c2de291ba456" %nul1% && (
+
+变更 11:
+  类型: replace
+  位置: 行 12719-12719 -> 12715-12715
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - REM  mass()grave(dot)dev/office-license-is-not-genuine
+  添加内容:
+    + REM  mass{}grave{dot}dev/office-license-is-not-genuine
+
+变更 12:
+  类型: replace
+  位置: 行 13064-13064 -> 13060-13060
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - ::   Homepage: mass()grave(dot)dev
+  添加内容:
+    + ::   Homepage: mass{}grave{dot}dev
+
+变更 13:
+  类型: delete
+  位置: 行 14468-14470
+  删除: 3 行
+  删除内容:
+    - 188_IoTEnterprise__________________8ab9bdd1-1f67-4997-82d9-8878520837d9_73111121-5638-40f6-bc11-f1d7b0d64300_NPPR9-FWDCX-D2C8J-H872K-2Y%f%T43_Enterprise
+    - 206_IoTEnterpriseK_________________80083eae-7031-4394-9e88-4901973d56fe_73111121-5638-40f6-bc11-f1d7b0d64300_NPPR9-FWDCX-D2C8J-H872K-2Y%f%T43_Enterprise
+    - 191_IoTEnterpriseS-2021____________ed655016-a9e8-4434-95d9-4345352c2552_32d2fab3-e4a8-42c2-923b-4bf4fd13e6ee_M7XTQ-FN8P6-TTKYV-9D4CC-J4%f%62D_EnterpriseS-2021
+
+变更 14:
+  类型: replace
+  位置: 行 18806-18819 -> 18799-18811
+  删除: 14 行
+  添加: 13 行
+  删除内容:
+    - "5440fd1f-7ecb-4221-8110-145efaa6372f_Insider Fast [Beta]  -    Insiders::DevMain   -"
+    - "64256afe-f5d9-4f86-8936-8840a6a4f5be_Monthly Preview      -    Insiders::CC        -"
+    - "492350f6-3a01-4f97-b9c0-c7c6ddf67d60_Monthly [Current]    -  Production::CC        -"
+    - "55336b82-a18d-4dd6-b5f6-9e5095c314a6_Monthly Enterprise   -  Production::MEC       -"
+    - "b8f9b850-328d-4355-9145-c59439a0c4cf_Semi Annual Preview  -    Insiders::FRDC      -"
+    - "7ffbc6bf-bc32-4f92-8982-f9dd17fd3114_Semi Annual          -  Production::DC        -"
+    - "ea4a4090-de26-49d7-93c1-91bff9e53fc3_DevMain Channel      -     Dogfood::DevMain   -"
+    - "b61285dd-d9f7-41f2-9757-8f61cba4e9c8_Microsoft Elite      -   Microsoft::DevMain   -"
+    - "f2e724c1-748f-4b47-8fb8-8e0d210e9208_Perpetual2019 VL     -  Production::LTSC      -"
+    - "1d2d2ea6-1680-4c56-ac58-a441c8c24ff9_Microsoft2019 VL     -   Microsoft::LTSC      -"
+    ... (还有 4 行)
+  添加内容:
+    + "5440fd1f-7ecb-4221-8110-145efaa6372f_Beta    / Insider Fast    -   Insiders::DevMain  -"
+    + "64256afe-f5d9-4f86-8936-8840a6a4f5be_Current / Monthly Preview -   Insiders::CC       -"
+    + "492350f6-3a01-4f97-b9c0-c7c6ddf67d60_Current / Monthly         - Production::CC       -"
+    + "55336b82-a18d-4dd6-b5f6-9e5095c314a6_Monthly Enterprise        - Production::MEC      -"
+    + "7ffbc6bf-bc32-4f92-8982-f9dd17fd3114_Semi Annual Enterprise    - Production::DC       -"
+    + "ea4a4090-de26-49d7-93c1-91bff9e53fc3_DevMain Channel           -    Dogfood::DevMain  -"
+    + "b61285dd-d9f7-41f2-9757-8f61cba4e9c8_Microsoft Elite           -  Microsoft::DevMain  -"
+    + "f2e724c1-748f-4b47-8fb8-8e0d210e9208_Perpetual2019 VL          - Production::LTSC     -"
+    + "1d2d2ea6-1680-4c56-ac58-a441c8c24ff9_Microsoft2019 VL          -  Microsoft::LTSC     -"
+    + "5030841d-c919-4594-8d2d-84ae4f96e58e_Perpetual2021 VL          - Production::LTSC2021 -"
+    ... (还有 3 行)
+
+================================================================================
+报告结束
+================================================================================
