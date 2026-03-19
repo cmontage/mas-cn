@@ -9,9 +9,6 @@ if (-not $Arguments) {
 }
 
 & {
-    param([string[]]$Arguments)
-    
-    $args = $Arguments
     $psv = (Get-Host).Version.Major
     $troubleshoot = 'https://github.com/cmontage/mas-cn/issues'
 
@@ -163,9 +160,10 @@ if (-not $Arguments) {
     CheckFile $tempFile
 
     # 启动前设置代码页为936（简体中文GBK），防止乱码
-    $argString = $args -join ' '
-    Start-Process -FilePath "cmd.exe" -ArgumentList "/c chcp 936 && `"$tempFile`" $argString" -Wait
+    $argString = $Arguments -join ' '
+    $cmdLine = 'chcp 936 && "' + $tempFile + '" ' + $argString
+    Start-Process -FilePath "cmd.exe" -ArgumentList "/c", $cmdLine -Wait
 
     # 删除临时文件
     Remove-Item $tempFile -Force -ErrorAction SilentlyContinue
-} -ArgumentList $Arguments
+}
