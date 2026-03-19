@@ -1,18 +1,25 @@
 # MAS 中文版获取脚本 - 优化版，解决Gitee下载乱码与兼容问题
 
-if (-not $args) {
+param(
+    [Parameter(ValueFromRemainingArguments = $true)]
+    [string[]]$Parameters
+)
+
+if (-not $Parameters -and -not $args) {
     Write-Host ''
     Write-Host '需要帮助？查看项目主页: ' -NoNewline
     Write-Host 'https://github.com/cmontage/mas-cn' -ForegroundColor Green
     Write-Host ''
 }
 
-# 通过脚本块执行，并显式传递参数给其内部方法
 & {
-    param($inArgs)
-    
-    $args = $inArgs
     $psv = (Get-Host).Version.Major
+    $troubleshoot = 'https://github.com/cmontage/mas-cn/issues'
+
+    # 检查 PowerShell 执行模式
+    if ($ExecutionContext.SessionState.LanguageMode.value__ -ne 0) {
+        Write-Host "PowerShell 未在完整语言模式下运行。"
+        Write-Host "帮助 - https://massgrave.dev/troubleshoot" -ForegroundColor White -BackgroundColor Blue
         return
     }
 
@@ -157,15 +164,12 @@ if (-not $args) {
     CheckFile $tempFile
 
     # 启动前设置代码页为936（简体中文GBK），防止乱码
-    if ($args.Count -gt 0) {
-        $argString = $args -join ' '
-    } else {
-        $argString = ''
+    $cmdArgs = "/c chcp 936 && `"$tempFile`""
+    if ($Parameters) {
+        $cmdArgs += " " + ($Parameters -join " ")
     }
-    $cmdLine = 'chcp 936 && "' + $tempFile + '" ' + $argString
-    Write-Host "执行: cmd.exe /c $cmdLine" -ForegroundColor Gray
-    Start-Process -FilePath "cmd.exe" -ArgumentList "/c", $cmdLine -Wait
+    Start-Process -FilePath "cmd.exe" -ArgumentList $cmdArgs -Wait
 
     # 删除临时文件
     Remove-Item $tempFile -Force -ErrorAction SilentlyContinue
-} -ArgumentList $args
+}
