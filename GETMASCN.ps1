@@ -1,6 +1,7 @@
 # MAS 中文版获取脚本 - 优化版，解决Gitee下载乱码与兼容问题
+param([string[]]$Arguments)
 
-if (-not $args) {
+if (-not $Arguments) {
     Write-Host ''
     Write-Host '需要帮助？查看项目主页: ' -NoNewline
     Write-Host 'https://github.com/cmontage/mas-cn' -ForegroundColor Green
@@ -8,6 +9,9 @@ if (-not $args) {
 }
 
 & {
+    param([string[]]$Arguments)
+    
+    $args = $Arguments
     $psv = (Get-Host).Version.Major
     $troubleshoot = 'https://github.com/cmontage/mas-cn/issues'
 
@@ -164,4 +168,4 @@ if (-not $args) {
 
     # 删除临时文件
     Remove-Item $tempFile -Force -ErrorAction SilentlyContinue
-}
+} -ArgumentList $Arguments
