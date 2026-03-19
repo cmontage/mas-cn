@@ -1,4 +1,4 @@
-# MAS 中文版获取脚本 - 优化版，解决Gitee下载乱码与兼容问题
+# MAS 中文版获取脚本
 
 param(
     [Parameter(ValueFromRemainingArguments = $true)]
