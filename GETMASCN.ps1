@@ -159,7 +159,8 @@ if (-not $args) {
     CheckFile $tempFile
 
     # 启动前设置代码页为936（简体中文GBK），防止乱码
-    Start-Process -FilePath "cmd.exe" -ArgumentList "/c chcp 936 && `"$tempFile`"" -Wait
+    $argString = $args -join ' '
+    Start-Process -FilePath "cmd.exe" -ArgumentList "/c chcp 936 && `"$tempFile`" $argString" -Wait
 
     # 删除临时文件
     Remove-Item $tempFile -Force -ErrorAction SilentlyContinue
