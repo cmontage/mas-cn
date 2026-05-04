@@ -1,0 +1,182 @@
+================================================================================
+MAS脚本同步报告 - v3.10 -> v3.11
+================================================================================
+生成时间: 2026-05-05 01:16:27
+
+统计信息:
+----------------------------------------
+v3.10英文版行数: 19223
+v3.11英文版行数: 19239
+英文版行数变化: +16
+v3.10中文版行数: 19223
+v3.11中文版行数: 19239
+中文版行数变化: +16
+与英文v3.11行数差异: +0
+检测到的变更数: 10
+成功应用的变更数: 10
+
+变更总览:
+----------------------------------------
+replace: 6 处
+insert: 4 处
+总计: 10 处变更
+
+应用日志:
+----------------------------------------
+✓ 变更 1: 替换行 1-2 (2 -> 6 行)
+✓ 变更 2: 替换行 5024-5024 (1 -> 1 行)
+✓ 变更 3: 在行 5062 后插入 1 行
+✓ 变更 4: 在行 5071 后插入 3 行
+✓ 变更 5: 替换行 5129-5129 (1 -> 1 行)
+✓ 变更 6: 在行 18381 后插入 5 行
+✓ 变更 7: 替换行 18398-18410 (13 -> 14 行)
+✓ 变更 8: 替换行 18419-18419 (1 -> 1 行)
+✓ 变更 9: 替换行 18421-18434 (14 -> 15 行)
+✓ 变更 10: 在行 18452 后插入 1 行
+
+详细变更记录:
+----------------------------------------
+
+变更 1:
+  类型: replace
+  位置: 行 1-2 -> 1-6
+  删除: 2 行
+  添加: 6 行
+  删除内容:
+    - @::22b1randomda521random7f94randomea5random8b55randoma71random85berandom90b7e
+    - @set masver=3.10
+  添加内容:
+    + @::Please stop false-flagging this script over and over. This is the 3rd time I've had to update the script to deal with the false positives.
+    + @::Nothing in this script is malicious and it is used by thousands of people *daily*.
+    + @::Is a real person even the one deciding to flag this or is it Copilot told to flag anything it decides not to like?
+    + @::If a campaign is using this script as a cover, please flag parts of the campaign instead of the script. This isn't the first time we experienced collateral damage due to campaigns completely unrelated to us.
+    + @::If you disagree that MAS is not malicious, we would appreciate if you contacted us to explain what constitutes MAS as "Sonbokli" and we'll look into it. Thank you. 
+    + @set masver=3.11
+
+变更 2:
+  类型: replace
+  位置: 行 5020-5020 -> 5024-5024
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - for %%# in (EnterpriseS IoTEnterpriseS IoTEnterpriseSK) do (if /i %tsedition%==%%# set isltsc=1)
+  添加内容:
+    + if %winbuild% GTR 14393 for %%# in (EnterpriseS IoTEnterpriseS IoTEnterpriseSK) do (if /i %tsedition%==%%# set isltsc=1)
+
+变更 3:
+  类型: insert
+  位置: 在行 5058 后插入
+  添加: 1 行
+  添加内容:
+    + 1b60284a-63b5-42da-8ec9-eaab825e2bc8_Server-ESU-Year5[4-5y]_-ServerDatacenter-ServerDatacenterCore-ServerDatacenterV-ServerDatacenterVCore-ServerStandard-ServerStandardCore-ServerStandardV-ServerStandardVCore-
+
+变更 4:
+  类型: insert
+  位置: 在行 5066 后插入
+  添加: 3 行
+  添加内容:
+    + REM Windows10LTSB2016
+    + f2571710-2c24-4677-8fb5-a07d41d3c1aa_Client-ESU-Year3[1-3y]_-EnterpriseS-EnterpriseSN-
+    + 22badfe6-7d55-4485-874b-7ec317442134_Client-ESU-Year6[4-6y]_-EnterpriseS-EnterpriseSN-
+
+变更 5:
+  类型: replace
+  位置: 行 5121-5121 -> 5129-5129
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - if %winbuild% GTR 7602 if %winbuild% LSS 14393 if defined isServer set esuavail=1
+  添加内容:
+    + if %winbuild% GTR 7602 if %winbuild% LEQ 14393 if defined isServer set esuavail=1
+
+变更 6:
+  类型: insert
+  位置: 在行 18373 后插入
+  添加: 5 行
+  添加内容:
+    + set OutlookForWindows_st=
+    + if %winbuild% GEQ 19041 if defined Outlook_st echo %targetedition% | find /i "O365" %nul1% && (
+    + set OutlookForWindows_st=Off
+    + )
+    + 
+
+变更 7:
+  类型: replace
+  位置: 行 18385-18397 -> 18398-18411
+  删除: 13 行
+  添加: 14 行
+  删除内容:
+    - if defined Access_st     echo [A] Access           : %Access_st%
+    - if defined Excel_st      echo [E] Excel            : %Excel_st%
+    - if defined OneNote_st    echo [N] OneNote          : %OneNote_st%
+    - if defined Outlook_st    echo [O] Outlook          : %Outlook_st%
+    - if defined PowerPoint_st echo [P] PowerPoint       : %PowerPoint_st%
+    - if defined Project_st    echo [J] Project          : %Project_st%
+    - if defined Publisher_st  echo [R] Publisher        : %Publisher_st%
+    - if defined Visio_st      echo [V] Visio            : %Visio_st%
+    - if defined Word_st       echo [W] Word             : %Word_st%
+    - echo:
+    ... (还有 3 行)
+  添加内容:
+    + if defined Access_st            echo [A] Access              : %Access_st%
+    + if defined Excel_st             echo [E] Excel               : %Excel_st%
+    + if defined OneNote_st           echo [N] OneNote             : %OneNote_st%
+    + if defined Outlook_st           echo [O] Outlook ^(Classic^)   : %Outlook_st%
+    + if defined PowerPoint_st        echo [P] PowerPoint          : %PowerPoint_st%
+    + if defined Project_st           echo [J] Project             : %Project_st%
+    + if defined Publisher_st         echo [R] Publisher           : %Publisher_st%
+    + if defined Visio_st             echo [V] Visio               : %Visio_st%
+    + if defined Word_st              echo [W] Word                : %Word_st%
+    + echo:
+    ... (还有 4 行)
+
+变更 8:
+  类型: replace
+  位置: 行 18405-18405 -> 18419-18419
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - choice /C:AENOPJRVWLDT10 /N
+  添加内容:
+    + choice /C:AENOPJRVWLKDT10 /N
+
+变更 9:
+  类型: replace
+  位置: 行 18407-18420 -> 18421-18435
+  删除: 14 行
+  添加: 15 行
+  删除内容:
+    - if !_el!==14 goto :oemenu
+    - if !_el!==13 call :excludelist & goto :oe_editionchangefinal
+    - if !_el!==12 if defined Teams_st      (if "%Teams_st%"=="Off"      (set Teams_st=ON)      else (set Teams_st=Off))
+    - if !_el!==11 if defined OneDrive_st   (if "%OneDrive_st%"=="Off"   (set OneDrive_st=ON)   else (set OneDrive_st=Off))
+    - if !_el!==10 if defined Lync_st       (if "%Lync_st%"=="Off"       (set Lync_st=ON)       else (set Lync_st=Off))
+    - if !_el!==9  if defined Word_st       (if "%Word_st%"=="Off"       (set Word_st=ON)       else (set Word_st=Off))
+    - if !_el!==8  if defined Visio_st      (if "%Visio_st%"=="Off"      (set Visio_st=ON)      else (set Visio_st=Off))
+    - if !_el!==7  if defined Publisher_st  (if "%Publisher_st%"=="Off"  (set Publisher_st=ON)  else (set Publisher_st=Off))
+    - if !_el!==6  if defined Project_st    (if "%Project_st%"=="Off"    (set Project_st=ON)    else (set Project_st=Off))
+    - if !_el!==5  if defined PowerPoint_st (if "%PowerPoint_st%"=="Off" (set PowerPoint_st=ON) else (set PowerPoint_st=Off))
+    ... (还有 4 行)
+  添加内容:
+    + if !_el!==15 goto :oemenu
+    + if !_el!==14 call :excludelist & goto :oe_editionchangefinal
+    + if !_el!==13 if defined Teams_st             (if "%Teams_st%"=="Off"             (set Teams_st=ON)             else (set Teams_st=Off))
+    + if !_el!==12 if defined OneDrive_st          (if "%OneDrive_st%"=="Off"          (set OneDrive_st=ON)          else (set OneDrive_st=Off))
+    + if !_el!==11 if defined OutlookForWindows_st (if "%OutlookForWindows_st%"=="Off" (set OutlookForWindows_st=ON) else (set OutlookForWindows_st=Off))
+    + if !_el!==10 if defined Lync_st              (if "%Lync_st%"=="Off"              (set Lync_st=ON)              else (set Lync_st=Off))
+    + if !_el!==9  if defined Word_st              (if "%Word_st%"=="Off"              (set Word_st=ON)              else (set Word_st=Off))
+    + if !_el!==8  if defined Visio_st             (if "%Visio_st%"=="Off"             (set Visio_st=ON)             else (set Visio_st=Off))
+    + if !_el!==7  if defined Publisher_st         (if "%Publisher_st%"=="Off"         (set Publisher_st=ON)         else (set Publisher_st=Off))
+    + if !_el!==6  if defined Project_st           (if "%Project_st%"=="Off"           (set Project_st=ON)           else (set Project_st=Off))
+    ... (还有 5 行)
+
+变更 10:
+  类型: insert
+  位置: 在行 18437 后插入
+  添加: 1 行
+  添加内容:
+    + outlookforwindows
+
+================================================================================
+报告结束
+================================================================================
