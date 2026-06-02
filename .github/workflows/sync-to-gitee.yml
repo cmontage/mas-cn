@@ -1,12 +1,12 @@
 name: Sync to Gitee (Code + Releases)
 
 on:
-  # push:             # main分支提交代码即触发
-  #   branches:
-  #     - main
+  push:             # main分支提交代码即触发
+    branches:
+      - main
   workflow_dispatch:  # 允许手动触发
-  schedule:
-    - cron: '5 0 * * *'  # 每天凌晨0:05执行
+  # schedule:
+  #   - cron: '5 0 * * *'  # 每天凌晨0:05执行
   release:           # release发布时触发
     types: [published]
 
@@ -23,17 +23,84 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 配置Git
+      - name: 检出代码
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: 检查并创建Gitee仓库
         run: |
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "actions@github.com"
+          echo "检查 Gitee 仓库: cmontage/${{ env.REPO_NAME }}"
+          
+          # 检查 Gitee 仓库是否存在
+          response=$(curl -s -o /dev/null -w "%{http_code}" \
+            "https://gitee.com/api/v5/repos/cmontage/${{ env.REPO_NAME }}?access_token=${{ secrets.GITEE_PASSWORD }}")
+          
+          echo "API 响应状态码: $response"
+          
+          if [ "$response" = "404" ]; then
+            echo "仓库不存在，正在创建新仓库..."
+            
+            # 创建新仓库
+            create_response=$(curl -s -X POST "https://gitee.com/api/v5/user/repos" \
+              -H "Content-Type: application/json" \
+              -d "{
+                \"access_token\": \"${{ secrets.GITEE_PASSWORD }}\",
+                \"name\": \"${{ env.REPO_NAME }}\",
+                \"description\": \"Auto-synced from GitHub repository ${{ github.repository }}\",
+                \"private\": false,
+                \"has_issues\": true,
+                \"has_wiki\": true,
+                \"can_comment\": true
+              }")
+            
+            echo "创建仓库响应: $create_response"
+            echo "✅ 仓库创建完成，准备同步..."
+          elif [ "$response" = "200" ]; then
+            echo "✅ 仓库已存在，直接进行同步..."
+          else
+            echo "❌ 检查仓库时出现异常，状态码: $response"
+            exit 1
+          fi
+        shell: bash
 
       - name: 同步到Gitee
-        uses: abersheeran/sync-gitee-mirror@v1-beta
-        with:
-          repository: cmontage/${{ env.REPO_NAME }}
-          username: cmontage
-          password: ${{ secrets.GITEE_PASSWORD }}
+        run: |
+          echo "开始同步到 Gitee..."
+          
+          # 配置 Git 用户信息
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          
+          # 添加 Gitee 远程仓库
+          git remote add gitee https://cmontage:${{ secrets.GITEE_PASSWORD }}@gitee.com/cmontage/${{ env.REPO_NAME }}.git || \
+          git remote set-url gitee https://cmontage:${{ secrets.GITEE_PASSWORD }}@gitee.com/cmontage/${{ env.REPO_NAME }}.git
+          
+          # 带重试的推送函数
+          push_with_retry() {
+            local max_retries=3
+            local retry_delay=10
+            for i in $(seq 1 $max_retries); do
+              echo "尝试推送 ($i/$max_retries)..."
+              if git push gitee "$@"; then
+                return 0
+              fi
+              if [ $i -lt $max_retries ]; then
+                echo "推送失败，${retry_delay}秒后重试..."
+                sleep $retry_delay
+                retry_delay=$((retry_delay * 2))
+              fi
+            done
+            echo "❌ 推送失败，已达最大重试次数"
+            return 1
+          }
+          
+          # 推送所有分支和标签
+          push_with_retry --all --force
+          push_with_retry --tags --force
+          
+          echo "✅ 同步完成"
+        shell: bash
 
   # 同步Release到Gitee
   sync-release-to-gitee:
