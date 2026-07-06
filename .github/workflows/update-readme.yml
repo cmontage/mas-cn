@@ -1,0 +1,132 @@
+name: Update README Recent Changes
+
+on:
+  push:
+    branches: [main]
+    paths: ['change_log/**']
+  workflow_dispatch:  # 允许手动触发
+
+jobs:
+  update-readme:
+    name: 更新 README 最近更新
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 1
+
+      - name: 提取最新变更总览并更新 README
+        run: |
+          set -e
+
+          # 找到最新的 change_log 文件
+          # 文件命名格式: sync_report_v3.11_to_v3.12.txt
+          # 按目标版本号（_to_vX.Y 部分）数值排序，取最新
+          latest_file=$(ls -1 change_log/sync_report_*.txt 2>/dev/null | \
+            awk -F'[_.]' '{
+              # 提取 _to_vMAJOR.MINOR.txt 中的 MAJOR 和 MINOR
+              for(i=1;i<=NF;i++) {
+                if($i=="to") { major=$(i+2); minor=$(i+3); break }
+              }
+              print major*1000+minor, $0
+            }' | sort -n -k1,1 | tail -1 | cut -d' ' -f2-)
+
+          if [ -z "$latest_file" ]; then
+            echo "未找到 change_log 文件，跳过"
+            exit 0
+          fi
+
+          echo "最新 change_log: $latest_file"
+
+          # change_log 文件为 GBK 编码，先转换为 UTF-8
+          tmpfile=$(mktemp)
+          iconv -f GBK -t UTF-8 "$latest_file" > "$tmpfile" 2>/dev/null || {
+            # 如果 GBK 转换失败，尝试直接读取（可能已经是 UTF-8）
+            cp "$latest_file" "$tmpfile"
+          }
+
+          # 提取版本号信息（从标题行）
+          version_info=$(grep -oP 'v[\d.]+ -> v[\d.]+' "$tmpfile" | head -1)
+          if [ -z "$version_info" ]; then
+            echo "无法提取版本信息，跳过"
+            rm -f "$tmpfile"
+            exit 0
+          fi
+
+          # 将 -> 替换为 →
+          version_display=$(echo "$version_info" | sed 's/ -> / → /')
+          echo "版本: $version_display"
+
+          # 提取变更总览段落（从"变更总览:"到下一个空行之间的统计行）
+          summary_lines=$(awk '/^变更总览:/{found=1; next} found && /^-+$/{next} found && /^$/{exit} found{print}' "$tmpfile")
+
+          rm -f "$tmpfile"
+
+          if [ -z "$summary_lines" ]; then
+            echo "无法提取变更总览，跳过"
+            exit 0
+          fi
+
+          echo "提取到的变更总览:"
+          echo "$summary_lines"
+
+          # 将多行统计合并为单行，用 | 分隔
+          summary_oneline=$(echo "$summary_lines" | sed 's/^[[:space:]]*//' | tr '\n' '|' | sed 's/|$//' | sed 's/|/ | /g')
+          echo "格式化: $summary_oneline"
+
+          # 获取 change_log 文件的相对路径
+          log_path="$latest_file"
+
+          # 生成替换内容（写入临时文件避免转义问题）
+          cat > /tmp/readme_block.txt << BLOCK_EOF
+          <!-- RECENT_UPDATE_START -->
+          ### 📋 最近更新 (${version_display})
+
+          > **变更总览：** ${summary_oneline}
+          >
+          > 🔗 [查看完整变更日志](${log_path})
+          <!-- RECENT_UPDATE_END -->
+          BLOCK_EOF
+
+          # 去掉 heredoc 的前导空格
+          sed -i 's/^          //' /tmp/readme_block.txt
+
+          echo ""
+          echo "生成的替换内容:"
+          cat /tmp/readme_block.txt
+
+          # 使用 perl 替换 README 中标记之间的内容（跨行替换）
+          perl -i -0777 -pe '
+            open(my $fh, "<", "/tmp/readme_block.txt") or die "Cannot open block file: $!";
+            my $block = do { local $/; <$fh> };
+            close($fh);
+            chomp $block;
+            s/<!-- RECENT_UPDATE_START -->.*?<!-- RECENT_UPDATE_END -->/$block/s;
+          ' README.md
+
+          rm -f /tmp/readme_block.txt
+
+          echo ""
+          echo "README 更新完成"
+
+      - name: 检查变更并提交
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          if git diff --quiet README.md; then
+            echo "README 无变化，跳过提交"
+          else
+            echo "检测到 README 变化，提交更新"
+            git add README.md
+            # 从 README 中提取版本信息用于 commit message
+            version=$(grep -oP '最近更新 \(\K[^)]+' README.md | head -1)
+            git commit -m "docs: 更新 README 最近更新 (${version})"
+            git push
+            echo "✅ 已提交并推送"
+          fi

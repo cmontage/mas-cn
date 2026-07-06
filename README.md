@@ -15,6 +15,14 @@
 
 Windows 和 Office 激活工具 MAS (Microsoft-Activation-Scripts) 的汉化版，在不改变机器码的情况下可永久激活 (视激活方式而定) ，备以自用😋
 
+<!-- RECENT_UPDATE_START -->
+### 📋 最近更新 (v3.11 → v3.12)
+
+> **变更总览：** replace: 54 处 | insert: 3 处 | delete: 15 处 | 总计: 72 处变更
+>
+> 🔗 [查看完整变更日志](change_log/sync_report_v3.11_to_v3.12.txt)
+<!-- RECENT_UPDATE_END -->
+
  **注：该汉化由我自己编写脚本（翻译源为[ Google 翻译](https://translate.google.com)）自动进行初步汉化然后进行人工校对完善的，并做了中文显示兼容以及 IRM 远程使用的脚本，修改或分发代码使请遵守 GPL-3.0 ，标明源代码出处或者提供获取源代码的途径。**
 
 > [!TIP]
