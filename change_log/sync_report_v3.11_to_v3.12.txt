@@ -1,0 +1,873 @@
+================================================================================
+MAS脚本同步报告 - v3.11 -> v3.12
+================================================================================
+生成时间: 2026-07-06 12:27:12
+
+统计信息:
+----------------------------------------
+v3.11英文版行数: 19239
+v3.12英文版行数: 19228
+英文版行数变化: -11
+v3.11中文版行数: 19239
+v3.12中文版行数: 19228
+中文版行数变化: -11
+与英文v3.12行数差异: +0
+检测到的变更数: 72
+成功应用的变更数: 72
+
+变更总览:
+----------------------------------------
+replace: 54 处
+insert: 3 处
+delete: 15 处
+总计: 72 处变更
+
+应用日志:
+----------------------------------------
+✓ 变更 1: 替换行 6-6 (1 -> 1 行)
+✓ 变更 2: 在行 44 后插入 12 行
+✓ 变更 3: 删除行 58-58 (1 行)
+✓ 变更 4: 替换行 105-106 (2 -> 1 行)
+✓ 变更 5: 删除行 114-114 (1 行)
+✓ 变更 6: 删除行 116-116 (1 行)
+✓ 变更 7: 替换行 199-202 (4 -> 3 行)
+✓ 变更 8: 替换行 210-210 (1 -> 1 行)
+✓ 变更 9: 替换行 239-239 (1 -> 1 行)
+✓ 变更 10: 替换行 340-340 (1 -> 1 行)
+✓ 变更 11: 替换行 344-344 (1 -> 1 行)
+✓ 变更 12: 替换行 619-619 (1 -> 1 行)
+✓ 变更 13: 替换行 834-834 (1 -> 1 行)
+✓ 变更 14: 替换行 1256-1256 (1 -> 1 行)
+✓ 变更 15: 替换行 1903-1903 (1 -> 1 行)
+✓ 变更 16: 替换行 1977-1977 (1 -> 1 行)
+✓ 变更 17: 替换行 2341-2342 (2 -> 2 行)
+✓ 变更 18: 替换行 2417-2417 (1 -> 1 行)
+✓ 变更 19: 替换行 3199-3199 (1 -> 1 行)
+✓ 变更 20: 删除行 3239-3241 (3 行)
+✓ 变更 21: 删除行 3240-3244 (5 行)
+✓ 变更 22: 删除行 3241-3241 (1 行)
+✓ 变更 23: 删除行 3249-3251 (3 行)
+✓ 变更 24: 删除行 3250-3250 (1 行)
+✓ 变更 25: 删除行 3315-3323 (9 行)
+✓ 变更 26: 删除行 3317-3317 (1 行)
+✓ 变更 27: 删除行 3329-3332 (4 行)
+✓ 变更 28: 删除行 3331-3331 (1 行)
+✓ 变更 29: 替换行 3702-3703 (2 -> 2 行)
+✓ 变更 30: 替换行 4039-4039 (1 -> 1 行)
+✓ 变更 31: 替换行 4078-4079 (2 -> 2 行)
+✓ 变更 32: 替换行 4102-4102 (1 -> 1 行)
+✓ 变更 33: 删除行 4129-4134 (6 行)
+✓ 变更 34: 替换行 4443-4443 (1 -> 3 行)
+✓ 变更 35: 在行 4566 后插入 3 行
+✓ 变更 36: 替换行 4673-4673 (1 -> 1 行)
+✓ 变更 37: 替换行 4684-4684 (1 -> 1 行)
+✓ 变更 38: 替换行 4963-4963 (1 -> 1 行)
+✓ 变更 39: 替换行 5455-5458 (4 -> 4 行)
+✓ 变更 40: 替换行 5652-5652 (1 -> 1 行)
+✓ 变更 41: 替换行 5700-5700 (1 -> 1 行)
+✓ 变更 42: 替换行 5850-5850 (1 -> 1 行)
+✓ 变更 43: 替换行 5856-5856 (1 -> 1 行)
+✓ 变更 44: 替换行 6053-6053 (1 -> 1 行)
+✓ 变更 45: 删除行 11242-11242 (1 行)
+✓ 变更 46: 替换行 11245-11247 (3 -> 16 行)
+✓ 变更 47: 替换行 11262-11274 (13 -> 1 行)
+✓ 变更 48: 替换行 11364-11364 (1 -> 1 行)
+✓ 变更 49: 替换行 13575-13575 (1 -> 1 行)
+✓ 变更 50: 替换行 13605-13605 (1 -> 1 行)
+✓ 变更 51: 替换行 14453-14453 (1 -> 1 行)
+✓ 变更 52: 替换行 16368-16368 (1 -> 1 行)
+✓ 变更 53: 替换行 16406-16406 (1 -> 1 行)
+✓ 变更 54: 替换行 16476-16477 (2 -> 2 行)
+✓ 变更 55: 替换行 16882-16883 (2 -> 2 行)
+✓ 变更 56: 删除行 16905-16905 (1 行)
+✓ 变更 57: 替换行 17099-17099 (1 -> 1 行)
+✓ 变更 58: 替换行 17268-17268 (1 -> 1 行)
+✓ 变更 59: 替换行 17476-17476 (1 -> 1 行)
+✓ 变更 60: 替换行 17514-17514 (1 -> 1 行)
+✓ 变更 61: 替换行 17870-17870 (1 -> 1 行)
+✓ 变更 62: 在行 18164 后插入 12 行
+✓ 变更 63: 替换行 18264-18264 (1 -> 1 行)
+✓ 变更 64: 替换行 18274-18274 (1 -> 1 行)
+✓ 变更 65: 替换行 18296-18296 (1 -> 1 行)
+✓ 变更 66: 替换行 18305-18305 (1 -> 1 行)
+✓ 变更 67: 替换行 18337-18338 (2 -> 2 行)
+✓ 变更 68: 替换行 18360-18360 (1 -> 1 行)
+✓ 变更 69: 替换行 18822-18822 (1 -> 1 行)
+✓ 变更 70: 替换行 18984-18988 (5 -> 5 行)
+✓ 变更 71: 替换行 19142-19142 (1 -> 1 行)
+✓ 变更 72: 替换行 19202-19202 (1 -> 1 行)
+
+详细变更记录:
+----------------------------------------
+
+变更 1:
+  类型: replace
+  位置: 行 6-6 -> 6-6
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - @set masver=3.11
+  添加内容:
+    + @set masver=3.12
+
+变更 2:
+  类型: insert
+  位置: 在行 44 后插入
+  添加: 12 行
+  添加内容:
+    + cd /d "%SysPath%"
+    + 
+    + :: Workaround for https://github.com/microsoft/terminal/issues/15212, when %0 starts with a quote %0 parameter expansion is not specialcased.
+    + :: Changing %0 to something that is not quoted bypasses the issue.
+    + goto arg_workaround_end
+    + :arg_workaround
+    + set "_cmdf=%~f0"
+    + exit /b
+    + :arg_workaround_end
+    + 
+    ... (还有 2 行)
+
+变更 3:
+  类型: delete
+  位置: 行 46-46
+  删除: 1 行
+  删除内容:
+    - set "_cmdf=%~f0"
+
+变更 4:
+  类型: replace
+  位置: 行 94-95 -> 105-105
+  删除: 2 行
+  添加: 1 行
+  删除内容:
+    - pushd "%~dp0"
+    - >nul findstr /v "$" "%~nx0" && (
+  添加内容:
+    + >nul findstr /v "$" "%_cmdf%" && (
+
+变更 5:
+  类型: delete
+  位置: 行 104-104
+  删除: 1 行
+  删除内容:
+    - popd
+
+变更 6:
+  类型: delete
+  位置: 行 107-107
+  删除: 1 行
+  删除内容:
+    - popd
+
+变更 7:
+  类型: replace
+  位置: 行 191-194 -> 199-201
+  删除: 4 行
+  添加: 3 行
+  删除内容:
+    - set "_batf=%~f0"
+    - set "_batp=%_batf:'=''%"
+    - 
+    - set _PSarg="""%~f0""" -el %_args%
+  添加内容:
+    + set "_batp=%_cmdf:'=''%"
+    + 
+    + set _PSarg="""%_cmdf%""" -el %_args%
+
+变更 8:
+  类型: replace
+  位置: 行 203-203 -> 210-210
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - echo "!_batf!" | find /i "!_ttemp!" %nul1% && (
+  添加内容:
+    + echo "!_cmdf!" | find /i "!_ttemp!" %nul1% && (
+
+变更 9:
+  类型: replace
+  位置: 行 232-232 -> 239-239
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - for /f "delims=" %%a in ('%psc% "if ($PSVersionTable.PSEdition -ne 'Core') {$f=[System.IO.File]::ReadAllText('!_batp!') -split ':pstst';. ([scriptblock]::Create($f[1]))}" %nul6%') do (set tstresult=%%a)
+  添加内容:
+    + for /f "delims=" %%a in ('%psc% "if ($PSVersionTable.PSEdition -ne 'Core') {$f=[IO.File]::ReadAllText('!_batp!') -split ':pstst';. ([scriptblock]::Create($f[1]))}" %nul6%') do (set tstresult=%%a)
+
+变更 10:
+  类型: replace
+  位置: 行 333-333 -> 340-340
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - start conhost.exe "!_batf!" %_args% -qedit
+  添加内容:
+    + start conhost.exe "!_cmdf!" %_args% -qedit
+
+变更 11:
+  类型: replace
+  位置: 行 337-337 -> 344-344
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - start cmd.exe /c ""!_batf!" %_args% -qedit"
+  添加内容:
+    + start cmd.exe /c ""!_cmdf!" %_args% -qedit"
+
+变更 12:
+  类型: replace
+  位置: 行 612-612 -> 619-619
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - %psc% "$f=[System.IO.File]::ReadAllText('!_batp!'); [io.file]::WriteAllText('!_pdesk!\$OEM$\$$\Setup\Scripts\MAS_AIO.cmd', '@::RANDOM-' + [Guid]::NewGuid().Guid + [Environment]::NewLine + $f, [System.Text.Encoding]::ASCII)"
+  添加内容:
+    + %psc% "$f=[IO.File]::ReadAllText('!_batp!'); [io.file]::WriteAllText('!_pdesk!\$OEM$\$$\Setup\Scripts\MAS_AIO.cmd', '@::RANDOM-' + [Guid]::NewGuid().Guid + [Environment]::NewLine + $f, [System.Text.Encoding]::ASCII)"
+
+变更 13:
+  类型: replace
+  位置: 行 827-827 -> 834-834
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - for /f "delims=" %%a in ('%psc% "$f=[System.IO.File]::ReadAllText('!_batp!') -split ':getactivationid\:.*';. ([scriptblock]::Create($f[1]))"') do (set altapplist=%%a)
+  添加内容:
+    + for /f "delims=" %%a in ('%psc% "$f=[IO.File]::ReadAllText('!_batp!') -split ':getactivationid\:.*';. ([scriptblock]::Create($f[1]))"') do (set altapplist=%%a)
+
+变更 14:
+  类型: replace
+  位置: 行 1249-1249 -> 1256-1256
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - if %winbuild% GEQ 15063 %psc% "$f=[System.IO.File]::ReadAllText('!_batp!') -split ':winsubstatus\:.*';. ([scriptblock]::Create($f[1]))" %nul2% | find /i "Subscription_is_activated" %nul% && (
+  添加内容:
+    + if %winbuild% GEQ 15063 %psc% "$f=[IO.File]::ReadAllText('!_batp!') -split ':winsubstatus\:.*';. ([scriptblock]::Create($f[1]))" %nul2% | find /i "Subscription_is_activated" %nul% && (
+
+变更 15:
+  类型: replace
+  位置: 行 1896-1896 -> 1903-1903
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - for /f "delims=" %%a in ('%psc% "$f=[System.IO.File]::ReadAllText('!_batp!') -split ':wpatest\:.*';. ([scriptblock]::Create($f[1]))" %nul6%') do (set wpainfo=%%a)
+  添加内容:
+    + for /f "delims=" %%a in ('%psc% "$f=[IO.File]::ReadAllText('!_batp!') -split ':wpatest\:.*';. ([scriptblock]::Create($f[1]))" %nul6%') do (set wpainfo=%%a)
+
+变更 16:
+  类型: replace
+  位置: 行 1970-1970 -> 1977-1977
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - %psc% "if (-not $env:_vis) {Start-Job { Stop-Service %_slser% -force } | Wait-Job -Timeout 20 | Out-Null}; $sls = Get-WmiObject SoftwareLicensingService; $f=[System.IO.File]::ReadAllText('!_batp!') -split ':xrm\:.*';. ([scriptblock]::Create($f[1])); ReinstallLicenses" %nul%
+  添加内容:
+    + %psc% "if (-not $env:_vis) {Start-Job { Stop-Service %_slser% -force } | Wait-Job -Timeout 20 | Out-Null}; $sls = Get-WmiObject SoftwareLicensingService; $f=[IO.File]::ReadAllText('!_batp!') -split ':xrm\:.*';. ([scriptblock]::Create($f[1])); ReinstallLicenses" %nul%
+
+变更 17:
+  类型: replace
+  位置: 行 2334-2335 -> 2341-2342
+  删除: 2 行
+  添加: 2 行
+  删除内容:
+    - set "SessionIdStr=OSMajorVersion=5;OSMinorVersion=1;OSPlatformId=2;PP=0;Pfn=Microsoft.Windows.%%C.%%D_8wekyb3d8bbwe;PKeyIID=465145217131314304264339481117862266242033457260311819664735280;"
+    - %psc% "$f=[System.IO.File]::ReadAllText('!_batp!') -split ':sign\:.*';. ([scriptblock]::Create($f[1]))"
+  添加内容:
+    + set "SessionIdStr=OSMajorVersion=5;OSMinorVersion=1;OSPlatformId=2;PP=0;Pfn=Microsoft.Windows.%%C.%%D_8wekyb3d8bbwe;PKeyIID=221306452340115677963964261259250411589493550039199940431586886;"
+    + %psc% "$f=[IO.File]::ReadAllText('!_batp!') -split ':sign\:.*';. ([scriptblock]::Create($f[1]))"
+
+变更 18:
+  类型: replace
+  位置: 行 2410-2410 -> 2417-2417
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - [System.IO.File]::WriteAllText("$env:ProgramData\Microsoft\Windows\ClipSVC\GenuineTicket\GenuineTicket", ($xml -join ""), [System.Text.Encoding]::ASCII)
+  添加内容:
+    + [IO.File]::WriteAllText("$env:ProgramData\Microsoft\Windows\ClipSVC\GenuineTicket\GenuineTicket", ($xml -join ""), [System.Text.Encoding]::ASCII)
+
+变更 19:
+  类型: replace
+  位置: 行 3192-3192 -> 3199-3199
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - %psc% "$sls = Get-WmiObject %sps%; $f=[System.IO.File]::ReadAllText('!_batp!') -split ':xrm\:.*';. ([scriptblock]::Create($f[1])); InstallLicenseArr '!_arr!'; InstallLicenseFile '"!_oLPath!\pkeyconfig-office.xrm-ms"'" %nul%
+  添加内容:
+    + %psc% "$sls = Get-WmiObject %sps%; $f=[IO.File]::ReadAllText('!_batp!') -split ':xrm\:.*';. ([scriptblock]::Create($f[1])); InstallLicenseArr '!_arr!'; InstallLicenseFile '"!_oLPath!\pkeyconfig-office.xrm-ms"'" %nul%
+
+变更 20:
+  类型: delete
+  位置: 行 3232-3234
+  删除: 3 行
+  删除内容:
+    - set exhook=
+    - if exist "!_work!\BIN\%_hook%" set exhook=1
+    - 
+
+变更 21:
+  类型: delete
+  位置: 行 3236-3240
+  删除: 5 行
+  删除内容:
+    - if defined exhook (
+    - pushd "!_work!\BIN\"
+    - copy /y /b "%_hook%" "%_hookPath%\sppc.dll" %nul%
+    - popd
+    - ) else (
+
+变更 22:
+  类型: delete
+  位置: 行 3242-3242
+  删除: 1 行
+  删除内容:
+    - )
+
+变更 23:
+  类型: delete
+  位置: 行 3251-3253
+  删除: 3 行
+  删除内容:
+    - if defined exhook (
+    - echo Copying Custom %_hook% to            ["%_hookPath%\sppc.dll"] [Successful]
+    - ) else (
+
+变更 24:
+  类型: delete
+  位置: 行 3255-3255
+  删除: 1 行
+  删除内容:
+    - )
+
+变更 25:
+  类型: delete
+  位置: 行 3321-3329
+  删除: 9 行
+  删除内容:
+    - set exhook=
+    - if exist "!_work!\BIN\%_hook68%" if exist "!_work!\BIN\%_hook86%"  set exhook=1
+    - 
+    - if defined exhook (
+    - pushd "!_work!\BIN\"
+    - if defined _osppPath68 (copy /y /b "%_hook68%" "%_osppPath68%\OSPPC.DLL" %nul%)
+    - if defined _osppPath86 (copy /y /b "%_hook86%" "%_osppPath86%\OSPPC.DLL" %nul%)
+    - popd
+    - ) else (
+
+变更 26:
+  类型: delete
+  位置: 行 3332-3332
+  删除: 1 行
+  删除内容:
+    - )
+
+变更 27:
+  类型: delete
+  位置: 行 3345-3348
+  删除: 4 行
+  删除内容:
+    - if defined exhook (
+    - if defined _osppPath68 (echo Copying Custom %_hook68% to            ["%_osppPath68%\OSPPC.DLL"])
+    - if defined _osppPath86 (echo Copying Custom %_hook86% to            ["%_osppPath86%\OSPPC.DLL"])
+    - ) else (
+
+变更 28:
+  类型: delete
+  位置: 行 3351-3351
+  删除: 1 行
+  删除内容:
+    - )
+
+变更 29:
+  类型: replace
+  位置: 行 3723-3724 -> 3702-3703
+  删除: 2 行
+  添加: 2 行
+  删除内容:
+    - %psc% "Stop-Service sppsvc -force; $sls = Get-WmiObject SoftwareLicensingService; $f=[System.IO.File]::ReadAllText('!_batp!') -split ':xrm\:.*';. ([scriptblock]::Create($f[1])); ReinstallLicenses" %nul%
+    - if !errorlevel! NEQ 0 %psc% "$sls = Get-WmiObject SoftwareLicensingService; $f=[System.IO.File]::ReadAllText('!_batp!') -split ':xrm\:.*';. ([scriptblock]::Create($f[1])); ReinstallLicenses" %nul%
+  添加内容:
+    + %psc% "Stop-Service sppsvc -force; $sls = Get-WmiObject SoftwareLicensingService; $f=[IO.File]::ReadAllText('!_batp!') -split ':xrm\:.*';. ([scriptblock]::Create($f[1])); ReinstallLicenses" %nul%
+    + if !errorlevel! NEQ 0 %psc% "$sls = Get-WmiObject SoftwareLicensingService; $f=[IO.File]::ReadAllText('!_batp!') -split ':xrm\:.*';. ([scriptblock]::Create($f[1])); ReinstallLicenses" %nul%
+
+变更 30:
+  类型: replace
+  位置: 行 4060-4060 -> 4039-4039
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - %psc% "$f=[System.IO.File]::ReadAllText('!_batp!') -split ':%_hook%\:.*';$encoded = ($f[1]) -replace '-', 'A' -replace '_', 'a';$bytes = [Con%b%vert]::FromBas%b%e64String($encoded); $PePath='%1'; $offset='%2'; $m=[System.IO.File]::ReadAllText('!_batp!') -split ':hexedit\:.*';. ([scriptblock]::Create($m[1]))" %nul2% | find /i "Error found" %nul1% && set hasherror=1
+  添加内容:
+    + %psc% "$f=[IO.File]::ReadAllText('!_batp!') -split ':%_hook%\:.*';$encoded = ($f[1]) -replace '-', 'A' -replace '_', 'a';$bytes = [Con%b%vert]::FromBas%b%e64String($encoded); $PePath='%1'; $offset='%2'; $m=[IO.File]::ReadAllText('!_batp!') -split ':hexedit\:.*';. ([scriptblock]::Create($m[1]))" %nul2% | find /i "Error found" %nul1% && set hasherror=1
+
+变更 31:
+  类型: replace
+  位置: 行 4099-4100 -> 4078-4079
+  删除: 2 行
+  添加: 2 行
+  删除内容:
+    - $tempFilePath = "$env:windir\Temp\$([System.IO.Path]::GetRandomFileName())"
+    - [System.IO.File]::WriteAllBytes($tempFilePath, $MemoryStream.ToArray())
+  添加内容:
+    + $tempFilePath = "$env:windir\Temp\$([Guid]::NewGuid().Guid)"
+    + [IO.File]::WriteAllBytes($tempFilePath, $MemoryStream.ToArray())
+
+变更 32:
+  类型: replace
+  位置: 行 4123-4123 -> 4102-4102
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - [System.IO.File]::WriteAllBytes($PePath, $modifiedBytes)
+  添加内容:
+    + [IO.File]::WriteAllBytes($PePath, $modifiedBytes)
+
+变更 33:
+  类型: delete
+  位置: 行 4150-4155
+  删除: 6 行
+  删除内容:
+    - ::
+    - ::========================================================================================================================================
+    - ::
+    - ::  If you want to use a different sppc.dll or without base64 format, then create a folder named "BIN" where this script is located and 
+    - ::  place these two files in that "BIN" folder. sppc32.dll, sppc64.dll
+    - ::  Script will auto pick that instead of using the below from base64 section. You can also delete the below code in that case.
+
+变更 34:
+  类型: replace
+  位置: 行 4470-4470 -> 4443-4445
+  删除: 1 行
+  添加: 3 行
+  删除内容:
+    - echo                  Builds ^>= 26100 - StaticCID (KMS4k if offline)
+  添加内容:
+    + echo                  Builds ^>= 26100 - Windows only  - KMS4k
+    + echo                                    Other options - StaticCID
+    + echo:
+
+变更 35:
+  类型: insert
+  位置: 在行 4591 后插入
+  添加: 3 行
+  添加内容:
+    + if !_actwin!==1 if not !_actwinesuoff!==1 (
+    + set tsmethod=KMS4k
+    + )
+
+变更 36:
+  类型: replace
+  位置: 行 4695-4695 -> 4673-4673
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - for /f "delims=" %%a in ('%psc% "$f=[System.IO.File]::ReadAllText('!_batp!') -split ':wintsid\:.*';. ([scriptblock]::Create($f[1]))" %nul6%') do (
+  添加内容:
+    + for /f "delims=" %%a in ('%psc% "$f=[IO.File]::ReadAllText('!_batp!') -split ':wintsid\:.*';. ([scriptblock]::Create($f[1]))" %nul6%') do (
+
+变更 37:
+  类型: replace
+  位置: 行 4706-4706 -> 4684-4684
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - call :dk_color %Blue% "Connect to the Internet and try again. Script will use the StaticCID activation method."
+  添加内容:
+    + call :dk_color %Blue% "Return to the previous menu and select StaticCID activation method. Internet connection is required to activate."
+
+变更 38:
+  类型: replace
+  位置: 行 4985-4985 -> 4963-4963
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - %psc% "$f=[System.IO.File]::ReadAllText('!_batp!') -split ':tsforge\:.*';. ([scriptblock]::Create($f[1]))"
+  添加内容:
+    + %psc% "$f=[IO.File]::ReadAllText('!_batp!') -split ':tsforge\:.*';. ([scriptblock]::Create($f[1]))"
+
+变更 39:
+  类型: replace
+  位置: 行 5477-5480 -> 5455-5458
+  删除: 4 行
+  添加: 4 行
+  删除内容:
+    - if defined _arr %psc% "$sls = Get-WmiObject %sps%; $f=[System.IO.File]::ReadAllText('!_batp!') -split ':xrm\:.*';. ([scriptblock]::Create($f[1])); InstallLicenseArr '!_arr!'" %nul%
+    - )
+    - 
+    - for /f "delims=" %%a in ('%psc% "$f=[System.IO.File]::ReadAllText('!_batp!') -split ':wintsid\:.*';. ([scriptblock]::Create($f[1]))" %nul6%') do (
+  添加内容:
+    + if defined _arr %psc% "$sls = Get-WmiObject %sps%; $f=[IO.File]::ReadAllText('!_batp!') -split ':xrm\:.*';. ([scriptblock]::Create($f[1])); InstallLicenseArr '!_arr!'" %nul%
+    + )
+    + 
+    + for /f "delims=" %%a in ('%psc% "$f=[IO.File]::ReadAllText('!_batp!') -split ':wintsid\:.*';. ([scriptblock]::Create($f[1]))" %nul6%') do (
+
+变更 40:
+  类型: replace
+  位置: 行 5674-5674 -> 5652-5652
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - %psc% "$f=[System.IO.File]::ReadAllText('!_batp!') -split ':tsforge\:.*';. ([scriptblock]::Create($f[1]))"
+  添加内容:
+    + %psc% "$f=[IO.File]::ReadAllText('!_batp!') -split ':tsforge\:.*';. ([scriptblock]::Create($f[1]))"
+
+变更 41:
+  类型: replace
+  位置: 行 5722-5722 -> 5700-5700
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - %psc% "$f=[System.IO.File]::ReadAllText('!_batp!') -split ':listactids\:.*';. ([scriptblock]::Create($f[1]))"
+  添加内容:
+    + %psc% "$f=[IO.File]::ReadAllText('!_batp!') -split ':listactids\:.*';. ([scriptblock]::Create($f[1]))"
+
+变更 42:
+  类型: replace
+  位置: 行 5872-5872 -> 5850-5850
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - %psc% "$f=[System.IO.File]::ReadAllText('!_batp!') -split ':tsforge\:.*';. ([scriptblock]::Create($f[1])) %tsids%"
+  添加内容:
+    + %psc% "$f=[IO.File]::ReadAllText('!_batp!') -split ':tsforge\:.*';. ([scriptblock]::Create($f[1])) %tsids%"
+
+变更 43:
+  类型: replace
+  位置: 行 5878-5878 -> 5856-5856
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - if /i %tsmethod%==KMS4k if %winbuild% GEQ 26100 (
+  添加内容:
+    + if /i %tsmethod%==KMS4k if %winbuild% GEQ 26100 if %_actwin%==1 (
+
+变更 44:
+  类型: replace
+  位置: 行 6075-6075 -> 6053-6053
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - for /f "delims=" %%a in ('%psc% "$f=[System.IO.File]::ReadAllText('!_batp!') -split ':offtsid\:.*';. ([scriptblock]::Create($f[1]))" %nul6%') do (
+  添加内容:
+    + for /f "delims=" %%a in ('%psc% "$f=[IO.File]::ReadAllText('!_batp!') -split ':offtsid\:.*';. ([scriptblock]::Create($f[1]))" %nul6%') do (
+
+变更 45:
+  类型: delete
+  位置: 行 11264-11264
+  删除: 1 行
+  删除内容:
+    - $binPath = "$env:_work\BIN\LibTSforge.dll"
+
+变更 46:
+  类型: replace
+  位置: 行 11268-11270 -> 11245-11260
+  删除: 3 行
+  添加: 16 行
+  删除内容:
+    - if (Test-Path -LiteralPath $binPath) {
+    -     Write-Host "LibTSforge.dll found in BIN folder. Loading the DLL..."
+    -     Add-Type -Path $binPath
+  添加内容:
+    + $cp = [CodeDom.Compiler.CompilerParameters] [string[]]@("System.dll", "System.Core.dll", "System.ServiceProcess.dll", "System.Xml.dll", "System.Xml.Linq.dll")
+    + if ($psMajorVer -le 2) { $cp.CompilerOptions = "/define:POWERSHELL2 /unsafe" } else { $cp.CompilerOptions = "/unsafe" }
+    + $lang = if ($psMajorVer -gt 2) { "CSharp" } else { "CSharpVersion3" }
+    + 
+    + $ctemp = "$env:SystemRoot\Temp\$([Guid]::NewGuid().Guid)\"
+    + if (-Not (Test-Path -Path $ctemp)) { New-Item -Path $ctemp -ItemType Directory > $null }
+    + $env:TMP = $ctemp
+    + $env:TEMP = $ctemp
+    + 
+    + $cp.GenerateInMemory = $true
+    ... (还有 6 行)
+
+变更 47:
+  类型: replace
+  位置: 行 11272-11284 -> 11262-11262
+  删除: 13 行
+  添加: 1 行
+  删除内容:
+    - else {
+    -     $cp = [CodeDom.Compiler.CompilerParameters] [string[]]@("System.dll", "System.Core.dll", "System.ServiceProcess.dll", "System.Xml.dll", "System.Xml.Linq.dll")
+    -     if ($psMajorVer -le 2) { $cp.CompilerOptions = "/define:POWERSHELL2 /unsafe" } else { $cp.CompilerOptions = "/unsafe" }
+    -     $lang = if ($psMajorVer -gt 2) { "CSharp" } else { "CSharpVersion3" }
+    - 
+    -     $ctemp = "$env:SystemRoot\Temp\"
+    -     if (-Not (Test-Path -Path $ctemp)) { New-Item -Path $ctemp -ItemType Directory > $null }
+    -     $env:TMP = $ctemp
+    -     $env:TEMP = $ctemp
+    - 
+    ... (还有 3 行)
+  添加内容:
+    + Remove-Item -Path $ctemp
+
+变更 48:
+  类型: replace
+  位置: 行 11386-11386 -> 11364-11364
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    -                             Write-Host "From build 26100.7019, Windows will always display and stay at 180 days remaining if the actual period is longer." -ForegroundColor White -BackgroundColor Darkgray
+  添加内容:
+    +                             Write-Host "From build 26100.7019, Windows will always display a remaining activation period of 180 days in Settings." -ForegroundColor White -BackgroundColor Darkgray
+
+变更 49:
+  类型: replace
+  位置: 行 13597-13597 -> 13575-13575
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - %psc% "$f=[System.IO.File]::ReadAllText('!_batp!') -split \":_extracttask\:.*`r`n\"; [io.file]::WriteAllText('%_dest%\Activation_task.cmd', '@::%randguid%' + [Environment]::NewLine + $f[1].Trim(), [System.Text.Encoding]::ASCII)"
+  添加内容:
+    + %psc% "$f=[IO.File]::ReadAllText('!_batp!') -split \":_extracttask\:.*`r`n\"; [io.file]::WriteAllText('%_dest%\Activation_task.cmd', '@::%randguid%' + [Environment]::NewLine + $f[1].Trim(), [System.Text.Encoding]::ASCII)"
+
+变更 50:
+  类型: replace
+  位置: 行 13627-13627 -> 13605-13605
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - %psc% "$f=[System.IO.File]::ReadAllText('!_batp!') -split \":%~1\:.*`r`n\"; [io.file]::WriteAllText('%~2',$f[1].Trim(),[System.Text.Encoding]::%~3);"
+  添加内容:
+    + %psc% "$f=[IO.File]::ReadAllText('!_batp!') -split \":%~1\:.*`r`n\"; [io.file]::WriteAllText('%~2',$f[1].Trim(),[System.Text.Encoding]::%~3);"
+
+变更 51:
+  类型: replace
+  位置: 行 14475-14475 -> 14453-14453
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - %psc% "$f=[System.IO.File]::ReadAllText('!_batp!') -split ':sppmgr\:.*';. ([scriptblock]::Create($f[1]))"
+  添加内容:
+    + %psc% "$f=[IO.File]::ReadAllText('!_batp!') -split ':sppmgr\:.*';. ([scriptblock]::Create($f[1]))"
+
+变更 52:
+  类型: replace
+  位置: 行 16390-16390 -> 16368-16368
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - %psc% "$f=[System.IO.File]::ReadAllText('!_batp!') -split ':regdel\:.*';. ([scriptblock]::Create($f[1]))"
+  添加内容:
+    + %psc% "$f=[IO.File]::ReadAllText('!_batp!') -split ':regdel\:.*';. ([scriptblock]::Create($f[1]))"
+
+变更 53:
+  类型: replace
+  位置: 行 16428-16428 -> 16406-16406
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - %psc% "$f=[System.IO.File]::ReadAllText('!_batp!') -split ':fixsppperms\:.*';. ([scriptblock]::Create($f[1]))" %nul%
+  添加内容:
+    + %psc% "$f=[IO.File]::ReadAllText('!_batp!') -split ':fixsppperms\:.*';. ([scriptblock]::Create($f[1]))" %nul%
+
+变更 54:
+  类型: replace
+  位置: 行 16498-16499 -> 16476-16477
+  删除: 2 行
+  添加: 2 行
+  删除内容:
+    - %psc% "$sls = Get-WmiObject SoftwareLicensingService; $f=[System.IO.File]::ReadAllText('!_batp!') -split ':xrm\:.*';. ([scriptblock]::Create($f[1])); ReinstallLicenses" %nul%
+    - if %errorlevel% NEQ 0 %psc% "$sls = Get-WmiObject SoftwareLicensingService; $f=[System.IO.File]::ReadAllText('!_batp!') -split ':xrm\:.*';. ([scriptblock]::Create($f[1])); ReinstallLicenses" %nul%
+  添加内容:
+    + %psc% "$sls = Get-WmiObject SoftwareLicensingService; $f=[IO.File]::ReadAllText('!_batp!') -split ':xrm\:.*';. ([scriptblock]::Create($f[1])); ReinstallLicenses" %nul%
+    + if %errorlevel% NEQ 0 %psc% "$sls = Get-WmiObject SoftwareLicensingService; $f=[IO.File]::ReadAllText('!_batp!') -split ':xrm\:.*';. ([scriptblock]::Create($f[1])); ReinstallLicenses" %nul%
+
+变更 55:
+  类型: replace
+  位置: 行 16904-16905 -> 16882-16883
+  删除: 2 行
+  添加: 2 行
+  删除内容:
+    - set "ddf="%SystemRoot%\Temp\%Random%%Random%%Random%%Random%""
+    - %nul% del /q /f %ddf%
+  添加内容:
+    + for /f %%G in ('%psc% "[Guid]::NewGuid().Guid"') do set "randguid=%%G"
+    + set "ddf="%SystemRoot%\Temp\%Random%%randguid%""
+
+变更 56:
+  类型: delete
+  位置: 行 16927-16927
+  删除: 1 行
+  删除内容:
+    - del /q /f %ddf%
+
+变更 57:
+  类型: replace
+  位置: 行 17122-17122 -> 17099-17099
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - %psc% "$f=[System.IO.File]::ReadAllText('!_batp!') -split ':regown\:.*';. ([scriptblock]::Create($f[1]));"
+  添加内容:
+    + %psc% "$f=[IO.File]::ReadAllText('!_batp!') -split ':regown\:.*';. ([scriptblock]::Create($f[1]));"
+
+变更 58:
+  类型: replace
+  位置: 行 17291-17291 -> 17268-17268
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - if %winbuild% LSS 10240 for /f "tokens=4" %%a in ('%psc% "$f=[System.IO.File]::ReadAllText('!_batp!') -split ':cbsxml\:.*';. ([scriptblock]::Create($f[1])) -GetTargetEditions;" ^| findstr /i /c:"Target Edition : "') do (if defined _ptarget (set "_ptarget= !_ptarget! %%a ") else (set "_ptarget= %%a "))
+  添加内容:
+    + if %winbuild% LSS 10240 for /f "tokens=4" %%a in ('%psc% "$f=[IO.File]::ReadAllText('!_batp!') -split ':cbsxml\:.*';. ([scriptblock]::Create($f[1])) -GetTargetEditions;" ^| findstr /i /c:"Target Edition : "') do (if defined _ptarget (set "_ptarget= !_ptarget! %%a ") else (set "_ptarget= %%a "))
+
+变更 59:
+  类型: replace
+  位置: 行 17499-17499 -> 17476-17476
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - %psc% "$f=[System.IO.File]::ReadAllText('!_batp!') -split ':dismapi\:.*';. ([scriptblock]::Create($f[1])) %targetedition% %key%"
+  添加内容:
+    + %psc% "$f=[IO.File]::ReadAllText('!_batp!') -split ':dismapi\:.*';. ([scriptblock]::Create($f[1])) %targetedition% %key%"
+
+变更 60:
+  类型: replace
+  位置: 行 17537-17537 -> 17514-17514
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - %psc% "$f=[System.IO.File]::ReadAllText('!_batp!') -split ':cbsxml\:.*';. ([scriptblock]::Create($f[1])) -SetEdition %targetedition% %stage%"
+  添加内容:
+    + %psc% "$f=[IO.File]::ReadAllText('!_batp!') -split ':cbsxml\:.*';. ([scriptblock]::Create($f[1])) -SetEdition %targetedition% %stage%"
+
+变更 61:
+  类型: replace
+  位置: 行 17893-17893 -> 17870-17870
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - $xmlPath = $Env:SystemRoot + '\Temp' + '\CbsUpgrade.xml'
+  添加内容:
+    + $xmlPath = $Env:SystemRoot + '\Temp' + "\$([Guid]::NewGuid().Guid)CbsUpgrade.xml"
+
+变更 62:
+  类型: insert
+  位置: 在行 18187 后插入
+  添加: 12 行
+  添加内容:
+    + set "o_randguid="
+    + for /f %%G in ('%psc% "[Guid]::NewGuid().Guid" ^| findstr /r "^[0123456789abcdef]*-[0123456789abcdef]*-[0123456789abcdef]*-[0123456789abcdef]*-[0123456789abcdef]*$"') do set "o_randguid=%%G"
+    + if not defined o_randguid (
+    + %eline%
+    + echo Unable to generate GUID with PowerShell.
+    + echo Aborting...
+    + set fixes=%fixes% %mas%troubleshoot
+    + call :dk_color2 %Blue% "Check this webpage for help - " %_Yellow% " %mas%troubleshoot"
+    + goto dk_done
+    + )
+    ... (还有 2 行)
+
+变更 63:
+  类型: replace
+  位置: 行 18275-18275 -> 18264-18264
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - %psc% "$f=[System.IO.File]::ReadAllText('!_batp!') -split ':getlist\:.*';. ([scriptblock]::Create($f[1]))"
+  添加内容:
+    + %psc% "$f=[IO.File]::ReadAllText('!_batp!') -split ':getlist\:.*';. ([scriptblock]::Create($f[1]))"
+
+变更 64:
+  类型: replace
+  位置: 行 18285-18285 -> 18274-18274
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - if not exist %SystemRoot%\Temp\%list%.txt (
+  添加内容:
+    + if not exist %SystemRoot%\Temp\%o_randguid%\%list%.txt (
+
+变更 65:
+  类型: replace
+  位置: 行 18307-18307 -> 18296-18296
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - find /i "%%#" "%SystemRoot%\Temp\%list%.txt" %nul1% || (
+  添加内容:
+    + find /i "%%#" "%SystemRoot%\Temp\%o_randguid%\%list%.txt" %nul1% || (
+
+变更 66:
+  类型: replace
+  位置: 行 18316-18316 -> 18305-18305
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - for /f "usebackq delims=" %%A in (%SystemRoot%\Temp\%list%.txt) do (
+  添加内容:
+    + for /f "usebackq delims=" %%A in (%SystemRoot%\Temp\%o_randguid%\%list%.txt) do (
+
+变更 67:
+  类型: replace
+  位置: 行 18348-18349 -> 18337-18338
+  删除: 2 行
+  添加: 2 行
+  删除内容:
+    - %psc% "$f=[System.IO.File]::ReadAllText('!_batp!') -split ':getappnames\:.*';. ([scriptblock]::Create($f[1]))"
+    - if not exist %SystemRoot%\Temp\getAppIds.txt (
+  添加内容:
+    + %psc% "$f=[IO.File]::ReadAllText('!_batp!') -split ':getappnames\:.*';. ([scriptblock]::Create($f[1]))"
+    + if not exist %SystemRoot%\Temp\%o_randguid%\getAppIds.txt (
+
+变更 68:
+  类型: replace
+  位置: 行 18371-18371 -> 18360-18360
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - find /i "%%#" "%SystemRoot%\Temp\getAppIds.txt" %nul1% && (set %%#_st=On) || (set %%#_st=)
+  添加内容:
+    + find /i "%%#" "%SystemRoot%\Temp\%o_randguid%\getAppIds.txt" %nul1% && (set %%#_st=On) || (set %%#_st=)
+
+变更 69:
+  类型: replace
+  位置: 行 18833-18833 -> 18822-18822
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - for /f "delims=" %%a in ('%psc% "$f=[System.IO.File]::ReadAllText('!_batp!') -split ':getbuild\:.*';. ([scriptblock]::Create($f[1]))" %nul6%') do (set build=%%a)
+  添加内容:
+    + for /f "delims=" %%a in ('%psc% "$f=[IO.File]::ReadAllText('!_batp!') -split ':getbuild\:.*';. ([scriptblock]::Create($f[1]))" %nul6%') do (set build=%%a)
+
+变更 70:
+  类型: replace
+  位置: 行 18995-18999 -> 18984-18988
+  删除: 5 行
+  添加: 5 行
+  删除内容:
+    - del /f /q %SystemRoot%\Temp\SingleApps_Volume.txt %nul%
+    - del /f /q %SystemRoot%\Temp\SingleApps_Retail.txt %nul%
+    - del /f /q %SystemRoot%\Temp\Suites_Volume.txt %nul%
+    - del /f /q %SystemRoot%\Temp\Suites_Retail.txt %nul%
+    - del /f /q %SystemRoot%\Temp\getAppIds.txt %nul%
+  添加内容:
+    + del %SystemRoot%\Temp\%o_randguid%\SingleApps_Volume.txt %nul%
+    + del %SystemRoot%\Temp\%o_randguid%\SingleApps_Retail.txt %nul%
+    + del %SystemRoot%\Temp\%o_randguid%\Suites_Volume.txt %nul%
+    + del %SystemRoot%\Temp\%o_randguid%\Suites_Retail.txt %nul%
+    + del %SystemRoot%\Temp\%o_randguid%\getAppIds.txt %nul%
+
+变更 71:
+  类型: replace
+  位置: 行 19153-19153 -> 19142-19142
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - $outputDir = $env:SystemRoot + "\Temp\"
+  添加内容:
+    + $outputDir = $env:SystemRoot + "\Temp\$env:o_randguid\"
+
+变更 72:
+  类型: replace
+  位置: 行 19213-19213 -> 19202-19202
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - $outputDir = $env:SystemRoot + "\Temp\"
+  添加内容:
+    + $outputDir = $env:SystemRoot + "\Temp\$env:o_randguid\"
+
+================================================================================
+报告结束
+================================================================================
