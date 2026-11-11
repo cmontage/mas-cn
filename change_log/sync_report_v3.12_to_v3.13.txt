@@ -1,0 +1,316 @@
+================================================================================
+MAS脚本同步报告 - v3.12 -> v3.13
+================================================================================
+生成时间: 2026-11-11 15:26:31
+
+统计信息:
+----------------------------------------
+v3.12英文版行数: 19228
+v3.13英文版行数: 19284
+英文版行数变化: +56
+v3.12中文版行数: 19228
+v3.13中文版行数: 19284
+中文版行数变化: +56
+与英文v3.13行数差异: +0
+检测到的变更数: 22
+成功应用的变更数: 22
+
+变更总览:
+----------------------------------------
+replace: 6 处
+insert: 11 处
+delete: 5 处
+总计: 22 处变更
+
+应用日志:
+----------------------------------------
+✓ 变更 1: 替换行 6-6 (1 -> 1 行)
+✓ 变更 2: 在行 2679 后插入 4 行
+✓ 变更 3: 替换行 2693-2695 (3 -> 3 行)
+✓ 变更 4: 替换行 2697-2697 (1 -> 1 行)
+✓ 变更 5: 在行 2732 后插入 3 行
+✓ 变更 6: 在行 2792 后插入 3 行
+✓ 变更 7: 在行 3139 后插入 16 行
+✓ 变更 8: 删除行 3442-3454 (13 行)
+✓ 变更 9: 替换行 5015-5015 (1 -> 3 行)
+✓ 变更 10: 删除行 5060-5060 (1 行)
+✓ 变更 11: 删除行 5062-5062 (1 行)
+✓ 变更 12: 替换行 5064-5064 (1 -> 2 行)
+✓ 变更 13: 在行 5074 后插入 1 行
+✓ 变更 14: 删除行 5092-5101 (10 行)
+✓ 变更 15: 在行 5094 后插入 9 行
+✓ 变更 16: 在行 5265 后插入 4 行
+✓ 变更 17: 在行 5338 后插入 3 行
+✓ 变更 18: 在行 5382 后插入 3 行
+✓ 变更 19: 替换行 5891-5892 (2 -> 1 行)
+✓ 变更 20: 在行 5986 后插入 16 行
+✓ 变更 21: 删除行 6114-6124 (11 行)
+✓ 变更 22: 在行 11329 后插入 28 行
+
+详细变更记录:
+----------------------------------------
+
+变更 1:
+  类型: replace
+  位置: 行 6-6 -> 6-6
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - @set masver=3.12
+  添加内容:
+    + @set masver=3.13
+
+变更 2:
+  类型: insert
+  位置: 在行 2679 后插入
+  添加: 4 行
+  添加内容:
+    + set rdsh=
+    + for /f "tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v TSAppCompat 2^>nul') do set "edid=%%a"
+    + if "%edid%"=="0x1" set "rdsh=1"
+    + 
+
+变更 3:
+  类型: replace
+  位置: 行 2689-2691 -> 2693-2695
+  删除: 3 行
+  添加: 3 行
+  删除内容:
+    - call :dk_color %Gray% "Checking Smart App Control State        [Enabled]"
+    - call :dk_color %Blue% "Smart App Control may prevent you from opening Office after Ohook activation."
+    - call :dk_color %Blue% "You will need to disable it from the Windows Defender settings if it does."
+  添加内容:
+    + call :dk_color %Red% "Checking Smart App Control State        [Enabled]"
+    + call :dk_color %Blue% "Smart App Control may prevent Office from working after Ohook activation."
+    + call :dk_color %Blue% "It is recommended that you disable it from the Windows Defender settings."
+
+变更 4:
+  类型: replace
+  位置: 行 2693-2693 -> 2697-2697
+  删除: 1 行
+  添加: 1 行
+  删除内容:
+    - call :dk_color %Gray% "Checking Smart App Control State        [Evaluation]"
+  添加内容:
+    + call :dk_color %Red% "Checking Smart App Control State        [Evaluation]"
+
+变更 5:
+  类型: insert
+  位置: 在行 2728 后插入
+  添加: 3 行
+  添加内容:
+    + call :oh_checkrdsh
+    + if defined _rdshfail goto :dk_done
+    + 
+
+变更 6:
+  类型: insert
+  位置: 在行 2785 后插入
+  添加: 3 行
+  添加内容:
+    + 
+    + call :oh_checkrdsh
+    + if defined _rdshfail goto :dk_done
+
+变更 7:
+  类型: insert
+  位置: 在行 3129 后插入
+  添加: 16 行
+  添加内容:
+    + :oh_checkrdsh
+    + 
+    + set _rdshfail=
+    + if defined winserver if defined rdsh if defined _config if exist "%_oLPath%\Word2019VL_KMS_Client_AE*.xrm-ms" (
+    + echo %_oIds% | find /i "Retail" %nul1% && (
+    + set error=1
+    + call :dk_color %Red% "Retail versions of Office cannot be activated with Ohook when running on a Remote Desktop Services host."
+    + call :dk_color %Blue% "Go back to Main Menu, select Change Office Edition option, and change to Volume."
+    + set _rdshfail=1
+    + )
+    ... (还有 6 行)
+
+变更 8:
+  类型: delete
+  位置: 行 3416-3428
+  删除: 13 行
+  删除内容:
+    - 
+    - ::  Add SharedComputerLicensing registry key if Retail Office C2R is installed on Windows Server
+    - ::  https://learn.microsoft.com/en-us/office/troubleshoot/office-suite-issues/click-to-run-office-on-terminal-server
+    - 
+    - if defined winserver if defined _config if exist "%_oLPath%\Word2019VL_KMS_Client_AE*.xrm-ms" (
+    - echo %_oIds% | find /i "Retail" %nul1% && (
+    - set scaIsNeeded=1
+    - reg add %_config% /v SharedComputerLicensing /t REG_SZ /d "1" /f %nul1%
+    - echo Adding SharedComputerLicensing Reg      [Successful] [Needed on Server With Retail Office]"
+    - )
+    ... (还有 3 行)
+
+变更 9:
+  类型: replace
+  位置: 行 5002-5002 -> 5015-5017
+  删除: 1 行
+  添加: 3 行
+  删除内容:
+    - if %winbuild% GTR 14393 for %%# in (EnterpriseS IoTEnterpriseS IoTEnterpriseSK) do (if /i %tsedition%==%%# set isltsc=1)
+  添加内容:
+    + if %winbuild% EQU 17763 for %%# in (EnterpriseS EnterpriseSN) do (if /i %tsedition%==%%# set isltsc=1)
+    + if %winbuild% GTR 19045 for %%# in (EnterpriseS EnterpriseSN) do (if /i %tsedition%==%%# set isltsc=1)
+    + if %winbuild% GEQ 19041 for %%# in (IoTEnterpriseS IoTEnterpriseSK) do (if /i %tsedition%==%%# set isltsc=1)
+
+变更 10:
+  类型: delete
+  位置: 行 5045-5045
+  删除: 1 行
+  删除内容:
+    - 0b533b5e-08b6-44f9-b885-c2de291ba456_Client-ESU-Year6[4-6y]_-%w10EsuEditions%-%w10EsuEditionsLaterAdded%
+
+变更 11:
+  类型: delete
+  位置: 行 5048-5048
+  删除: 1 行
+  删除内容:
+    - 4cd0ab30-73a4-4dde-972c-512f05be31df_Server-ESU-Year6[4-6y]_-ServerDatacenter-ServerDatacenterCore-ServerDatacenterV-ServerDatacenterVCore-ServerStandard-ServerStandardCore-ServerStandardV-ServerStandardVCore-
+
+变更 12:
+  类型: replace
+  位置: 行 5051-5051 -> 5064-5065
+  删除: 1 行
+  添加: 2 行
+  删除内容:
+    - 22badfe6-7d55-4485-874b-7ec317442134_Client-ESU-Year6[4-6y]_-EnterpriseS-EnterpriseSN-
+  添加内容:
+    + REM Windows10LTSC2021
+    + aacc1401-305e-4ba2-8110-5aae1894c880_Client-LTSC-ESU-Year3[1-3y]_-EnterpriseS-EnterpriseSN-
+
+变更 13:
+  类型: insert
+  位置: 在行 5060 后插入
+  添加: 1 行
+  添加内容:
+    + set esubadactids=
+
+变更 14:
+  类型: delete
+  位置: 行 5077-5086
+  删除: 10 行
+  删除内容:
+    - if defined esuexistsup (
+    - echo "%tsids%" | find /i "4220f546-f522-46df-8202-4d07afd26454" %nul1% && (
+    - echo "%tsids%" | find /i "7e94be23-b161-4956-a682-146ab291774c" %nul1% || (
+    - call :dk_color %Gray% "To get Client-ESU-Year6[4-6y] license, install updates from the below URL."
+    - call :dk_color %Blue% "%mas%tsforge#windows-esu"
+    - )
+    - )
+    - goto :ts_off
+    - )
+    - 
+
+变更 15:
+  类型: insert
+  位置: 在行 5089 后插入
+  添加: 9 行
+  添加内容:
+    + goto :ts_off
+    + )
+    + 
+    + echo "%allapps%" | findstr /i "14240489-7c2d-42ee-a167-4913ca4672da b705d67e-527a-4f11-b904-7be441066a22 0b533b5e-08b6-44f9-b885-c2de291ba456 4cd0ab30-73a4-4dde-972c-512f05be31df 22badfe6-7d55-4485-874b-7ec317442134" %nul1% && (
+    + call :dk_color %Red% "Checking Activated Licenses             [Found Year 4-6 License]"
+    + call :dk_color %Blue% "ESU licenses for years 4-6 prevent Windows update detection. MAS will automatically remove these licenses."
+    + set esuexistbutnosup=
+    + set esuexistsup=
+    + set esubadactids=1
+
+变更 16:
+  类型: insert
+  位置: 在行 5251 后插入
+  添加: 4 行
+  添加内容:
+    + 
+    + set rdsh=
+    + for /f "tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v TSAppCompat 2^>nul') do set "edid=%%a"
+    + if "%edid%"=="0x1" set "rdsh=1"
+
+变更 17:
+  类型: insert
+  位置: 在行 5320 后插入
+  添加: 3 行
+  添加内容:
+    + call :ts_checkrdsh
+    + if defined _rdshfail goto :dk_done
+    + 
+
+变更 18:
+  类型: insert
+  位置: 在行 5361 后插入
+  添加: 3 行
+  添加内容:
+    + 
+    + call :ts_checkrdsh
+    + if defined _rdshfail goto :dk_done
+
+变更 19:
+  类型: replace
+  位置: 行 5867-5868 -> 5891-5891
+  删除: 2 行
+  添加: 1 行
+  删除内容:
+    - echo "%tsids%" | findstr /i "83d49986-add3-41d7-ba33-87c7bfb5c0fb 0b533b5e-08b6-44f9-b885-c2de291ba456" %nul1% && (
+    - call :dk_color %Gray% "Windows Update gets 1-3 years of ESU; 4-6 are unofficial but may let you install LTSC updates manually."
+  添加内容:
+    + echo "%tsids%" | findstr /i "f520e45e-7413-4a34-a497-d2765967d094 1043add5-23b1-4afb-9a0f-64343c8f3f8d 83d49986-add3-41d7-ba33-87c7bfb5c0fb" %nul1% && (
+
+变更 20:
+  类型: insert
+  位置: 在行 5963 后插入
+  添加: 16 行
+  添加内容:
+    + :ts_checkrdsh
+    + 
+    + set _rdshfail=
+    + if /i not %tsmethod%==KMS4k if defined rdsh if defined winserver if defined _config if exist "%_oLPath%\Word2019VL_KMS_Client_AE*.xrm-ms" (
+    + echo %_oIds% | find /i "Retail" %nul1% && (
+    + set error=1
+    + call :dk_color %Red% "Retail versions of Office cannot be activated with TSForge when running on a Remote Desktop Services host."
+    + call :dk_color %Blue% "Go back to Main Menu, select Change Office Edition option, and change to Volume."
+    + set _rdshfail=1
+    + )
+    ... (还有 6 行)
+
+变更 21:
+  类型: delete
+  位置: 行 6075-6085
+  删除: 11 行
+  删除内容:
+    - )
+    - )
+    - 
+    - ::  Add SharedComputerLicensing registry key if Retail Office C2R is installed on Windows Server
+    - ::  https://learn.microsoft.com/en-us/office/troubleshoot/office-suite-issues/click-to-run-office-on-terminal-server
+    - 
+    - if /i not %tsmethod%==KMS4k if defined winserver if defined _config if exist "%_oLPath%\Word2019VL_KMS_Client_AE*.xrm-ms" (
+    - echo %_oIds% | find /i "Retail" %nul1% && (
+    - set scaIsNeeded=1
+    - reg add %_config% /v SharedComputerLicensing /t REG_SZ /d "1" /f %nul1%
+    ... (还有 1 行)
+
+变更 22:
+  类型: insert
+  位置: 在行 11301 后插入
+  添加: 28 行
+  添加内容:
+    +     if ($env:esubadactids) {
+    +         $badesuactids = @(
+    +             "14240489-7c2d-42ee-a167-4913ca4672da", # Win10 22H2 Client-ESU-Year4
+    +             "b705d67e-527a-4f11-b904-7be441066a22", # Win10 22H2 Client-ESU-Year5
+    +             "0b533b5e-08b6-44f9-b885-c2de291ba456", # Win10 22H2 Client-ESU-Year6
+    +             "4cd0ab30-73a4-4dde-972c-512f05be31df", # Server 2016 Server-ESU-Year6
+    +             "22badfe6-7d55-4485-874b-7ec317442134", # LTSB 2016 Client-ESU-Year6
+    +             "ab8c630c-395f-4241-b08d-736fbea0e1c8" # Win10 LTSC 2021 Client-LTSC-ESU-Year6
+    +         )
+    +         $detected = $false
+    ... (还有 18 行)
+
+================================================================================
+报告结束
+================================================================================
