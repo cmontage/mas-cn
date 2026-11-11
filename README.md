@@ -24,7 +24,7 @@ Windows 和 Office 激活工具 MAS (Microsoft-Activation-Scripts) 的汉化版�
 <!-- RECENT_UPDATE_END -->
 
 
- **注：该汉化由我自己编写脚本（翻译源为[ Google 翻译](https://translate.google.com)）自动进行初步汉化然后进行人工校对完善的，并做了中文显示兼容以及 IRM 远程使用的脚本，修改或分发代码使请遵守 GPL-3.0 ，标明源代码出处或者提供获取源代码的途径。**
+ **注：该汉化由我自己编写脚本（翻译源为[ Gemini AI ](https://gemini.google.com)）自动进行初步汉化然后进行人工校对完善的，并做了中文显示兼容以及 IRM 远程使用的脚本，修改或分发代码使请遵守 GPL-3.0 ，标明源代码出处或者提供获取源代码的途径。**
 
 ### 具体使用方法: 
 **打开 Powershell 或 Terminal（终端）输入命令即可使用**
