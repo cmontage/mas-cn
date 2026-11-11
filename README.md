@@ -13,7 +13,7 @@
 <hr>
 
 
-Windows 和 Office 激活工具 MAS (Microsoft-Activation-Scripts) 的汉化版，在不改变机器码的情况下可永久激活 (视激活方式而定) ，备以自用😋
+Windows 和 Office 激活脚本 MAS (Microsoft-Activation-Scripts) 的汉化版，在不改变机器码的情况下可永久激活 (视激活方式而定) ，备以自用😋
 
 <!-- RECENT_UPDATE_START -->
 ### 📋 最近更新 (v3.12 → v3.13)
